@@ -1,0 +1,15 @@
+Java Launcher: C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin\java.exe
+Arguments: '--task, SRG_TO_MCP, --input, C:\Users\Hayden\.gradle\caches\modules-2\files-2.1\mezz.jei\jei-1.18.2\9.5.4.166\d8661bf611d784f44127e4f0bdda64f2d6a9287a\jei-1.18.2-9.5.4.166.jar, --output, C:\Users\Hayden\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.18.2\9.5.4.166_mapped_parchment_2022.03.13-1.18.2\jei-1.18.2-9.5.4.166_mapped_parchment_2022.03.13-1.18.2.jar, --mcp, C:\Users\Hayden\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.18.2\2022.03.13\parchment-1.18.2-2022.03.13.zip, --strip-signatures'
+Classpath:
+ - C:\Users\Hayden\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.2.8\installertools-1.2.8-fatjar.jar
+Working directory: C:\ExoTerra\build\_RenameSrg2Mcp_1183127428
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\Hayden\.gradle\caches\modules-2\files-2.1\mezz.jei\jei-1.18.2\9.5.4.166\d8661bf611d784f44127e4f0bdda64f2d6a9287a\jei-1.18.2-9.5.4.166.jar
+Output: C:\Users\Hayden\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.18.2\9.5.4.166_mapped_parchment_2022.03.13-1.18.2\jei-1.18.2-9.5.4.166_mapped_parchment_2022.03.13-1.18.2.jar
+MCP:    C:\Users\Hayden\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.18.2\2022.03.13\parchment-1.18.2-2022.03.13.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Process complete
