@@ -1,0 +1,19 @@
+{
+  "block.exoterra.charging_station": "\u00A73Stellar\u00A7r Purification Bestower",
+  "block.exoterra.stellar_ore_deepslate": "\u00A73Stellar\u00A7r Ore",
+  "block.exoterra.stellar_ore_end": "\u00A73Stellar\u00A7r Ore",
+  "block.exoterra.stellar_ore_nether": "\u00A73Stellar\u00A7r Ore",
+  "block.exoterra.stellar_ore_overworld": "\u00A73Stellar\u00A7r Ore",
+  "item.exoterra.aqueous_stellar_bucket": "Bucket of \u00A73Aqueous Stellar\u00A7r",
+  "item.exoterra.inf_raw_stellar": "Raw \u00A73Stellar\u00A7r (Inferior)",
+  "item.exoterra.inf_refined_stellar": "Refined \u00A73Stellar\u00A7r (Inferior)",
+  "itemGroup.charginggadgets": "Charging Gadgets",
+  "itemGroup.exoterra": "ExoTerra",
+  "screen.exoterra.burn_time": "Burn time left: %ss",
+  "screen.exoterra.energy": "\u00A74Energy:\u00A7r %s/%s FE",
+  "screen.exoterra.fluid": "\u00A73Aqueous Stellar:\u00A7r %s/%s MB",
+  "screen.exoterra.no_energy": "\u00A77Not enough FE to purify",
+  "screen.exoterra.no_fuel": "\u00A77Fuel source empty",
+  "screen.exoterra.purify_time": "\u00A77Time until purification: %ss",
+  "screen.exoterra.stellar": "\u00A73Stellar:\u00A7r %s MB"
+}

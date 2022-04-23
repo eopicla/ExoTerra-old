@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra",
+  "pattern": [
+    "#n#",
+    "xox",
+    "#x#"
+  ],
+  "key": {
+    "x": {
+      "tag": "forge:dusts/redstone"
+    },
+    "#": {
+      "tag": "forge:ingots/iron"
+    },
+    "n": {
+      "tag": "forge:ingots/netherite"
+    },
+    "o": {
+      "item": "exoterra:inf_refined_stellar"
+    }
+  },
+  "result": {
+    "item": "exoterra:power_gen"
+  }
+}

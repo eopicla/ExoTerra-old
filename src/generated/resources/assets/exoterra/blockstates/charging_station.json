@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "exoterra:block/charging_station"
+    },
+    "facing=south": {
+      "model": "exoterra:block/charging_station",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "exoterra:block/charging_station",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "exoterra:block/charging_station",
+      "y": 90
+    }
+  }
+}

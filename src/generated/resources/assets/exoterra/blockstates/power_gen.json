@@ -1,0 +1,119 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "exoterra:block/fab_station/main"
+      }
+    },
+    {
+      "when": {
+        "powered": "false"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleoff"
+      }
+    },
+    {
+      "when": {
+        "powered": "false"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleoff",
+        "x": 180
+      }
+    },
+    {
+      "when": {
+        "powered": "false"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleoff",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "powered": "false"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleoff",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "powered": "false"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleoff",
+        "x": 90,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "powered": "false"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleoff",
+        "x": 90,
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "powered": "true"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleon"
+      }
+    },
+    {
+      "when": {
+        "powered": "true"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleon",
+        "x": 180
+      }
+    },
+    {
+      "when": {
+        "powered": "true"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleon",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "powered": "true"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleon",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "powered": "true"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleon",
+        "x": 90,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "powered": "true"
+      },
+      "apply": {
+        "model": "exoterra:block/fab_station/singleon",
+        "x": 90,
+        "y": 270
+      }
+    }
+  ]
+}
