@@ -28,7 +28,7 @@ public class TutLanguageProvider extends LanguageProvider {
 
 		add(Registration.AQUEOUS_STELLAR_BUCKET.get(), "Bucket of \u00A73Aqueous Stellar\u00A7r");
 
-		addBlock(Registration.CHARGING_STATION, "\u00A73Stellar\u00A7r Purification Bestower");
+		addBlock(Registration.STELLAR_CONVERTER, "\u00A73Stellar\u00A7r Purification Bestower");
 		add("itemGroup.charginggadgets", "Charging Gadgets");
 		add("screen.exoterra.energy", "\u00A74Energy:\u00a7r %s/%s FE");
 		add("screen.exoterra.stellar", "\u00A73Stellar:\u00a7r %s MB");

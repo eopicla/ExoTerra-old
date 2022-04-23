@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "charge_station",
+      "name": "stellar_converter",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
@@ -36,7 +36,7 @@
             },
             {
               "function": "minecraft:set_contents",
-              "type": "exoterra:charging_station_tile",
+              "type": "exoterra:stellar_converter_be",
               "entries": [
                 {
                   "type": "minecraft:dynamic",
@@ -45,7 +45,7 @@
               ]
             }
           ],
-          "name": "exoterra:charging_station"
+          "name": "exoterra:stellar_converter"
         }
       ]
     }

@@ -12,7 +12,7 @@ public class TutLootTables extends BaseLootTableProvider {
 	@Override
 	protected void addTables() {
 		
-		lootTables.put(Registration.CHARGING_STATION.get(), createStandardTable("charge_station", Registration.CHARGING_STATION.get(), Registration.CHARGING_STATION_TILE.get()));
+		lootTables.put(Registration.STELLAR_CONVERTER.get(), createStandardTable("stellar_converter", Registration.STELLAR_CONVERTER.get(), Registration.STELLAR_CONVERTER_BE.get()));
 		
 		lootTables.put(Registration.STELLAR_ORE_OVERWORLD.get(), createSilkTouchTable("stellar_ore_overworld", Registration.STELLAR_ORE_OVERWORLD.get(), Registration.INF_RAW_STELLAR.get(), 1, 1));
         lootTables.put(Registration.STELLAR_ORE_NETHER.get(), createSilkTouchTable("stellar_ore_nether", Registration.STELLAR_ORE_NETHER.get(), Registration.INF_RAW_STELLAR.get(), 1, 2));

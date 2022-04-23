@@ -22,7 +22,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ChargingStationContainer extends AbstractContainerMenu {
+public class StellarConverterContainer extends AbstractContainerMenu {
     private static final int SLOTS = 4;
 
     public final ContainerData data;
@@ -31,12 +31,12 @@ public class ChargingStationContainer extends AbstractContainerMenu {
     // Tile can be null and shouldn't be used for accessing any data that needs to be up to date on both sides
     private StellarConverterBE tile;
 
-    public ChargingStationContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
+    public StellarConverterContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
         this((StellarConverterBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8), windowId, playerInventory, new ItemStackHandler(4));
     }
 
-    public ChargingStationContainer(@Nullable StellarConverterBE tile, ContainerData chargingStationData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
-        super(Registration.CHARGING_STATION_CONTAINER.get(), windowId);
+    public StellarConverterContainer(@Nullable StellarConverterBE tile, ContainerData chargingStationData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
+        super(Registration.STELLAR_CONVERTER_CONTAINER.get(), windowId);
 
         this.handler = handler;
         this.tile = tile;

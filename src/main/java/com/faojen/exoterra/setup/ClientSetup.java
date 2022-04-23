@@ -1,6 +1,6 @@
 package com.faojen.exoterra.setup;
 
-import com.faojen.exoterra.client.ChargingStationScreen;
+import com.faojen.exoterra.client.StellarConverterScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -12,7 +12,7 @@ public class ClientSetup {
     	
         event.enqueueWork(() -> {
         	
-            MenuScreens.register(Registration.CHARGING_STATION_CONTAINER.get(), ChargingStationScreen::new);
+            MenuScreens.register(Registration.STELLAR_CONVERTER_CONTAINER.get(), StellarConverterScreen::new);
             
             ItemBlockRenderTypes.setRenderLayer(Registration.AQUEOUS_STELLAR.get(), renderType -> renderType == RenderType.translucent());
 			ItemBlockRenderTypes.setRenderLayer(Registration.FLOWING_AQUEOUS_STELLAR.get(), renderType -> renderType == RenderType.translucent());

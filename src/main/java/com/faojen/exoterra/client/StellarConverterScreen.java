@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.Arrays;
 
 import com.faojen.exoterra.ExoTerra;
-import com.faojen.exoterra.blocks.container.ChargingStationContainer;
+import com.faojen.exoterra.blocks.container.StellarConverterContainer;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -18,13 +18,13 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class ChargingStationScreen extends AbstractContainerScreen<ChargingStationContainer> {
+public class StellarConverterScreen extends AbstractContainerScreen<StellarConverterContainer> {
 	private static final ResourceLocation background = new ResourceLocation(ExoTerra.MODID,
-			"textures/gui/charging_station.png");
+			"textures/gui/stellar_converter.png");
 
-	private final ChargingStationContainer container;
+	private final StellarConverterContainer container;
 
-	public ChargingStationScreen(ChargingStationContainer container, Inventory playerInventory, Component title) {
+	public StellarConverterScreen(StellarConverterContainer container, Inventory playerInventory, Component title) {
 		super(container, playerInventory, title);
 		this.container = container;
 	}
@@ -126,24 +126,24 @@ public class ChargingStationScreen extends AbstractContainerScreen<ChargingStati
 					leftPos + 38 + 48 - remaining, 				    
 					topPos + 50, 			   
 					184, 
-					33, 							    // Source top-left corner Y
-					4, 			    // Source Image Width - Iterates remaining in order scale width
-					2);							    // Source Image height
+					33, 
+					4, 	
+					2);	
 			// chamber edge layer
 			this.blit(stack, 
 					leftPos + 74, 				    
 					topPos + 50, 			   
 					74, 
-					50, 							    // Source top-left corner Y
-					4, 			    // Source Image Width - Iterates remaining in order scale width
+					50, 			
+					4, 		
 					2);	
 			// chamber center layer
 			this.blit(stack, 
 					leftPos + 86, 				    
 					topPos + 50, 			   
 					86, 
-					50, 							    // Source top-left corner Y
-					4, 			    // Source Image Width - Iterates remaining in order scale width
+					50, 					
+					4, 			
 					2);	
 		}	
 		
@@ -166,8 +166,8 @@ public class ChargingStationScreen extends AbstractContainerScreen<ChargingStati
 					leftPos + 9, 				    
 					topPos + 64, 			   
 					184, 
-					36, 							    // Source top-left corner Y
-					68, 			    // Source Image Width - Iterates remaining in order scale width
+					36, 					
+					68, 			  
 					14);	
 		}
 
@@ -177,20 +177,20 @@ public class ChargingStationScreen extends AbstractContainerScreen<ChargingStati
 			int remaining = (this.container.getFluidStored() * stellarwidth) / maxFluid;
 
 			this.blit(stack, 
-					leftPos + 98, 				// Destination top-left corner X
-					topPos + 63, 			    // Destination top-left corner Y
-					176 + 70 - remaining,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-					0, 								    // Source top-left corner Y
-					remaining + 1, 			    // Expects the increase in fluid, adds onto remaining to match actual held fluid number
-					15);							    // Source bottom Y coord
+					leftPos + 98, 			
+					topPos + 63, 			  
+					176 + 70 - remaining,  
+					0, 								 
+					remaining + 1, 			   
+					15);					
 			
 			// meter overlay
 			this.blit(stack, 
 					leftPos + 99, 				    
 					topPos + 64, 			   
 					184, 
-					36, 							    // Source top-left corner Y
-					68, 			    // Source Image Width - Iterates remaining in order scale width
+					36, 							 
+					68, 			   
 					14);	
 			
 		}
@@ -200,7 +200,7 @@ public class ChargingStationScreen extends AbstractContainerScreen<ChargingStati
 	@Override
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
 		
-		Minecraft.getInstance().font.draw(stack, I18n.get("block.exoterra.charging_station"), 
+		Minecraft.getInstance().font.draw(stack, I18n.get("block.exoterra.stellar_converter"), 
 				15, 28,Color.DARK_GRAY.getRGB());
 		
 //		Minecraft.getInstance().font.draw(stack, I18n.get("I: " + container.get), 

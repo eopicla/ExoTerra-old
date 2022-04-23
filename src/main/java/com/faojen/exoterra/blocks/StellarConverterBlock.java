@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.faojen.exoterra.blocks.entity.StellarConverterBE;
-import com.faojen.exoterra.item.ChargingStationItem;
+import com.faojen.exoterra.item.StellarConverterItem;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -38,10 +38,10 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 
-public class ChargingStationBlock extends Block implements EntityBlock {
+public class StellarConverterBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public ChargingStationBlock() {
+    public StellarConverterBlock() {
         super(Properties.of(Material.STONE).strength(2f));
 
         registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH));
@@ -74,7 +74,7 @@ public class ChargingStationBlock extends Block implements EntityBlock {
         if (te instanceof StellarConverterBE) {
         	StellarConverterBE tileEntity = (StellarConverterBE) te;
             drops.stream()
-                    .filter(e -> e.getItem() instanceof ChargingStationItem)
+                    .filter(e -> e.getItem() instanceof StellarConverterItem)
                     .findFirst()
                     .ifPresent(e -> e.getOrCreateTag().putInt("energy", tileEntity.energyStorage.getEnergyStored()));
         }
@@ -115,6 +115,6 @@ public class ChargingStationBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return Registration.CHARGING_STATION_TILE.get().create(pos, state);
+        return Registration.STELLAR_CONVERTER_BE.get().create(pos, state);
     }
 }

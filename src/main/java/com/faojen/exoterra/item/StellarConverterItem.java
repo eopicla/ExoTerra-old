@@ -20,9 +20,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 
-public class ChargingStationItem extends BlockItem {
+public class StellarConverterItem extends BlockItem {
 
-    public ChargingStationItem(Block blockIn, Properties builder) {
+    public StellarConverterItem(Block blockIn, Properties builder) {
         super(blockIn, builder);
     }
 

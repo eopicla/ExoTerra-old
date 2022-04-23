@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "exoterra:inf_raw_stellar"
-  },
-  "result": "exoterra:inf_refined_stellar",
-  "experience": 8.0,
-  "cookingtime": 250
-}

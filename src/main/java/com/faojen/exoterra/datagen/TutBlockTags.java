@@ -23,7 +23,7 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.STELLAR_ORE_NETHER.get())
 			.add(Registration.STELLAR_ORE_END.get())
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
-			.add(Registration.CHARGING_STATION.get());
+			.add(Registration.STELLAR_CONVERTER.get());
 		
 		tag(BlockTags.NEEDS_IRON_TOOL)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())

@@ -4,12 +4,12 @@ import static com.faojen.exoterra.ExoTerra.MODID;
 
 import com.faojen.exoterra.ExoTerra;
 import com.faojen.exoterra.blocks.AqueousStellarBlock;
-import com.faojen.exoterra.blocks.ChargingStationBlock;
-import com.faojen.exoterra.blocks.container.ChargingStationContainer;
+import com.faojen.exoterra.blocks.StellarConverterBlock;
+import com.faojen.exoterra.blocks.container.StellarConverterContainer;
 import com.faojen.exoterra.blocks.entity.StellarConverterBE;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.item.AqueousStellarItem;
-import com.faojen.exoterra.item.ChargingStationItem;
+import com.faojen.exoterra.item.StellarConverterItem;
 import com.faojen.exoterra.item.InfRefinedStellar;
 
 import net.minecraft.core.Registry;
@@ -74,27 +74,27 @@ public class Registration {
 	public static final RegistryObject<Block> AQUEOUS_STELLAR_BLOCK = BLOCKS.register("aqueous_stellar", () -> new AqueousStellarBlock());
 	
 	// -----------------------------------------------------------------------------------------------------------------------------------------------------------//
-	public static final RegistryObject<Block> CHARGING_STATION = BLOCKS.register("charging_station", ChargingStationBlock::new);
+	public static final RegistryObject<Block> STELLAR_CONVERTER = BLOCKS.register("stellar_converter", StellarConverterBlock::new);
 
     /**
      * Tile Entities
      */
-    public static final RegistryObject<BlockEntityType<StellarConverterBE>> CHARGING_STATION_TILE =
-            BLOCK_ENTITIES.register("charging_station_tile", () -> BlockEntityType.Builder.of(StellarConverterBE::new, CHARGING_STATION.get()).build(null));
+    public static final RegistryObject<BlockEntityType<StellarConverterBE>> STELLAR_CONVERTER_BE =
+            BLOCK_ENTITIES.register("stellar_converter_be", () -> BlockEntityType.Builder.of(StellarConverterBE::new, STELLAR_CONVERTER.get()).build(null));
 
     /**
      * Containers?
      */
-    public static final RegistryObject<MenuType<ChargingStationContainer>> CHARGING_STATION_CONTAINER = CONTAINERS.register("charging_station_container", 
-    		() -> IForgeMenuType.create(ChargingStationContainer::new));
+    public static final RegistryObject<MenuType<StellarConverterContainer>> STELLAR_CONVERTER_CONTAINER = CONTAINERS.register("stellar_converter_container", 
+    		() -> IForgeMenuType.create(StellarConverterContainer::new));
 
 
     /**
      * For now I'm adding items into here, it doesn't make much sense but nor does an items package for a mod with no
      * items... so... when we add items. Move this!
      */
-    public static final RegistryObject<Item> CHARGING_STATION_BI = ITEMS.register("charging_station", 
-    		() -> new ChargingStationItem(CHARGING_STATION.get(), Registration.ITEM_PROPERTIES));
+    public static final RegistryObject<Item> STELLAR_CONVERTER_BI = ITEMS.register("stellar_converter", 
+    		() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.ITEM_PROPERTIES));
 
 	
 	

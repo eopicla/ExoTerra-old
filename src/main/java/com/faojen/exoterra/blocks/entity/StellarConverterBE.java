@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.faojen.exoterra.Config;
-import com.faojen.exoterra.blocks.container.ChargingStationContainer;
+import com.faojen.exoterra.blocks.container.StellarConverterContainer;
 import com.faojen.exoterra.capabilities.ChargerEnergyStorage;
 import com.faojen.exoterra.capabilities.ChargerFluidStorage;
 import com.faojen.exoterra.capabilities.ChargerItemHandler;
@@ -101,7 +101,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	};
 
 	public StellarConverterBE(BlockPos pos, BlockState state) {
-		super(Registration.CHARGING_STATION_TILE.get(), pos, state);
+		super(Registration.STELLAR_CONVERTER_BE.get(), pos, state);
 		this.energyStorage = new ChargerEnergyStorage(this, 0, Config.GENERAL.chargerMaxPower.get());
 		this.fluidStorage = new ChargerFluidStorage(this, FLUID_CAPACITY);
 		this.energy = LazyOptional.of(() -> this.energyStorage);
@@ -112,7 +112,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	@Override
 	public AbstractContainerMenu createMenu(int i, Inventory playerInventory, Player playerEntity) {
 		assert level != null;
-		return new ChargingStationContainer(this, this.chargingStationData, i, playerInventory,
+		return new StellarConverterContainer(this, this.chargingStationData, i, playerInventory,
 				this.inventory.orElse(new ItemStackHandler(2)));
 	}
 

@@ -28,7 +28,7 @@ public class TutItemModels extends ItemModelProvider {
 				mcLoc("item/generated"),
 					"layer0", modLoc("items/inf_refined_stellar"));
 		
-		 String path1 = Registration.CHARGING_STATION.get().getRegistryName().getPath();
+		 String path1 = Registration.STELLAR_CONVERTER.get().getRegistryName().getPath();
          getBuilder(path1).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path1)));
 	}
 }

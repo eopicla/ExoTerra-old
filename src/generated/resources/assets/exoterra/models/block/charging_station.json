@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable_with_bottom",
-  "textures": {
-    "side": "exoterra:block/charging_station_side",
-    "front": "exoterra:block/charging_station_fronton",
-    "bottom": "exoterra:block/charging_station_bottom",
-    "top": "exoterra:block/charging_station_top"
-  }
-}
