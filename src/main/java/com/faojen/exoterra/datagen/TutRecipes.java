@@ -2,10 +2,15 @@ package com.faojen.exoterra.datagen;
 
 import java.util.function.Consumer;
 
+import com.faojen.exoterra.setup.Registration;
+
 // import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.common.Tags;
 
 public class TutRecipes extends RecipeProvider {
 	
@@ -14,6 +19,113 @@ public class TutRecipes extends RecipeProvider {
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
+//	STELLAR CONVERTER
+		ShapedRecipeBuilder.shaped(Registration.STELLAR_CONVERTER_BI.get())
+		.pattern("pfo")
+		.pattern("mcm")
+		.pattern("mmm")
+		
+		.define('p', Registration.INTERFACE_PANEL.get())
+		.define('f', Registration.FRACTURIZER.get())
+		.define('o', Registration.FLUID_OUTLET.get())
+		.define('m', Registration.MACHINE_BODY_ITEM.get())
+		.define('c', Registration.INF_STELLAR_CORE.get())
+		.group("exoterra")
+		.save(consumer);
+
+//	FRACTURIZER
+		ShapedRecipeBuilder.shaped(Registration.FRACTURIZER.get())
+		.pattern("nan")
+		.pattern("pgp")
+		.pattern("pnp")
+		
+		.define('n', Tags.Items.NUGGETS_IRON)
+		.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
+		.define('g', Tags.Items.GRAVEL)
+		.define('a', Items.AIR)
+		.group("exoterra")
+		.save(consumer);
+		
+//	MACHINE BODY
+			ShapedRecipeBuilder.shaped(Registration.MACHINE_BODY.get())
+			.pattern("fff")
+			.pattern("faf")
+			.pattern("fff")
+			
+			.define('f', Registration.FACETED_ALLUMINUM_PANEL.get())
+			.define('a', Items.AIR)
+			.group("exoterra")
+			.save(consumer);
+			
+//	FACETED ALLUMINUM PANEL
+			ShapedRecipeBuilder.shaped(Registration.FACETED_ALLUMINUM_PANEL.get())
+			.pattern("ppa")
+			.pattern("ppa")
+			.pattern("ppa")
+			
+			.define('p', Registration.FACETED_ALLUMINUM_PART.get())
+			.define('a', Items.AIR)
+			.group("exoterra")
+			.save(consumer);
+			
+//	INTERFACE PANEL
+			ShapedRecipeBuilder.shaped(Registration.INTERFACE_PANEL.get())
+			.pattern("ggg")
+			.pattern("gsg")
+			.pattern("ppp")
+			
+			.define('g', Tags.Items.GLASS_PANES)
+			.define('s', Registration.INF_STELLAR_PART.get())
+			.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
+			.group("exoterra")
+			.save(consumer);
+			
+//	INFERIOR STELLAR PART
+					ShapedRecipeBuilder.shaped(Registration.INF_STELLAR_PART.get())
+					.pattern("fff")
+					.pattern("fsf")
+					.pattern("fff")
+					
+					.define('f', Registration.FACETED_ALLUMINUM_PART.get())
+					.define('s', Registration.INF_REFINED_STELLAR.get())
+					.group("exoterra")
+					.save(consumer);
+				
+//	FLUID OUTLET
+					ShapedRecipeBuilder.shaped(Registration.FLUID_OUTLET.get())
+					.pattern("ppp")
+					.pattern("psp")
+					.pattern("ppp")
+					
+					.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
+					.define('s', Items.PISTON)
+					.group("exoterra")
+					.save(consumer);
+					
+//	INFERIOR STELLAR CORE
+					ShapedRecipeBuilder.shaped(Registration.INF_STELLAR_CORE.get())
+					.pattern("pdp")
+					.pattern("sid")
+					.pattern("psp")
+					
+					.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
+					.define('s', Registration.INF_REFINED_STELLAR.get())
+					.define('i', Registration.INF_STELLAR_PART.get())
+					.define('d', Tags.Items.GEMS_DIAMOND)
+					.group("exoterra")
+					.save(consumer);
+
+//	FACETED ALLUMINUM PART
+					ShapedRecipeBuilder.shaped(Registration.FACETED_ALLUMINUM_PART.get())
+					.pattern("aca")
+					.pattern("cac")
+					.pattern("aca")
+					
+					.define('a', Tags.Items.INGOTS_IRON)
+					.define('c', Items.COAL)
+					.group("exoterra")
+					.save(consumer);
+		
 //		ShapedRecipeBuilder.shaped(Registration.POWER_GEN.get())
 //		.pattern("#n#")
 //		.pattern("xox")

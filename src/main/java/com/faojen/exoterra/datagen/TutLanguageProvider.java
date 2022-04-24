@@ -17,18 +17,44 @@ public class TutLanguageProvider extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		add("itemGroup." + TAB_NAME, "ExoTerra");
-
+/*
+ * 		ORES
+ */
 		add(Registration.STELLAR_ORE_OVERWORLD.get(), "\u00A73Stellar\u00A7r Ore");
 		add(Registration.STELLAR_ORE_NETHER.get(), "\u00A73Stellar\u00A7r Ore");
 		add(Registration.STELLAR_ORE_END.get(), "\u00A73Stellar\u00A7r Ore");
 		add(Registration.STELLAR_ORE_DEEPSLATE.get(), "\u00A73Stellar\u00A7r Ore");
 
+/*
+ * 		STELLAR
+ */
 		add(Registration.INF_RAW_STELLAR.get(), "Raw \u00A73Stellar\u00A7r (Inferior)");
 		add(Registration.INF_REFINED_STELLAR.get(), "Refined \u00A73Stellar\u00A7r (Inferior)");
-
+/*
+ * 		FLUIDS
+ */
 		add(Registration.AQUEOUS_STELLAR_BUCKET.get(), "Bucket of \u00A73Aqueous Stellar\u00A7r");
-
+/*
+ * 		MACHINES
+ */
 		addBlock(Registration.STELLAR_CONVERTER, "\u00A73Stellar\u00A7r Purification Bestower");
+/*
+ * 		BASIC BLOCKS
+ */
+		addBlock(Registration.MACHINE_BODY, "Machine Body");	
+/*
+ * 		CRAFTING COMPONENTS
+ */
+		addItem(Registration.FACETED_ALLUMINUM_PART, "Faceted Alluminum Part");
+		addItem(Registration.FACETED_ALLUMINUM_PANEL, "Faceted Alluminum Panel");
+		addItem(Registration.FLUID_OUTLET, "Fluid Outlet");
+		addItem(Registration.FRACTURIZER, "Fracturizer");
+		addItem(Registration.INF_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Inferior)");
+		addItem(Registration.INF_STELLAR_PART, "\u00A73Stellar Component\u00A7r (Inferior)");
+		addItem(Registration.INTERFACE_PANEL, "Interface Panel");
+/*
+ * 		SCREEN LANG
+ */
 		add("itemGroup.charginggadgets", "Charging Gadgets");
 		add("screen.exoterra.energy", "\u00A74Energy:\u00a7r %s/%s FE");
 		add("screen.exoterra.stellar", "\u00A73Stellar:\u00a7r %s MB");
