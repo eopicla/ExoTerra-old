@@ -15,10 +15,20 @@ public class TutBlockStates extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
+/*
+ * 	ORES
+ */
 		simpleBlock(Registration.STELLAR_ORE_OVERWORLD.get());
 		simpleBlock(Registration.STELLAR_ORE_NETHER.get());
 		simpleBlock(Registration.STELLAR_ORE_END.get());
 		simpleBlock(Registration.STELLAR_ORE_DEEPSLATE.get());
+/*
+ * 	BLOCKS	
+ */
+		simpleBlock(Registration.MACHINE_BODY.get());
+/*
+ * 	COMPLEX MODELS
+ */
 		stellarConverterModel();
 
 	}

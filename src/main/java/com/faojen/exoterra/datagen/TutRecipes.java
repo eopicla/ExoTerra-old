@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import com.faojen.exoterra.setup.Registration;
 
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 // import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -30,42 +31,46 @@ public class TutRecipes extends RecipeProvider {
 		.define('o', Registration.FLUID_OUTLET.get())
 		.define('m', Registration.MACHINE_BODY_ITEM.get())
 		.define('c', Registration.INF_STELLAR_CORE.get())
-		.group("exoterra")
+		.group("exoterra_machines")
+		.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_STELLAR_CORE.get()))
 		.save(consumer);
 
 //	FRACTURIZER
 		ShapedRecipeBuilder.shaped(Registration.FRACTURIZER.get())
-		.pattern("nan")
+		.pattern("n n")
 		.pattern("pgp")
 		.pattern("pnp")
 		
 		.define('n', Tags.Items.NUGGETS_IRON)
 		.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
 		.define('g', Tags.Items.GRAVEL)
-		.define('a', Items.AIR)
-		.group("exoterra")
+		// .define('a', Items.AIR)
+		.group("exoterra_components")
+		.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PANEL.get()))
 		.save(consumer);
 		
 //	MACHINE BODY
 			ShapedRecipeBuilder.shaped(Registration.MACHINE_BODY.get())
 			.pattern("fff")
-			.pattern("faf")
+			.pattern("f f")
 			.pattern("fff")
 			
 			.define('f', Registration.FACETED_ALLUMINUM_PANEL.get())
-			.define('a', Items.AIR)
-			.group("exoterra")
+			// .define('a', Items.AIR)
+			.group("exoterra_blocks")
+			.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PANEL.get()))
 			.save(consumer);
 			
 //	FACETED ALLUMINUM PANEL
 			ShapedRecipeBuilder.shaped(Registration.FACETED_ALLUMINUM_PANEL.get())
-			.pattern("ppa")
-			.pattern("ppa")
-			.pattern("ppa")
+			.pattern("pp ")
+			.pattern("pp ")
+			.pattern("pp ")
 			
 			.define('p', Registration.FACETED_ALLUMINUM_PART.get())
-			.define('a', Items.AIR)
-			.group("exoterra")
+			// .define('a', Items.AIR)
+			.group("exoterra_components")
+			.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PART.get()))
 			.save(consumer);
 			
 //	INTERFACE PANEL
@@ -77,7 +82,8 @@ public class TutRecipes extends RecipeProvider {
 			.define('g', Tags.Items.GLASS_PANES)
 			.define('s', Registration.INF_STELLAR_PART.get())
 			.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
-			.group("exoterra")
+			.group("exoterra_components")
+			.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_STELLAR_PART.get()))
 			.save(consumer);
 			
 //	INFERIOR STELLAR PART
@@ -88,7 +94,8 @@ public class TutRecipes extends RecipeProvider {
 					
 					.define('f', Registration.FACETED_ALLUMINUM_PART.get())
 					.define('s', Registration.INF_REFINED_STELLAR.get())
-					.group("exoterra")
+					.group("exoterra_components")
+					.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_REFINED_STELLAR.get()))
 					.save(consumer);
 				
 //	FLUID OUTLET
@@ -99,7 +106,8 @@ public class TutRecipes extends RecipeProvider {
 					
 					.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
 					.define('s', Items.PISTON)
-					.group("exoterra")
+					.group("exoterra_components")
+					.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PANEL.get()))
 					.save(consumer);
 					
 //	INFERIOR STELLAR CORE
@@ -112,7 +120,8 @@ public class TutRecipes extends RecipeProvider {
 					.define('s', Registration.INF_REFINED_STELLAR.get())
 					.define('i', Registration.INF_STELLAR_PART.get())
 					.define('d', Tags.Items.GEMS_DIAMOND)
-					.group("exoterra")
+					.group("exoterra_components")
+					.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_REFINED_STELLAR.get()))
 					.save(consumer);
 
 //	FACETED ALLUMINUM PART
@@ -123,7 +132,8 @@ public class TutRecipes extends RecipeProvider {
 					
 					.define('a', Tags.Items.INGOTS_IRON)
 					.define('c', Items.COAL)
-					.group("exoterra")
+					.group("exoterra_components")
+					.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
 					.save(consumer);
 		
 //		ShapedRecipeBuilder.shaped(Registration.POWER_GEN.get())

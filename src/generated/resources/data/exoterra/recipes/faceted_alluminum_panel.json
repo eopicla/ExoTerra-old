@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_components",
+  "pattern": [
+    "pp ",
+    "pp ",
+    "pp "
+  ],
+  "key": {
+    "p": {
+      "item": "exoterra:faceted_alluminum_part"
+    }
+  },
+  "result": {
+    "item": "exoterra:faceted_alluminum_panel"
+  }
+}

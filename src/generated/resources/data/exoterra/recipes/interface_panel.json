@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_components",
+  "pattern": [
+    "ggg",
+    "gsg",
+    "ppp"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:glass_panes"
+    },
+    "s": {
+      "item": "exoterra:inf_stellar_part"
+    },
+    "p": {
+      "item": "exoterra:faceted_alluminum_panel"
+    }
+  },
+  "result": {
+    "item": "exoterra:interface_panel"
+  }
+}

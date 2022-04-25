@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "exoterra:faceted_alluminum_part",
+    "exoterra:faceted_alluminum_panel",
+    "exoterra:fluid_outlet",
+    "exoterra:fracturizer",
+    "exoterra:inf_stellar_core",
+    "exoterra:inf_stellar_part",
+    "exoterra:interface_panel",
+    "exoterra:machine_body"
+  ]
+}

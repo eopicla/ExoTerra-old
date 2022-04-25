@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_blocks",
+  "pattern": [
+    "fff",
+    "f f",
+    "fff"
+  ],
+  "key": {
+    "f": {
+      "item": "exoterra:faceted_alluminum_panel"
+    }
+  },
+  "result": {
+    "item": "exoterra:machine_body"
+  }
+}

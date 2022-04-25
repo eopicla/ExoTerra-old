@@ -18,6 +18,7 @@ import java.util.function.Predicate;
 public class ChargerFluidStorage implements IFluidHandler, IFluidTank {
 
 	private static final String FLUID = "fluid";
+	@SuppressWarnings("unused")
 	private StellarConverterBE tile;
 	protected FluidStack fluid = FluidStack.EMPTY;
     protected int capacity;

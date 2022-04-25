@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "exoterra:block/machine_body"
+    }
+  }
+}
