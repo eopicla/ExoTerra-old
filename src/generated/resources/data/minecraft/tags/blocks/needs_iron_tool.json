@@ -5,6 +5,8 @@
     "exoterra:stellar_ore_nether",
     "exoterra:stellar_ore_end",
     "exoterra:stellar_ore_deepslate",
-    "exoterra:machine_body"
+    "exoterra:machine_body",
+    "exoterra:bauxite_ore_deepslate",
+    "exoterra:bauxite_ore_overworld"
   ]
 }

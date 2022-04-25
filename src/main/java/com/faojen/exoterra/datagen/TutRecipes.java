@@ -10,7 +10,9 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 
 public class TutRecipes extends RecipeProvider {
@@ -130,12 +132,26 @@ public class TutRecipes extends RecipeProvider {
 					.pattern("cac")
 					.pattern("aca")
 					
-					.define('a', Tags.Items.INGOTS_IRON)
+					.define('a', Registration.ALLUMINUM_INGOT.get())
 					.define('c', Items.COAL)
 					.group("exoterra_components")
 					.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
 					.save(consumer);
-		
+
+					
+					// smelting silktouched ore to ingot
+					SimpleCookingRecipeBuilder.smelting(Ingredient.of(Registration.EXOTERRA_ORE_ITEM), 
+							Registration.BAUXITE_CHUNK.get(), 8.0f, 300)
+					.unlockedBy("has_ore", has(Registration.EXOTERRA_ORE_ITEM))
+					.save(consumer, "bauxite_chunk");
+					
+					// smelting chunk to ingot
+					SimpleCookingRecipeBuilder.smelting(Ingredient.of(Registration.BAUXITE_CHUNK.get()), 
+							Registration.ALLUMINUM_INGOT.get(), 8.0f, 250)
+					.unlockedBy("has_chunk", has(Registration.BAUXITE_CHUNK.get()))
+					.save(consumer, "alluminum_ingot");
+					
+					
 //		ShapedRecipeBuilder.shaped(Registration.POWER_GEN.get())
 //		.pattern("#n#")
 //		.pattern("xox")

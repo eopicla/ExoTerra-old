@@ -7,6 +7,8 @@
     "exoterra:stellar_ore_deepslate",
     "exoterra:stellar_converter",
     "exoterra:machine_body",
-    "exoterra:stellar_converter"
+    "exoterra:stellar_converter",
+    "exoterra:bauxite_ore_deepslate",
+    "exoterra:bauxite_ore_overworld"
   ]
 }

@@ -18,12 +18,19 @@ public class TutItemModels extends ItemModelProvider {
 	protected void registerModels() {
 
 /*
+ * 	SIMPLE ITEMS
+ */
+		singleTexture(Registration.BAUXITE_CHUNK.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/bauxite_chunk"));
+		singleTexture(Registration.ALLUMINUM_INGOT.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/alluminum_ingot"));
+/*
  * 	ORES
  */
 		withExistingParent(Registration.STELLAR_ORE_OVERWORLD_ITEM.get().getRegistryName().getPath(), modLoc("block/stellar_ore_overworld"));
 		withExistingParent(Registration.STELLAR_ORE_NETHER_ITEM.get().getRegistryName().getPath(), modLoc("block/stellar_ore_nether"));
 		withExistingParent(Registration.STELLAR_ORE_END_ITEM.get().getRegistryName().getPath(), modLoc("block/stellar_ore_end"));
 		withExistingParent(Registration.STELLAR_ORE_DEEPSLATE_ITEM.get().getRegistryName().getPath(), modLoc("block/stellar_ore_deepslate"));
+		withExistingParent(Registration.BAUXITE_ORE_OVERWORLD_ITEM.get().getRegistryName().getPath(), modLoc("block/bauxite_ore_overworld"));
+		withExistingParent(Registration.BAUXITE_ORE_DEEPSLATE_ITEM.get().getRegistryName().getPath(), modLoc("block/bauxite_ore_deepslate"));
 /*
  * 	BLOCKS
  */

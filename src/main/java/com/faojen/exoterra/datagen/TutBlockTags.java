@@ -25,20 +25,34 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
 			.add(Registration.STELLAR_CONVERTER.get())
 			.add(Registration.MACHINE_BODY.get())
-			.add(Registration.STELLAR_CONVERTER.get());
+			.add(Registration.STELLAR_CONVERTER.get())
+			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
+			.add(Registration.BAUXITE_ORE_OVERWORLD.get());		
 		
 		tag(BlockTags.NEEDS_IRON_TOOL)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
 			.add(Registration.STELLAR_ORE_NETHER.get())
 			.add(Registration.STELLAR_ORE_END.get())
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
-			.add(Registration.MACHINE_BODY.get());
+			.add(Registration.MACHINE_BODY.get())
+			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
+			.add(Registration.BAUXITE_ORE_OVERWORLD.get());		
 		
 		tag(Tags.Blocks.ORES)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
 			.add(Registration.STELLAR_ORE_NETHER.get())
 			.add(Registration.STELLAR_ORE_END.get())
-			.add(Registration.STELLAR_ORE_DEEPSLATE.get());
+			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
+			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
+			.add(Registration.BAUXITE_ORE_OVERWORLD.get());
+		
+		tag(Registration.EXOTERRA_ORES)
+			.add(Registration.STELLAR_ORE_OVERWORLD.get())
+			.add(Registration.STELLAR_ORE_NETHER.get())
+			.add(Registration.STELLAR_ORE_END.get())
+			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
+			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
+			.add(Registration.BAUXITE_ORE_OVERWORLD.get());		
 		
 		tag(Registration.STELLAR_ORE)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())

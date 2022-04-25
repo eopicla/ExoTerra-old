@@ -22,6 +22,8 @@ public class TutBlockStates extends BlockStateProvider {
 		simpleBlock(Registration.STELLAR_ORE_NETHER.get());
 		simpleBlock(Registration.STELLAR_ORE_END.get());
 		simpleBlock(Registration.STELLAR_ORE_DEEPSLATE.get());
+		simpleBlock(Registration.BAUXITE_ORE_OVERWORLD.get());
+		simpleBlock(Registration.BAUXITE_ORE_DEEPSLATE.get());
 /*
  * 	BLOCKS	
  */

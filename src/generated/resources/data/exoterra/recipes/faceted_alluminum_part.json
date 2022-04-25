@@ -8,7 +8,7 @@
   ],
   "key": {
     "a": {
-      "tag": "forge:ingots/iron"
+      "item": "exoterra:alluminum_ingot"
     },
     "c": {
       "item": "minecraft:coal"

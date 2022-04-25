@@ -24,7 +24,13 @@ public class TutLanguageProvider extends LanguageProvider {
 		add(Registration.STELLAR_ORE_NETHER.get(), "\u00A73Stellar\u00A7r Ore");
 		add(Registration.STELLAR_ORE_END.get(), "\u00A73Stellar\u00A7r Ore");
 		add(Registration.STELLAR_ORE_DEEPSLATE.get(), "\u00A73Stellar\u00A7r Ore");
-
+		add(Registration.BAUXITE_ORE_OVERWORLD.get(), "Bauxite Ore");
+		add(Registration.BAUXITE_ORE_DEEPSLATE.get(), "Bauxite Ore");
+/*
+ * 	ITEMS
+ */
+		add(Registration.BAUXITE_CHUNK.get(), "Bauxite Chunk");
+		add(Registration.ALLUMINUM_INGOT.get(), "Aluminum Ingot");
 /*
  * 		STELLAR
  */

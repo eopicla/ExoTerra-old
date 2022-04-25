@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "exoterra:bauxite_chunk"
+  },
+  "result": "exoterra:alluminum_ingot",
+  "experience": 8.0,
+  "cookingtime": 250
+}

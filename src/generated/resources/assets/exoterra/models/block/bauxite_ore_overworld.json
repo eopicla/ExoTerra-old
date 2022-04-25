@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "exoterra:block/bauxite_ore_overworld"
+  }
+}

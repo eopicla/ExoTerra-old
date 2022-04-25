@@ -115,6 +115,17 @@ public class Registration {
 	public static final RegistryObject<Block> STELLAR_ORE_DEEPSLATE = BLOCKS.register("stellar_ore_deepslate",() -> new Block(ORE_PROPERTIES));
 	public static final RegistryObject<Item> STELLAR_ORE_DEEPSLATE_ITEM = fromBlock(STELLAR_ORE_DEEPSLATE);
 	
+	public static final RegistryObject<Block> BAUXITE_ORE_OVERWORLD = BLOCKS.register("bauxite_ore_overworld",() -> new Block(ORE_PROPERTIES));
+	public static final RegistryObject<Item> BAUXITE_ORE_OVERWORLD_ITEM = fromBlock(BAUXITE_ORE_OVERWORLD);
+	
+	public static final RegistryObject<Block> BAUXITE_ORE_DEEPSLATE = BLOCKS.register("bauxite_ore_deepslate",() -> new Block(ORE_PROPERTIES));
+	public static final RegistryObject<Item> BAUXITE_ORE_DEEPSLATE_ITEM = fromBlock(BAUXITE_ORE_DEEPSLATE);
+	
+/*
+ * 	SIMPLE ITEMS
+ */
+	public static final RegistryObject<Item> BAUXITE_CHUNK = ITEMS.register("bauxite_chunk", () -> new Item(ITEM_PROPERTIES));
+	public static final RegistryObject<Item> ALLUMINUM_INGOT = ITEMS.register("alluminum_ingot", () -> new Item(ITEM_PROPERTIES));
 /*
  * 		MACHINE BLOCKS	
  */
@@ -143,11 +154,14 @@ public class Registration {
  * 		BLOCK TAGS
  */
 	public static final TagKey<Block> EXOTERRA_BLOCKS = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_blocks"));
+	public static final TagKey<Block> EXOTERRA_ORES = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_ores"));
 	public static final TagKey<Block> STELLAR_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "stellar_ore"));
 /*
  * 		ITEM TAGS
  */
 	public static final TagKey<Item> EXOTERRA_ITEMS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_items"));
+	public static final TagKey<Item> EXOTERRA_MINERALS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_minerals"));
+	public static final TagKey<Item> EXOTERRA_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_ores"));
 	public static final TagKey<Item> STELLAR_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "stellar_ore"));
 	public static final TagKey<Item> STELLAR_REFINED = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "stellar_refined"));	
 	public static final TagKey<Item> COMPONENTS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "components"));	
