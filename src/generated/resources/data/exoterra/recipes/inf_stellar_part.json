@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_components",
+  "pattern": [
+    "fff",
+    "fsf",
+    "fff"
+  ],
+  "key": {
+    "f": {
+      "item": "exoterra:faceted_alluminum_part"
+    },
+    "s": {
+      "item": "exoterra:inf_refined_stellar"
+    }
+  },
+  "result": {
+    "item": "exoterra:inf_stellar_part"
+  }
+}

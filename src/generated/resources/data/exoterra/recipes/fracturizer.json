@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_components",
+  "pattern": [
+    "n n",
+    "pgp",
+    "pnp"
+  ],
+  "key": {
+    "n": {
+      "tag": "forge:nuggets/iron"
+    },
+    "p": {
+      "item": "exoterra:faceted_alluminum_panel"
+    },
+    "g": {
+      "tag": "forge:gravel"
+    }
+  },
+  "result": {
+    "item": "exoterra:fracturizer"
+  }
+}

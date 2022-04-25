@@ -23,13 +23,16 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.STELLAR_ORE_NETHER.get())
 			.add(Registration.STELLAR_ORE_END.get())
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
+			.add(Registration.STELLAR_CONVERTER.get())
+			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.STELLAR_CONVERTER.get());
 		
 		tag(BlockTags.NEEDS_IRON_TOOL)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
 			.add(Registration.STELLAR_ORE_NETHER.get())
 			.add(Registration.STELLAR_ORE_END.get())
-			.add(Registration.STELLAR_ORE_DEEPSLATE.get());
+			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
+			.add(Registration.MACHINE_BODY.get());
 		
 		tag(Tags.Blocks.ORES)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
@@ -42,6 +45,10 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.STELLAR_ORE_NETHER.get())
 			.add(Registration.STELLAR_ORE_END.get())
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get());
+		
+		tag(Registration.EXOTERRA_BLOCKS)
+			.add(Registration.MACHINE_BODY.get())
+			.add(Registration.STELLAR_CONVERTER.get());
 		
 		
 	}

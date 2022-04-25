@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_components",
+  "pattern": [
+    "pdp",
+    "sid",
+    "psp"
+  ],
+  "key": {
+    "p": {
+      "item": "exoterra:faceted_alluminum_panel"
+    },
+    "s": {
+      "item": "exoterra:inf_refined_stellar"
+    },
+    "i": {
+      "item": "exoterra:inf_stellar_part"
+    },
+    "d": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "exoterra:inf_stellar_core"
+  }
+}
