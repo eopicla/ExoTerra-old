@@ -5,7 +5,6 @@ Classpath:
  - C:\Users\Hayden\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.18.2\9.5.4.166_mapped_parchment_2022.03.13-1.18.2\jei-1.18.2-9.5.4.166_mapped_parchment_2022.03.13-1.18.2-api.jar
  - C:\Users\Hayden\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.18.2\9.5.4.166_mapped_parchment_2022.03.13-1.18.2\jei-1.18.2-9.5.4.166_mapped_parchment_2022.03.13-1.18.2.jar
  - C:\Users\Hayden\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\the-one-probe-245211\3671753_mapped_parchment_2022.03.13-1.18.2\the-one-probe-245211-3671753_mapped_parchment_2022.03.13-1.18.2.jar
- - C:\Users\Hayden\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\pipez-443900\3694227_mapped_parchment_2022.03.13-1.18.2\pipez-443900-3694227_mapped_parchment_2022.03.13-1.18.2.jar
  - C:\Users\Hayden\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.18.2-40.0.32_mapped_parchment_2022.03.13-1.18.2\forge-1.18.2-40.0.32_mapped_parchment_2022.03.13-1.18.2-recomp.jar
  - C:\Users\Hayden\.gradle\caches\forge_gradle\minecraft_repo\versions\1.18.2\client-extra.jar
  - C:\Users\Hayden\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlloader\1.18.2-40.0.32\78d90ec4917d355a17d6cf4175b9500f7591e206\fmlloader-1.18.2-40.0.32.jar
@@ -98,14 +97,14 @@ Loading mappings... 40%
 Loading mappings... 50%
 0 packages, 6399 classes, 28861 fields, 53847 methods
 Remapping final jar
-Remapping jar...  1%
+Remapping jar...  0%
 Remapping jar... 10%
 Remapping jar... 20%
-Remapping jar... 31%
+Remapping jar... 30%
 Remapping jar... 40%
 Remapping jar... 50%
 Remapping jar... 60%
 Remapping jar... 70%
-Remapping jar... 81%
+Remapping jar... 80%
 Remapping jar... 90%
 Remapping jar... 100%

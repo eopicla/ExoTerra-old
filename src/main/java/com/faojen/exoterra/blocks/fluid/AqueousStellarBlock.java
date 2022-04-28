@@ -1,4 +1,4 @@
-package com.faojen.exoterra.blocks;
+package com.faojen.exoterra.blocks.fluid;
 
 import com.faojen.exoterra.setup.Registration;
 

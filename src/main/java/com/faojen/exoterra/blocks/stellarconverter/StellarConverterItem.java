@@ -1,7 +1,6 @@
-package com.faojen.exoterra.item;
+package com.faojen.exoterra.blocks.stellarconverter;
 
 import com.faojen.exoterra.Config;
-import com.faojen.exoterra.blocks.entity.StellarConverterBE;
 import com.faojen.exoterra.utils.MagicHelpers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;

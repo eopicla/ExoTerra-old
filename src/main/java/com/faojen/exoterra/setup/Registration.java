@@ -3,13 +3,17 @@ package com.faojen.exoterra.setup;
 import static com.faojen.exoterra.ExoTerra.MODID;
 
 import com.faojen.exoterra.ExoTerra;
-import com.faojen.exoterra.blocks.AqueousStellarBlock;
-import com.faojen.exoterra.blocks.StellarConverterBlock;
-import com.faojen.exoterra.blocks.container.StellarConverterContainer;
-import com.faojen.exoterra.blocks.entity.StellarConverterBE;
+import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
+import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBlock;
+import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchContainer;
+import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchItem;
+import com.faojen.exoterra.blocks.fluid.AqueousStellarBlock;
+import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
+import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBlock;
+import com.faojen.exoterra.blocks.stellarconverter.StellarConverterContainer;
+import com.faojen.exoterra.blocks.stellarconverter.StellarConverterItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.item.AqueousStellarItem;
-import com.faojen.exoterra.item.StellarConverterItem;
 import com.faojen.exoterra.item.InfRefinedStellar;
 
 import net.minecraft.core.Registry;
@@ -55,6 +59,7 @@ public class Registration {
 	public static final BlockBehaviour.Properties SIMPLE_BLOCK = BlockBehaviour.Properties.of(Material.METAL).strength(2f).requiresCorrectToolForDrops();
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
 	public static final Item.Properties FUEL_STELLAR = new Item.Properties().tab(ModSetup.ITEM_GROUP).rarity(Rarity.RARE).setNoRepair();
+	public static final Item.Properties BLANK = new Item.Properties().stacksTo(1);
 
 	
 	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -74,33 +79,35 @@ public class Registration {
 	public static final RegistryObject<Block> AQUEOUS_STELLAR_BLOCK = BLOCKS.register("aqueous_stellar", () -> new AqueousStellarBlock());
 	
 	// -----------------------------------------------------------------------------------------------------------------------------------------------------------//
-	public static final RegistryObject<Block> STELLAR_CONVERTER = BLOCKS.register("stellar_converter", StellarConverterBlock::new);
-
-    /**
-     * Tile Entities
-     */
-    public static final RegistryObject<BlockEntityType<StellarConverterBE>> STELLAR_CONVERTER_BE =
-            BLOCK_ENTITIES.register("stellar_converter_be", () -> BlockEntityType.Builder.of(StellarConverterBE::new, STELLAR_CONVERTER.get()).build(null));
-
-    /**
-     * Containers?
-     */
-    public static final RegistryObject<MenuType<StellarConverterContainer>> STELLAR_CONVERTER_CONTAINER = CONTAINERS.register("stellar_converter_container", 
-    		() -> IForgeMenuType.create(StellarConverterContainer::new));
-
-
-    /**
-     * For now I'm adding items into here, it doesn't make much sense but nor does an items package for a mod with no
-     * items... so... when we add items. Move this!
-     */
-      public static final RegistryObject<Item> STELLAR_CONVERTER_BI = ITEMS.register("stellar_converter", 
-    		() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.ITEM_PROPERTIES));
-    
-
-	
-	
-	
-	
+	/*
+	 * 	COMPLEX BLOCKS
+	 */
+			// Stellar Converter
+					// Container
+						public static final RegistryObject<MenuType<StellarConverterContainer>> STELLAR_CONVERTER_CONTAINER = CONTAINERS.register("stellar_converter_container", 
+								() -> IForgeMenuType.create(StellarConverterContainer::new));
+					// Block
+						public static final RegistryObject<Block> STELLAR_CONVERTER = BLOCKS.register("stellar_converter", StellarConverterBlock::new);
+					// Block Entity
+						public static final RegistryObject<BlockEntityType<StellarConverterBE>> STELLAR_CONVERTER_BE =
+								BLOCK_ENTITIES.register("stellar_converter_be", () -> BlockEntityType.Builder.of(StellarConverterBE::new, STELLAR_CONVERTER.get()).build(null));
+					// Item
+						public static final RegistryObject<Item> STELLAR_CONVERTER_BI = ITEMS.register("stellar_converter", 
+								() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.ITEM_PROPERTIES));
+				
+			// Stellar Converter
+					// Container
+						public static final RegistryObject<MenuType<FabricationBenchContainer>> FABRICATION_BENCH_CONTAINER = CONTAINERS.register("fabrication_bench_container", 
+								() -> IForgeMenuType.create(FabricationBenchContainer::new));
+					// Block
+						public static final RegistryObject<Block> FABRICATION_BENCH = BLOCKS.register("fabrication_bench", FabricationBenchBlock::new);
+					// Block Entity
+						public static final RegistryObject<BlockEntityType<FabricationBenchBE>> FABRICATION_BENCH_BE =
+								BLOCK_ENTITIES.register("fabrication_bench_be", () -> BlockEntityType.Builder.of(FabricationBenchBE::new, FABRICATION_BENCH.get()).build(null));
+					// Item
+						public static final RegistryObject<Item> FABRICATION_BENCH_BI = ITEMS.register("fabrication_bench", 
+								() -> new FabricationBenchItem(FABRICATION_BENCH.get(), Registration.ITEM_PROPERTIES));
+		
 	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- //
 	
 /*
@@ -125,6 +132,7 @@ public class Registration {
  * 	SIMPLE ITEMS
  */
 	public static final RegistryObject<Item> BAUXITE_CHUNK = ITEMS.register("bauxite_chunk", () -> new Item(ITEM_PROPERTIES));
+	public static final RegistryObject<Item> BLOCKER = ITEMS.register("blocker", () -> new Item(BLANK));
 	public static final RegistryObject<Item> ALLUMINUM_INGOT = ITEMS.register("alluminum_ingot", () -> new Item(ITEM_PROPERTIES));
 /*
  * 		MACHINE BLOCKS	
@@ -153,12 +161,16 @@ public class Registration {
 /*
  * 		BLOCK TAGS
  */
+	public static final TagKey<Block> SPACE_SAFE_BLOCK = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "space_safe_block"));
+	
 	public static final TagKey<Block> EXOTERRA_BLOCKS = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_blocks"));
 	public static final TagKey<Block> EXOTERRA_ORES = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_ores"));
 	public static final TagKey<Block> STELLAR_ORE = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ExoTerra.MODID, "stellar_ore"));
 /*
  * 		ITEM TAGS
  */
+	public static final TagKey<Item> SPACE_SAFE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "space_safe_item"));
+	
 	public static final TagKey<Item> EXOTERRA_ITEMS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_items"));
 	public static final TagKey<Item> EXOTERRA_MINERALS = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_minerals"));
 	public static final TagKey<Item> EXOTERRA_ORE_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(ExoTerra.MODID, "exoterra_ores"));

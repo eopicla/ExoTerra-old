@@ -121,6 +121,7 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-${jei_version}")
     
     implementation fg.deobf("curse.maven:the-one-probe-245211:3671753")
+     implementation fg.deobf("curse.maven:pipez-443900:3760255")
     
 }
 

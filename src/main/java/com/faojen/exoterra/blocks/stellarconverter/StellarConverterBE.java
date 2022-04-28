@@ -1,10 +1,9 @@
-package com.faojen.exoterra.blocks.entity;
+package com.faojen.exoterra.blocks.stellarconverter;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.faojen.exoterra.Config;
-import com.faojen.exoterra.blocks.container.StellarConverterContainer;
 import com.faojen.exoterra.capabilities.ChargerEnergyStorage;
 import com.faojen.exoterra.capabilities.ChargerFluidStorage;
 import com.faojen.exoterra.capabilities.ChargerItemHandler;
@@ -134,7 +133,6 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 			boolean canPurifyStellar = fluidStorage.fill(fluidpoke, FluidAction.SIMULATE) >0;
 			
 			if (scounter > 0 && canPurifyStellar) {
-				System.out.println( " trypurify canpurifystellar");
 				purify(fluidStorage);
 			} else if (canPurifyStellar) {
 				if (initPurify())
@@ -147,7 +145,6 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	private void purify(IFluidHandler fluidStorage) {
 		FluidStack stellar1 = new FluidStack(Registration.AQUEOUS_STELLAR.get(), 1);
 		
-		System.out.println( " purify should have filled tank, it was called");
 		fluidStorage.fill(stellar1, FluidAction.EXECUTE);
 		
 		scounter--;

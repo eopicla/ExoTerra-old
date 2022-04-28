@@ -1,11 +1,9 @@
-package com.faojen.exoterra.blocks;
+package com.faojen.exoterra.blocks.fabricationbench;
 
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.blocks.entity.StellarConverterBE;
-import com.faojen.exoterra.item.StellarConverterItem;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -38,10 +36,10 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 
-public class StellarConverterBlock extends Block implements EntityBlock {
+public class FabricationBenchBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public StellarConverterBlock() {
+    public FabricationBenchBlock() {
         super(Properties.of(Material.STONE).strength(2f));
 
         registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH));
@@ -62,7 +60,7 @@ public class StellarConverterBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : StellarConverterBE::ticker;
+        return level.isClientSide() ? null : FabricationBenchBE::ticker;
     }
 
     @Override
@@ -71,10 +69,10 @@ public class StellarConverterBlock extends Block implements EntityBlock {
         BlockEntity te = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
 
         List<ItemStack> drops = super.getDrops(state, builder);
-        if (te instanceof StellarConverterBE) {
-        	StellarConverterBE tileEntity = (StellarConverterBE) te;
+        if (te instanceof FabricationBenchBE) {
+        	FabricationBenchBE tileEntity = (FabricationBenchBE) te;
             drops.stream()
-                    .filter(e -> e.getItem() instanceof StellarConverterItem)
+                    .filter(e -> e.getItem() instanceof FabricationBenchItem)
                     .findFirst()
                     .ifPresent(e -> e.getOrCreateTag().putInt("energy", tileEntity.energyStorage.getEnergyStored()));
         }
@@ -105,7 +103,7 @@ public class StellarConverterBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
 
         BlockEntity te = worldIn.getBlockEntity(pos);
-        if (!(te instanceof StellarConverterBE))
+        if (!(te instanceof FabricationBenchBE))
             return InteractionResult.FAIL;
 
         NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) te, pos);
@@ -115,6 +113,6 @@ public class StellarConverterBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return Registration.STELLAR_CONVERTER_BE.get().create(pos, state);
+        return Registration.FABRICATION_BENCH_BE.get().create(pos, state);
     }
 }
