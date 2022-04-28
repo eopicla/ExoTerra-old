@@ -1,8 +1,6 @@
 package com.faojen.exoterra.blocks.fabricationbench;
 
 import java.awt.Color;
-import java.util.Arrays;
-
 import com.faojen.exoterra.ExoTerra;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -11,9 +9,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
