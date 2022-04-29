@@ -1,6 +1,6 @@
 package com.faojen.exoterra.capabilities;
 
-import com.faojen.exoterra.blocks.entity.StellarConverterBE;
+import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.world.item.ItemStack;

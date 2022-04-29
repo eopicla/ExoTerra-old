@@ -1,10 +1,9 @@
-package com.faojen.exoterra.client;
+package com.faojen.exoterra.blocks.stellarconverter;
 
 import java.awt.Color;
 import java.util.Arrays;
 
 import com.faojen.exoterra.ExoTerra;
-import com.faojen.exoterra.blocks.container.StellarConverterContainer;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;

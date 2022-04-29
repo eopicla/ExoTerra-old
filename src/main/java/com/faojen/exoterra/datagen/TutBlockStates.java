@@ -32,6 +32,7 @@ public class TutBlockStates extends BlockStateProvider {
  * 	COMPLEX MODELS
  */
 		stellarConverterModel();
+		fabricationBenchModel();
 
 	}
 
@@ -41,6 +42,15 @@ public class TutBlockStates extends BlockStateProvider {
 				models().orientableWithBottom(Registration.STELLAR_CONVERTER.get().getRegistryName().getPath(),
 						modLoc("block/stellar_converter_side"), modLoc("block/stellar_converter_fronton"),
 						modLoc("block/stellar_converter_bottom"), modLoc("block/stellar_converter_top")));
+
+	}
+	
+	private void fabricationBenchModel() {
+
+		horizontalBlock(Registration.FABRICATION_BENCH.get(),
+				models().orientableWithBottom(Registration.FABRICATION_BENCH.get().getRegistryName().getPath(),
+						modLoc("block/fabrication_bench_side"), modLoc("block/fabrication_bench_fronton"),
+						modLoc("block/fabrication_bench_bottom"), modLoc("block/fabrication_bench_top")));
 
 	}
 }

@@ -1,9 +1,8 @@
-package com.faojen.exoterra.blocks.container;
+package com.faojen.exoterra.blocks.fabricationbench;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.blocks.entity.StellarConverterBE;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -15,43 +14,41 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class StellarConverterContainer extends AbstractContainerMenu {
-    private static final int SLOTS = 4;
+public class FabricationBenchContainer extends AbstractContainerMenu {
+    private static final int SLOTS = 2;
 
     public final ContainerData data;
     public ItemStackHandler handler;
 
     // Tile can be null and shouldn't be used for accessing any data that needs to be up to date on both sides
-    private StellarConverterBE tile;
+    private FabricationBenchBE tile;
 
-    public StellarConverterContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((StellarConverterBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8), windowId, playerInventory, new ItemStackHandler(4));
+    public FabricationBenchContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
+        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(5), windowId, playerInventory, new ItemStackHandler(2));
     }
 
-    public StellarConverterContainer(@Nullable StellarConverterBE tile, ContainerData chargingStationData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
-        super(Registration.STELLAR_CONVERTER_CONTAINER.get(), windowId);
+    public FabricationBenchContainer(@Nullable FabricationBenchBE tile, ContainerData fabricationBenchData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
+        super(Registration.FABRICATION_BENCH_CONTAINER.get(), windowId);
 
         this.handler = handler;
         this.tile = tile;
 
-        this.data = chargingStationData;
+        this.data = fabricationBenchData;
         this.setup(playerInventory);
 
-        addDataSlots(chargingStationData);
+        addDataSlots(fabricationBenchData);
     }
 
     public void setup(Inventory inventory) {
     	// Fuel slot
-        addSlot(new RestrictedSlot(handler, 0, 8, 43));
-        // Stellar slot
-        addSlot(new RestrictedSlot(handler, 1, 151, 43));
+        addSlot(new RestrictedSlot(handler, 0, 31, 29));
+        
+        addSlot(new RestrictedSlot(handler, 1, 31, 59));
 
         // Slots for the hotbar
         for (int row = 0; row < 9; ++row) {
@@ -103,11 +100,11 @@ public class StellarConverterContainer extends AbstractContainerMenu {
     }
 
     public int getFluidStored() {
-        return this.data.get(4);
+        return this.data.get(2);
     }
     
     public int getMaxCapacity() {
-        return this.data.get(5);
+        return this.data.get(3);
     }
     
     public int getMaxPower() {
@@ -117,21 +114,9 @@ public class StellarConverterContainer extends AbstractContainerMenu {
     public int getEnergy() {
         return this.data.get(0) * 32;
     }
-
-    public int getMaxBurn() {
-        return this.data.get(3);
-    }
-
-    public int getRemaining() {
-        return this.data.get(2);
-    }
     
-    public int getPurifyRemaining() {
-    	return this.data.get(6);
-    }
-    
-    public int getPurifyMaxBurn() {
-    	return this.data.get(7);
+    public int getPowerLoad() {
+        return this.data.get(4);
     }
 
     static class RestrictedSlot extends SlotItemHandler {
@@ -142,11 +127,11 @@ public class StellarConverterContainer extends AbstractContainerMenu {
         @Override
         public boolean mayPlace(@Nonnull ItemStack stack) {
         	
-        	  if (getSlotIndex() == StellarConverterBE.Slots.STELLAR.getId())
-                  return stack.is(Registration.INF_REFINED_STELLAR.get());
-        	
-            if (getSlotIndex() == StellarConverterBE.Slots.FUEL.getId())
-                return ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) != 0;
+        	  if (getSlotIndex() == FabricationBenchBE.Slots.INPUT.getId())
+                  return true;
+        	  
+        	  if (getSlotIndex() == FabricationBenchBE.Slots.OUTPUT.getId())
+                  return false;
 
             return super.mayPlace(stack);
 		}

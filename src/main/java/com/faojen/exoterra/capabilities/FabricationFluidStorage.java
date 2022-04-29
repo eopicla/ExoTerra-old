@@ -1,14 +1,12 @@
 package com.faojen.exoterra.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+
 import javax.annotation.Nonnull;
-
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
-
 import java.util.function.Predicate;
 
 /**
@@ -16,37 +14,42 @@ import java.util.function.Predicate;
  *
  * @author King Lemming
  */
-public class ChargerFluidStorage implements IFluidHandler, IFluidTank {
+@SuppressWarnings("unused")
+public class FabricationFluidStorage implements IFluidHandler, IFluidTank {
 
-	private static final String FLUID = "fluid";
-	@SuppressWarnings("unused")
-	private StellarConverterBE tile;
-	protected FluidStack fluid = FluidStack.EMPTY;
-    protected int capacity;
+    protected Predicate<FluidStack> validator;
     @Nonnull
-    
-    
-    public ChargerFluidStorage(StellarConverterBE tile ,int capacity)
+    protected FluidStack fluid = FluidStack.EMPTY;
+    protected int capacity;
+
+    public FabricationFluidStorage(int capacity)
     {
-        this.capacity = capacity;
-        this.tile = tile;
+        this(capacity, e -> true);
     }
 
-    public ChargerFluidStorage setCapacity(int capacity)
+    public FabricationFluidStorage(int capacity, Predicate<FluidStack> validator)
+    {
+        this.capacity = capacity;
+        this.validator = validator;
+    }
+
+    public FabricationFluidStorage setCapacity(int capacity)
     {
         this.capacity = capacity;
         return this;
     }
 
-    public ChargerFluidStorage setValidator(Predicate<FluidStack> validator)
+    public FabricationFluidStorage setValidator(Predicate<FluidStack> validator)
     {
-       
+        if (validator != null) {
+            this.validator = validator;
+        }
         return this;
     }
 
     public boolean isFluidValid(FluidStack stack)
     {
-        return true;
+        return validator.test(stack);
     }
 
     public int getCapacity()
@@ -59,41 +62,24 @@ public class ChargerFluidStorage implements IFluidHandler, IFluidTank {
     {
         return fluid;
     }
-    
-    public Fluid getFluidSingle()
-    {
-        return fluid.getFluid();
-    }
 
     public int getFluidAmount()
     {
         return fluid.getAmount();
     }
-    
-    public ChargerFluidStorage deserializeNBT(CompoundTag compound) {
-//    	int amount = nbt.getInt(FLUID_STORED);
-//    	FluidStack fluid;
-//    	
-//    	System.out.println("FROM DESERIALIZE | amount: " + nbt.getInt(FLUID_STORED) + " | fluid: " + nbt.getString(FLUID) + " | ");
-//    	
-//    	if(nbt.getString(FLUID) == "stellarwaterrrrrrrr") {
-//    		
-//    		fluid = new FluidStack(Registration.AQUEOUS_STELLAR.get(), amount);
-//    		setFluid(fluid);
-//    	}
-    	
-    	this.fluid = FluidStack.loadFluidStackFromNBT(compound.getCompound(FLUID));
-    	
-    	return this;
-    	
+
+    public FabricationFluidStorage readFromNBT(CompoundTag nbt) {
+
+        FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt);
+        setFluid(fluid);
+        return this;
     }
 
-    public CompoundTag serializeNBT() {
+    public CompoundTag writeToNBT(CompoundTag nbt) {
 
-    	CompoundTag compound = new CompoundTag();
-        compound.put(FLUID, this.fluid.writeToNBT(new CompoundTag()));
-        return compound;
+        fluid.writeToNBT(nbt);
 
+        return nbt;
     }
 
     @Override
@@ -215,12 +201,4 @@ public class ChargerFluidStorage implements IFluidHandler, IFluidTank {
         return Math.max(0, capacity - fluid.getAmount());
     }
 
-    public String toString() {
-    	 return "ChargerFluidStorage{" +
-                 "fluid=" + fluid +
-                 ", capacity=" + capacity +
-                 '}';
-    }
-    
 }
-

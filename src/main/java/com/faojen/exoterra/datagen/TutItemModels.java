@@ -57,5 +57,8 @@ public class TutItemModels extends ItemModelProvider {
  */
 		 String path1 = Registration.STELLAR_CONVERTER.get().getRegistryName().getPath();
          getBuilder(path1).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path1)));
+         
+         String path2 = Registration.FABRICATION_BENCH.get().getRegistryName().getPath();
+         getBuilder(path2).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path2)));
 	}
 }

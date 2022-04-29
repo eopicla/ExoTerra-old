@@ -13,6 +13,7 @@ public class TutLootTables extends BaseLootTableProvider {
 	protected void addTables() {
 		
 		lootTables.put(Registration.STELLAR_CONVERTER.get(), createStandardTable("stellar_converter", Registration.STELLAR_CONVERTER.get(), Registration.STELLAR_CONVERTER_BE.get()));
+		lootTables.put(Registration.FABRICATION_BENCH.get(), createStandardTable("fabrication_bench", Registration.FABRICATION_BENCH.get(), Registration.FABRICATION_BENCH_BE.get()));
 		lootTables.put(Registration.MACHINE_BODY.get(), createSimpleTable("machine_body", Registration.MACHINE_BODY.get()));
 		
 		lootTables.put(Registration.STELLAR_ORE_OVERWORLD.get(), createSilkTouchTable("stellar_ore_overworld", Registration.STELLAR_ORE_OVERWORLD.get(), Registration.INF_RAW_STELLAR.get(), 1, 1));

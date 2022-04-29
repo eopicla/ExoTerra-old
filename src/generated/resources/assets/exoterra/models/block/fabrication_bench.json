@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "side": "exoterra:block/fabrication_bench_side",
+    "front": "exoterra:block/fabrication_bench_fronton",
+    "bottom": "exoterra:block/fabrication_bench_bottom",
+    "top": "exoterra:block/fabrication_bench_top"
+  }
+}
