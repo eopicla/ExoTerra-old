@@ -88,7 +88,6 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	public FabricationBenchBE(BlockPos pos, BlockState state) {
 		
 		super(Registration.FABRICATION_BENCH_BE.get(), pos, state);
-		FluidStack validator = new FluidStack(Registration.AQUEOUS_STELLAR.get(), 1);
 		this.energyStorage = new FabricationEnergyStorage(this, 0, Config.GENERAL.chargerMaxPower.get());
 		this.fluidStorage = new FabricationFluidStorage(FLUID_CAPACITY);
 		this.energy = LazyOptional.of(() -> this.energyStorage);

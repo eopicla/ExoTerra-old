@@ -59,7 +59,12 @@ public class ChargerEnergyStorage implements IEnergyStorage, INBTSerializable<Co
     // We don't use this method and thus we don't let other people use it either
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
-        return 0;
+    	 int energyExtracted = Math.min(energy, Math.min(this.maxInOut, maxExtract));
+    	 
+    	 if (!simulate)
+             energy -= energyExtracted;
+
+         return energyExtracted;
     }
 
     @Override
@@ -74,7 +79,7 @@ public class ChargerEnergyStorage implements IEnergyStorage, INBTSerializable<Co
 
     @Override
     public boolean canExtract() {
-        return false;
+        return true;
     }
 
     @Override
