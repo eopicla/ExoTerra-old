@@ -74,7 +74,7 @@ public class FabricationEnergyStorage implements IEnergyStorage, INBTSerializabl
 
     @Override
     public boolean canExtract() {
-        return false;
+        return true;
     }
 
     @Override

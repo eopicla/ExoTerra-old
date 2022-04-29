@@ -94,6 +94,9 @@ public class FabricationBenchScreen extends AbstractContainerScreen<FabricationB
 		
 		Minecraft.getInstance().font.draw(stack, I18n.get("block.exoterra.fabrication_bench"), 
 				62, 4,Color.DARK_GRAY.getRGB());
+		Minecraft.getInstance().font.draw(stack, (new TranslatableComponent(
+				"screen.exoterra.powerload", MagicHelpers.withSuffix(this.container.getPowerLoad()))), 
+				62, 15,Color.DARK_GRAY.getRGB());
 
 	}
 }

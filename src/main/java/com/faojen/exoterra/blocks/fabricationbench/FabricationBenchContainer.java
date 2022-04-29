@@ -29,7 +29,7 @@ public class FabricationBenchContainer extends AbstractContainerMenu {
     private FabricationBenchBE tile;
 
     public FabricationBenchContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4), windowId, playerInventory, new ItemStackHandler(2));
+        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(5), windowId, playerInventory, new ItemStackHandler(2));
     }
 
     public FabricationBenchContainer(@Nullable FabricationBenchBE tile, ContainerData fabricationBenchData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
@@ -113,6 +113,10 @@ public class FabricationBenchContainer extends AbstractContainerMenu {
 
     public int getEnergy() {
         return this.data.get(0) * 32;
+    }
+    
+    public int getPowerLoad() {
+        return this.data.get(4);
     }
 
     static class RestrictedSlot extends SlotItemHandler {

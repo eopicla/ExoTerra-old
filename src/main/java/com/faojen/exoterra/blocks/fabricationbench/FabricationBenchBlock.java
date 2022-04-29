@@ -75,8 +75,8 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
                     .filter(e -> e.getItem() instanceof FabricationBenchItem)
                     .findFirst()
                     .ifPresent(e -> e.getOrCreateTag().putInt("energy", tileEntity.energyStorage.getEnergyStored()));
-        }
 
+    }
         return drops;
     }
 

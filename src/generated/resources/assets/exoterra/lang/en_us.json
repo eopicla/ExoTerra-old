@@ -28,6 +28,7 @@
   "screen.exoterra.fluid": "\u00A73Stellar:\u00A7r %s/%s MB",
   "screen.exoterra.no_energy": "\u00A77Not enough FE to purify",
   "screen.exoterra.no_fuel": "\u00A77Fuel source empty",
+  "screen.exoterra.powerload": "Load: %s FE/Tick",
   "screen.exoterra.purify_time": "\u00A77Time until purification: %ss",
   "screen.exoterra.stellar": "\u00A73Stellar:\u00A7r %s MB"
 }

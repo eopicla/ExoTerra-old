@@ -55,7 +55,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 			return id;
 		}
 	}
-
+	
 	private static final int FLUID_CAPACITY = 5000;
 	public static final int FLUID_CAP_PUB = 5000;
 	private int counter = 0;
