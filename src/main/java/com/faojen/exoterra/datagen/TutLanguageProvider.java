@@ -54,7 +54,7 @@ public class TutLanguageProvider extends LanguageProvider {
  */
 		addItem(Registration.FACETED_ALLUMINUM_PART, "Faceted Alluminum Part");
 		addItem(Registration.FACETED_ALLUMINUM_PANEL, "Faceted Alluminum Panel");
-		addItem(Registration.FLUID_OUTLET, "Fluid Outlet");
+		addItem(Registration.FLUID_OUTLET, "Fluid Outlet"); 
 		addItem(Registration.FRACTURIZER, "Fracturizer");
 		addItem(Registration.INF_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Inferior)");
 		addItem(Registration.INF_STELLAR_PART, "\u00A73Stellar Component\u00A7r (Inferior)");

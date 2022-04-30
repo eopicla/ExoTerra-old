@@ -77,7 +77,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 			return switch (index) {
 			case 0 -> StellarConverterBE.this.energyStorage.getEnergyStored() / 32;
 			case 1 -> StellarConverterBE.this.energyStorage.getMaxEnergyStored() / 32;
-			case 2 -> StellarConverterBE.this.counter;
+			case 2 -> StellarConverterBE.this.counter; 
 			case 3 -> StellarConverterBE.this.maxBurn;
 			
 			case 4 -> StellarConverterBE.this.fluidStorage.getFluidAmount();

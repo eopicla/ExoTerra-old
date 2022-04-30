@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchItem;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -31,6 +33,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
@@ -71,6 +74,14 @@ public class StellarConverterBlock extends Block implements EntityBlock {
         List<ItemStack> drops = super.getDrops(state, builder);
         if (te instanceof StellarConverterBE) {
         	StellarConverterBE tileEntity = (StellarConverterBE) te;
+        	CompoundTag tag = new CompoundTag();
+        	FluidStack fluid = tileEntity.fluidStorage.getFluid();
+        	fluid.writeToNBT(tag);
+            drops.stream()
+                    .filter(e -> e.getItem() instanceof StellarConverterItem)
+                    .findFirst() 
+                    .ifPresent(e -> e.setTag(tag));
+        	
             drops.stream()
                     .filter(e -> e.getItem() instanceof StellarConverterItem)
                     .findFirst()

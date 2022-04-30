@@ -24,7 +24,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -32,11 +31,10 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.items.ItemStackHandler;
 
 // Todo: completely rewrite this class from the ground up
-public class FabricationBenchBE extends BlockEntity implements MenuProvider {
+public class FabricationBenchBE extends BlockEntity implements MenuProvider { 
 	public enum Slots {
 		INPUT(0), OUTPUT(1);
 
@@ -57,10 +55,8 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	public static final int FLUID_CAP_PUB = 10000;
 	private int counter = 0;
 	private int maxBurn = 0;
-	private int fsave = 0;
-	private int fload = 0;
-	private Fluid stellar = Registration.AQUEOUS_STELLAR.get();
 	int powerload;
+	FluidStack getstack;
 
 	// Shitty ass item key system :
 	Item facpanelitem = Registration.FACETED_ALLUMINUM_PANEL.get();
@@ -84,11 +80,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	 int infstel;
 // sucks
 	 FluidStack fstack = new FluidStack(Fluids.EMPTY, 0);
-	 private FluidStack makeFStack(Integer num) {
-		 fstack = new FluidStack(Registration.AQUEOUS_STELLAR.get(), num);
-		 return(fstack);
-	 }
-	 
+
 	public FabricationEnergyStorage energyStorage;
 	public FabricationFluidStorage fluidStorage;
 	private LazyOptional<FabricationEnergyStorage> energy;
@@ -169,6 +161,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		System.out.println(" | " + num + " x " + string + " | ");
 	}
 	
+	@SuppressWarnings("unused")
 	private void printInv() {
 		if(count()) {printInventory();}
 	}
@@ -327,7 +320,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 
 		return super.getCapability(cap, side);
 	}
-
+	
 	@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
 		// Vanilla uses the type parameter to indicate which type of tile entity

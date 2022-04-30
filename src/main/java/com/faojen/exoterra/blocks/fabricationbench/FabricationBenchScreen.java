@@ -25,7 +25,7 @@ public class FabricationBenchScreen extends AbstractContainerScreen<FabricationB
 		this.container = container;
 	}
 
-	int facpanel;
+	 int facpanel;
 	 int facpart;
 	 int fluidout;
 	 int fract;
@@ -204,7 +204,7 @@ public class FabricationBenchScreen extends AbstractContainerScreen<FabricationB
 						// Display infpart count
 						this.blit(stack, leftPos + 140, topPos + 26, 230, 52, 18, 18);
 						
-					}
+					} 
 					if(this.container.getIntpanel() > 0) {
 						// Display intpanel count
 						this.blit(stack, leftPos + 64, topPos + 45, 194,  70, 18, 18);
