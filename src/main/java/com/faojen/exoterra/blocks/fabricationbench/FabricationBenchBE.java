@@ -24,11 +24,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.items.ItemStackHandler;
 
 // Todo: completely rewrite this class from the ground up
@@ -53,6 +57,9 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	public static final int FLUID_CAP_PUB = 10000;
 	private int counter = 0;
 	private int maxBurn = 0;
+	private int fsave = 0;
+	private int fload = 0;
+	private Fluid stellar = Registration.AQUEOUS_STELLAR.get();
 	int powerload;
 
 	// Shitty ass item key system :
@@ -76,7 +83,12 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	 int macbody;
 	 int infstel;
 // sucks
-	
+	 FluidStack fstack = new FluidStack(Fluids.EMPTY, 0);
+	 private FluidStack makeFStack(Integer num) {
+		 fstack = new FluidStack(Registration.AQUEOUS_STELLAR.get(), num);
+		 return(fstack);
+	 }
+	 
 	public FabricationEnergyStorage energyStorage;
 	public FabricationFluidStorage fluidStorage;
 	private LazyOptional<FabricationEnergyStorage> energy;
@@ -166,7 +178,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 			entity.inventory.ifPresent(handler -> {
 				entity.count();
 				entity.tryStore();
-				entity.printInv();
+				// entity.printInv();
 			});
 		}
 	}
@@ -250,13 +262,11 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		super.load(compound);
 		inventory.ifPresent(h -> h.deserializeNBT(compound.getCompound("inv")));
 		energy.ifPresent(h -> h.deserializeNBT(compound.getCompound("energy")));
-		
+		fluidh.ifPresent(h -> h.deserializeNBT(compound.getCompound("fluid")));
 		
 		counter = compound.getInt("counter");
 		maxBurn = compound.getInt("maxburn");
 		maxBurn = compound.getInt("powerload");
-		
-		printCombo(compound.getCompound("Inventory").getInt("1"), "inventory tag thing in BE load");
 		
 		facpanel = compound.getCompound("Inventory").getInt("1");
 		facpart = compound.getCompound("Inventory").getInt("2");
@@ -268,7 +278,11 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		macbody = compound.getCompound("Inventory").getInt("8");
 		infstel = compound.getCompound("Inventory").getInt("9");
 		
-		printCombo(facpanel, "facpanel in load");
+//		printCombo("Stellar amount from load get int tag: ", compound.getInt("stellar"));
+//		fload = compound.getInt("stellar");
+//		fstack = (new FluidStack(stellar, fload));
+		
+		// fluidStorage.setFluid(fstack);
 		
 	}
 
@@ -277,9 +291,14 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		
 		inventory.ifPresent(h -> compound.put("inv", h.serializeNBT()));
 		energy.ifPresent(h -> compound.put("energy", h.serializeNBT()));
+		fluidh.ifPresent(h -> compound.put("fluid", h.serializeNBT()));
 		
 		compound.putInt("counter", counter);
 		compound.putInt("maxburn", maxBurn);
+		
+//		fsave = fluidStorage.getFluidAmount();
+//		compound.putInt("stellar", fsave);	
+//		printCombo("Stellar amount from save int put: ", compound.getInt("stellar"));
 		
 		CompoundTag invTag = new CompoundTag();
 		invTag.putInt("1", facpanel);
@@ -293,8 +312,6 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		invTag.putInt("9", infstel);
 		
 		compound.put("Inventory", invTag);
-		
-		printCombo(compound.getCompound("Inventory").getInt("1"), "inventory tag thing in BE save");
 
 	}
 	

@@ -33,24 +33,19 @@ public class FabricationBenchItem extends BlockItem {
        
         
         int power = stack.getOrCreateTag().getInt("energy");
-        int powerload = stack.getOrCreateTagElement("PowerLoad").getInt("powerload");
         if (power == 0)
             return;
         
-        System.out.println("powerload from item: " + powerload);
-       tooltip.add(new TranslatableComponent("screen.exoterra.powerload", MagicHelpers.withSuffix(powerload)).withStyle(ChatFormatting.BOLD));
-       tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(FabricationBenchBE.ENERGY_CAPACITY_PUB)).withStyle(ChatFormatting.GREEN));
+       tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(FabricationBenchBE.ENERGY_CAPACITY_PUB)));
        
     }
 
-    int test2;
     @Override
     protected boolean updateCustomBlockEntityTag(BlockPos pos, Level worldIn, @Nullable Player player, ItemStack stack, BlockState state) {
         BlockEntity te = worldIn.getBlockEntity(pos);
         if (te instanceof FabricationBenchBE) {
         	FabricationBenchBE station = (FabricationBenchBE) te;
             station.energyStorage.receiveEnergy(stack.getOrCreateTag().getInt("energy"), false);
-
         }
 
         return super.updateCustomBlockEntityTag(pos, worldIn, player, stack, state);
