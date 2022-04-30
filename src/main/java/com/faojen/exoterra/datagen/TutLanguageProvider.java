@@ -44,7 +44,7 @@ public class TutLanguageProvider extends LanguageProvider {
  * 		MACHINES
  */
 		addBlock(Registration.STELLAR_CONVERTER, "\u00A73Stellar\u00A7r Purification Bestower");
-		addBlock(Registration.FABRICATION_BENCH, "Fabrication Bench");
+		addBlock(Registration.FABRICATION_BENCH, "Component Serializer");
 /*
  * 		BASIC BLOCKS
  */
@@ -72,6 +72,7 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.no_energy", "\u00A77Not enough FE to purify");
 		add("screen.exoterra.empty", "Empty");
 		add("screen.exoterra.powerload", "Load: %s FE/Tick");
+		add("screen.exoterra.inventorytip", "%s/%s");
 
 	}
 

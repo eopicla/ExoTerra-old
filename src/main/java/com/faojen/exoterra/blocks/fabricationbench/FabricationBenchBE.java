@@ -94,6 +94,17 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 			case 2 -> FabricationBenchBE.this.fluidStorage.getFluidAmount();
 			case 3 -> FabricationBenchBE.this.fluidStorage.getCapacity();
 			case 4 -> FabricationBenchBE.this.powerload;
+			
+			case 5 ->	FabricationBenchBE.this.facpanel;
+			case 6 ->	FabricationBenchBE.this.facpart;
+			case 7 ->	FabricationBenchBE.this.fluidout;
+			case 8 ->	FabricationBenchBE.this.fract;
+			case 9 ->	FabricationBenchBE.this.infcore;
+			case 10 -> FabricationBenchBE.this.infpart;
+			case 11 -> FabricationBenchBE.this.intpanel;
+			case 12 -> FabricationBenchBE.this.macbody;
+			case 13 -> FabricationBenchBE.this.infstel;
+			
 			default -> throw new IllegalArgumentException("Invalid index: " + index);
 			};
 		}
@@ -105,7 +116,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 
 		@Override
 		public int getCount() {
-			return 5;
+			return 14;
 		}
 	};
 
@@ -193,39 +204,39 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		int num = handler.getStackInSlot(0).getCount();
 		this.energyStorage.consumeEnergy(powerload, false);
 		
-		if (item == facpanelitem) {
+		if (item == facpanelitem && facpanel <=1000) {
 			facpanel = facpanel + num;
 			printCombo(facpanel, facpanelitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == facpartitem) {
+		} else if (item == facpartitem && facpart <=1000) {
 			facpart = facpart + num;
 			printCombo(facpart, facpartitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == fluidoutitem) {
+		} else if (item == fluidoutitem && fluidout <=1000) {
 			fluidout = fluidout + num;
 			printCombo(fluidout, fluidoutitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == fractitem) {
+		} else if (item == fractitem && fract <=1000) {
 			fract = fract + num;
 			printCombo(fract, fractitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == infcoreitem) {
+		} else if (item == infcoreitem && infcore <=1000) {
 			infcore = infcore + num;
 			printCombo(infcore, infcoreitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == infpartitem) {
+		} else if (item == infpartitem && infpart <=1000) {
 			infpart = infpart + num;
 			printCombo(infpart, infpartitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == intpanelitem) {
+		} else if (item == intpanelitem && intpanel <=1000) {
 			intpanel = intpanel + num;
 			printCombo(intpanel, intpanelitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == macbodyitem) {
+		} else if (item == macbodyitem && macbody <=1000) {
 			macbody = macbody + num;
 			printCombo(macbody, macbodyitem.toString());
 			handler.extractItem(0, num, false);
-		} else if (item == infstelitem) {
+		} else if (item == infstelitem && infstel <=1000) {
 			infstel = infstel + num;
 			printCombo(infstel, infstelitem.toString());
 			handler.extractItem(0, num, false);
