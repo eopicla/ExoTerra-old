@@ -1,6 +1,7 @@
 package com.faojen.exoterra.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -200,5 +201,18 @@ public class FabricationFluidStorage implements IFluidHandler, IFluidTank {
     {
         return Math.max(0, capacity - fluid.getAmount());
     }
+
+	public CompoundTag serializeNBT() {
+		CompoundTag tag = new CompoundTag();
+		fluid.writeToNBT(tag);
+		return tag;
+	}
+
+	public FabricationFluidStorage deserializeNBT(CompoundTag nbt) {
+		FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt);
+        setFluid(fluid);
+        return this;
+		
+	}
 
 }

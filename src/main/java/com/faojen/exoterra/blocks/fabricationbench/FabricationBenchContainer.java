@@ -29,7 +29,7 @@ public class FabricationBenchContainer extends AbstractContainerMenu {
     private FabricationBenchBE tile;
 
     public FabricationBenchContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(5), windowId, playerInventory, new ItemStackHandler(2));
+        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(14), windowId, playerInventory, new ItemStackHandler(2));
     }
 
     public FabricationBenchContainer(@Nullable FabricationBenchBE tile, ContainerData fabricationBenchData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
@@ -118,7 +118,34 @@ public class FabricationBenchContainer extends AbstractContainerMenu {
     public int getPowerLoad() {
         return this.data.get(4);
     }
-
+    
+    public int getFacpanel() {
+    	 return this.data.get(5);
+    }
+public int getFacpart() {
+	return this.data.get(6);
+    }
+public int getFluidOut() {
+	return this.data.get(7);
+}
+public int getFract() {
+	return this.data.get(8);
+}
+public int getInfcore() {
+	return this.data.get(9);
+}
+public int getInfpart() {
+	return this.data.get(10);
+}
+public int getIntpanel() {
+	return this.data.get(11);
+}
+public int getMacbody() {
+	return this.data.get(12);
+}
+public int getInfstel() {
+	return this.data.get(13);
+}
     static class RestrictedSlot extends SlotItemHandler {
         public RestrictedSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
             super(itemHandler, index, xPosition, yPosition);

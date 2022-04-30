@@ -1,7 +1,7 @@
 {
   "block.exoterra.bauxite_ore_deepslate": "Bauxite Ore",
   "block.exoterra.bauxite_ore_overworld": "Bauxite Ore",
-  "block.exoterra.fabrication_bench": "Fabrication Bench",
+  "block.exoterra.fabrication_bench": "Component Serializer",
   "block.exoterra.machine_body": "Machine Body",
   "block.exoterra.stellar_converter": "\u00A73Stellar\u00A7r Purification Bestower",
   "block.exoterra.stellar_ore_deepslate": "\u00A73Stellar\u00A7r Ore",
@@ -26,6 +26,7 @@
   "screen.exoterra.empty": "Empty",
   "screen.exoterra.energy": "\u00A74Energy:\u00A7r %s/%s FE",
   "screen.exoterra.fluid": "\u00A73Stellar:\u00A7r %s/%s MB",
+  "screen.exoterra.inventorytip": "%s/%s",
   "screen.exoterra.no_energy": "\u00A77Not enough FE to purify",
   "screen.exoterra.no_fuel": "\u00A77Fuel source empty",
   "screen.exoterra.powerload": "Load: %s FE/Tick",
