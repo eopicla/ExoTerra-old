@@ -1,6 +1,7 @@
 package com.faojen.exoterra.blocks.stellarconverter;
 
 import com.faojen.exoterra.Config;
+import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
 import com.faojen.exoterra.utils.MagicHelpers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.Mth;
 
 public class StellarConverterItem extends BlockItem {
 
@@ -25,6 +27,30 @@ public class StellarConverterItem extends BlockItem {
         super(blockIn, builder);
     }
 
+    @Override
+	public int getBarWidth(ItemStack stack) {
+		int energy = stack.getOrCreateTag().getInt("energy");
+		int maxEnergy = StellarConverterBE.ENERGY_CAPACITY_PUB;
+		var stored = maxEnergy - energy;
+
+		return Math.round(13.0F - stored * 13.0F / maxEnergy);
+	}
+
+	@Override
+	public int getBarColor(ItemStack stack) {
+		int energy = stack.getOrCreateTag().getInt("energy");
+		int maxEnergy = StellarConverterBE.ENERGY_CAPACITY_PUB;
+
+		float f = Math.max(0.0F, (float) energy / (float) maxEnergy);
+
+		return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
+	}
+
+	@Override
+	public boolean isBarVisible(ItemStack stack) {
+		return true;
+	}
+    
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -34,7 +60,7 @@ public class StellarConverterItem extends BlockItem {
         Integer fluidamount = fluid.getAmount();
         if (power == 0)
             return;
-
+ 
         tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(Config.GENERAL.chargerMaxPower.get())));
         tooltip.add(new TranslatableComponent("screen.exoterra.stellar", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(StellarConverterBE.FLUID_CAP_PUB)));
     }

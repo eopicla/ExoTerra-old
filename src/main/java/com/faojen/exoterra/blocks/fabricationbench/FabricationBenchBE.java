@@ -38,7 +38,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	public enum Slots {
 		INPUT(0), OUTPUT(1); 
 
-		int id;
+		int id; 
 
 		Slots(int number) {
 			id = number;
