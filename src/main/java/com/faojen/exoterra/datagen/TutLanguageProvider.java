@@ -54,7 +54,7 @@ public class TutLanguageProvider extends LanguageProvider {
  */
 		addItem(Registration.FACETED_ALLUMINUM_PART, "Faceted Alluminum Part");
 		addItem(Registration.FACETED_ALLUMINUM_PANEL, "Faceted Alluminum Panel");
-		addItem(Registration.FLUID_OUTLET, "Fluid Outlet");
+		addItem(Registration.FLUID_OUTLET, "Fluid Outlet"); 
 		addItem(Registration.FRACTURIZER, "Fracturizer");
 		addItem(Registration.INF_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Inferior)");
 		addItem(Registration.INF_STELLAR_PART, "\u00A73Stellar Component\u00A7r (Inferior)");
@@ -71,8 +71,9 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.fluid", "\u00A73Stellar:\u00A7r %s/%s MB");
 		add("screen.exoterra.no_energy", "\u00A77Not enough FE to purify");
 		add("screen.exoterra.empty", "Empty");
-		add("screen.exoterra.powerload", "Load: %s FE/Tick");
+		add("screen.exoterra.powerload", "\u00A77Load:\u00A7r %s FE/Tick");
 		add("screen.exoterra.inventorytip", "%s/%s");
+		add("screen.exoterra.test", "facpanel: %s");
 
 	}
 

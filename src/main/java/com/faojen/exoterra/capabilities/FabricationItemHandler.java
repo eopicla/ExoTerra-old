@@ -28,6 +28,6 @@ public class FabricationItemHandler extends ItemStackHandler {
         if (slot == FabricationBenchBE.Slots.OUTPUT.getId() && stack.getItem() == Registration.BLOCKER.get())
             return super.insertItem(slot, stack, simulate);
 
-        return super.insertItem(slot, stack, simulate);
+        return super.insertItem(slot, stack, simulate); 
     }
 }

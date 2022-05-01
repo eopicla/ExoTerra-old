@@ -45,7 +45,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	public enum Slots {
 		FUEL(0), STELLAR(1);
 
-		int id;
+		int id; 
 
 		Slots(int number) {
 			id = number;
@@ -58,6 +58,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	
 	private static final int FLUID_CAPACITY = 5000;
 	public static final int FLUID_CAP_PUB = 5000;
+	public static final int ENERGY_CAPACITY_PUB = 1000000;
 	private int counter = 0;
 	private int scounter = 0;
 	private int maxBurn = 0;
@@ -77,7 +78,7 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 			return switch (index) {
 			case 0 -> StellarConverterBE.this.energyStorage.getEnergyStored() / 32;
 			case 1 -> StellarConverterBE.this.energyStorage.getMaxEnergyStored() / 32;
-			case 2 -> StellarConverterBE.this.counter;
+			case 2 -> StellarConverterBE.this.counter; 
 			case 3 -> StellarConverterBE.this.maxBurn;
 			
 			case 4 -> StellarConverterBE.this.fluidStorage.getFluidAmount();

@@ -36,7 +36,7 @@ public class StellarConverterScreen extends AbstractContainerScreen<StellarConve
 		this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
 		if (mouseX > (leftPos + 7) && mouseX < (leftPos + 7) + 70 && mouseY > (topPos + 62)
 				&& mouseY < (topPos + 62) + 17)
-			this.renderTooltip(stack,
+			this.renderTooltip(stack, 
 					Language.getInstance()
 							.getVisualOrder(Arrays.asList(new TranslatableComponent(
 									"screen.exoterra.energy", MagicHelpers.withSuffix(this.container.getEnergy()),
@@ -153,7 +153,7 @@ public class StellarConverterScreen extends AbstractContainerScreen<StellarConve
 			int remaining = (this.container.getEnergy() * energywidth) / maxEnergy;
 
 			this.blit(stack, 
-					leftPos + 8, 				    // Destination top-left corner X
+					leftPos + 8 + 70 - remaining, 				    // Destination top-left corner X
 					topPos + 63, 			    // Destination top-left corner Y
 					176 + 70 - remaining,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
 					16, 							    // Source top-left corner Y
@@ -176,9 +176,9 @@ public class StellarConverterScreen extends AbstractContainerScreen<StellarConve
 			int remaining = (this.container.getFluidStored() * stellarwidth) / maxFluid;
 
 			this.blit(stack, 
-					leftPos + 98, 			
+					leftPos + 98,
 					topPos + 63, 			  
-					176 + 70 - remaining,  
+					176,  
 					0, 								 
 					remaining + 1, 			   
 					15);					

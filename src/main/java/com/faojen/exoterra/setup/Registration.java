@@ -45,7 +45,7 @@ public class Registration {
 	private static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MODID);
 
 	public static void init() {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus(); 
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);
@@ -58,6 +58,7 @@ public class Registration {
 	public static final BlockBehaviour.Properties ORE_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops();
 	public static final BlockBehaviour.Properties SIMPLE_BLOCK = BlockBehaviour.Properties.of(Material.METAL).strength(2f).requiresCorrectToolForDrops();
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
+	public static final Item.Properties MACHINE_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP).stacksTo(1);
 	public static final Item.Properties FUEL_STELLAR = new Item.Properties().tab(ModSetup.ITEM_GROUP).rarity(Rarity.RARE).setNoRepair();
 	public static final Item.Properties BLANK = new Item.Properties().stacksTo(1);
 
@@ -93,9 +94,9 @@ public class Registration {
 								BLOCK_ENTITIES.register("stellar_converter_be", () -> BlockEntityType.Builder.of(StellarConverterBE::new, STELLAR_CONVERTER.get()).build(null));
 					// Item
 						public static final RegistryObject<Item> STELLAR_CONVERTER_BI = ITEMS.register("stellar_converter", 
-								() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.ITEM_PROPERTIES));
+								() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.MACHINE_PROPERTIES));
 				
-			// Stellar Converter
+			// Fabrication Bench
 					// Container
 						public static final RegistryObject<MenuType<FabricationBenchContainer>> FABRICATION_BENCH_CONTAINER = CONTAINERS.register("fabrication_bench_container", 
 								() -> IForgeMenuType.create(FabricationBenchContainer::new));
@@ -106,7 +107,7 @@ public class Registration {
 								BLOCK_ENTITIES.register("fabrication_bench_be", () -> BlockEntityType.Builder.of(FabricationBenchBE::new, FABRICATION_BENCH.get()).build(null));
 					// Item
 						public static final RegistryObject<Item> FABRICATION_BENCH_BI = ITEMS.register("fabrication_bench", 
-								() -> new FabricationBenchItem(FABRICATION_BENCH.get(), Registration.ITEM_PROPERTIES));
+								() -> new FabricationBenchItem(FABRICATION_BENCH.get(), Registration.MACHINE_PROPERTIES));
 		
 	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- //
 	

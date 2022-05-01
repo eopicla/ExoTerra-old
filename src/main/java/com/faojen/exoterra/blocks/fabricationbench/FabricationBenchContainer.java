@@ -29,7 +29,7 @@ public class FabricationBenchContainer extends AbstractContainerMenu {
     private FabricationBenchBE tile;
 
     public FabricationBenchContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(14), windowId, playerInventory, new ItemStackHandler(2));
+        this((FabricationBenchBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(14), windowId, playerInventory, new ItemStackHandler(2)); 
     }
 
     public FabricationBenchContainer(@Nullable FabricationBenchBE tile, ContainerData fabricationBenchData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
