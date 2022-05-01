@@ -1,7 +1,6 @@
 package com.faojen.exoterra.blocks.stellarconverter;
 
 import com.faojen.exoterra.Config;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
 import com.faojen.exoterra.utils.MagicHelpers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +25,7 @@ public class StellarConverterItem extends BlockItem {
     public StellarConverterItem(Block blockIn, Properties builder) {
         super(blockIn, builder);
     }
-
+    
     @Override
 	public int getBarWidth(ItemStack stack) {
 		int energy = stack.getOrCreateTag().getInt("energy");
