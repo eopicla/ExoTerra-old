@@ -40,7 +40,7 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class FabricationBenchBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
- 
+    
     public FabricationBenchBlock() {
         super(Properties.of(Material.STONE).strength(2f));
 
@@ -74,20 +74,28 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
         
         if (te instanceof FabricationBenchBE) {
         	FabricationBenchBE tileEntity = (FabricationBenchBE) te;
-        	CompoundTag tag = new CompoundTag();
-        	FluidStack fluid = tileEntity.fluidStorage.getFluid();
-
-        	fluid.writeToNBT(tag);
         	
-            drops.stream()
+        	CompoundTag Fluidtag = new CompoundTag();
+        	FluidStack fluid = tileEntity.fluidStorage.getFluid();
+        	fluid.writeToNBT(Fluidtag);
+        	
+//	FLUID
+            drops.stream() 
             .filter(e -> e.getItem() instanceof FabricationBenchItem)
             .findFirst()
-            .ifPresent(e -> e.setTag(tag));
-            
+            .ifPresent(e -> e.setTag(Fluidtag));
+
+// ENERGY
             drops.stream()
             .filter(e -> e.getItem() instanceof FabricationBenchItem)
             .findFirst()
             .ifPresent(e -> e.getOrCreateTag().putInt("energy", tileEntity.energyStorage.getEnergyStored()));
+  
+// POWERLOAD
+            drops.stream()
+            .filter(e -> e.getItem() instanceof FabricationBenchItem)
+            .findFirst()
+            .ifPresent(e -> e.getOrCreateTag().putInt("powerload", tileEntity.powerLoad));
 
     }
         return drops;
@@ -108,7 +116,7 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
             super.onRemove(state, worldIn, pos, newState, isMoving);
         }
     }
-
+    
     @Override
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockRayTraceResult) {
         // Only execute on the server

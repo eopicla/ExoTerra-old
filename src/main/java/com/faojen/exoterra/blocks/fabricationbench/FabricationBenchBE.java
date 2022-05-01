@@ -36,7 +36,7 @@ import net.minecraftforge.items.ItemStackHandler;
 // Todo: completely rewrite this class from the ground up
 public class FabricationBenchBE extends BlockEntity implements MenuProvider { 
 	public enum Slots {
-		INPUT(0), OUTPUT(1);
+		INPUT(0), OUTPUT(1); 
 
 		int id;
 
@@ -52,10 +52,10 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	private static final int FLUID_CAPACITY = 10000;
 	private static final int ENERGY_CAPACITY = 10000000;
 	public static final int ENERGY_CAPACITY_PUB = 10000000;
-	public static final int FLUID_CAP_PUB = 10000;
+	public static final int FLUID_CAP_PUB = 10000; 
 	private int counter = 0;
 	private int maxBurn = 0;
-	int powerload;
+	int powerLoad;
 	FluidStack getstack;
 
 	// Shitty ass item key system :
@@ -69,7 +69,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	Item macbodyitem = Registration.MACHINE_BODY_ITEM.get();
 	Item infstelitem = Registration.INF_REFINED_STELLAR.get();
 	
-	int facpanel;
+   	 int facpanel;
 	 int facpart;
 	 int fluidout;
 	 int fract;
@@ -97,7 +97,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 			case 1 -> FabricationBenchBE.this.energyStorage.getMaxEnergyStored() / 32;
 			case 2 -> FabricationBenchBE.this.fluidStorage.getFluidAmount();
 			case 3 -> FabricationBenchBE.this.fluidStorage.getCapacity();
-			case 4 -> FabricationBenchBE.this.powerload;
+			case 4 -> FabricationBenchBE.this.powerLoad;
 			
 			case 5 ->	FabricationBenchBE.this.facpanel;
 			case 6 ->	FabricationBenchBE.this.facpart;
@@ -133,6 +133,14 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		this.fluidh = LazyOptional.of(() -> this.fluidStorage);
 	}
 
+	public void setFacpanel(Integer num) {
+		facpanel = num;
+	}
+	
+	public Integer getFacpanel() {
+		return facpanel;
+	}
+	
 	private int x = 0;
 	@Nullable
 	@Override
@@ -171,7 +179,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 			entity.inventory.ifPresent(handler -> {
 				entity.count();
 				entity.tryStore();
-				// entity.printInv();
+				entity.printInv();
 			});
 		}
 	}
@@ -203,11 +211,11 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 	
 	private void store(IEnergyStorage energyStorage) {
 
-		powerload = (facpanel + facpart + fluidout + fract + infcore + infpart + intpanel + macbody + infstel) * 4;
+		powerLoad = (facpanel + facpart + fluidout + fract + infcore + infpart + intpanel + macbody + infstel) * 4;
 		ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
 		Item item = handler.getStackInSlot(0).getItem();
 		int num = handler.getStackInSlot(0).getCount();
-		this.energyStorage.consumeEnergy(powerload, false);
+		this.energyStorage.consumeEnergy(powerLoad, false);
 		
 		if (item == facpanelitem && facpanel <=1000) {
 			facpanel = facpanel + num;
@@ -259,23 +267,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		
 		counter = compound.getInt("counter");
 		maxBurn = compound.getInt("maxburn");
-		maxBurn = compound.getInt("powerload");
-		
-		facpanel = compound.getCompound("Inventory").getInt("1");
-		facpart = compound.getCompound("Inventory").getInt("2");
-		fluidout = compound.getCompound("Inventory").getInt("3");
-		fract = compound.getCompound("Inventory").getInt("4");
-		infcore = compound.getCompound("Inventory").getInt("5");
-		infpart = compound.getCompound("Inventory").getInt("6");
-		intpanel = compound.getCompound("Inventory").getInt("7");
-		macbody = compound.getCompound("Inventory").getInt("8");
-		infstel = compound.getCompound("Inventory").getInt("9");
-		
-//		printCombo("Stellar amount from load get int tag: ", compound.getInt("stellar"));
-//		fload = compound.getInt("stellar");
-//		fstack = (new FluidStack(stellar, fload));
-		
-		// fluidStorage.setFluid(fstack);
+		// powerLoad = compound.getInt("powerload");
 		
 	}
 
@@ -288,23 +280,7 @@ public class FabricationBenchBE extends BlockEntity implements MenuProvider {
 		
 		compound.putInt("counter", counter);
 		compound.putInt("maxburn", maxBurn);
-		
-//		fsave = fluidStorage.getFluidAmount();
-//		compound.putInt("stellar", fsave);	
-//		printCombo("Stellar amount from save int put: ", compound.getInt("stellar"));
-		
-		CompoundTag invTag = new CompoundTag();
-		invTag.putInt("1", facpanel);
-		invTag.putInt("2", facpart);
-		invTag.putInt("3", fluidout);
-		invTag.putInt("4", fract);
-		invTag.putInt("5", infcore);
-		invTag.putInt("6", infpart);
-		invTag.putInt("7", intpanel);
-		invTag.putInt("8", macbody);
-		invTag.putInt("9", infstel);
-		
-		compound.put("Inventory", invTag);
+		// compound.putInt("powerload", powerLoad);
 
 	}
 	

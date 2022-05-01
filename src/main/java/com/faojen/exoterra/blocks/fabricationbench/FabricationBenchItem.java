@@ -33,6 +33,8 @@ public class FabricationBenchItem extends BlockItem {
        
         
         int power = stack.getOrCreateTag().getInt("energy");
+        int powerload = stack.getOrCreateTag().getInt("powerload");
+        
         FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
         Integer fluidamount = fluid.getAmount();
         if (power == 0)
@@ -40,6 +42,7 @@ public class FabricationBenchItem extends BlockItem {
         
        tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(FabricationBenchBE.ENERGY_CAPACITY_PUB)));
        tooltip.add(new TranslatableComponent("screen.exoterra.fluid", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(FabricationBenchBE.FLUID_CAP_PUB)));
+       tooltip.add(new TranslatableComponent("screen.exoterra.powerload", MagicHelpers.withSuffix(powerload)));
        
     }
 
@@ -53,6 +56,7 @@ public class FabricationBenchItem extends BlockItem {
         	
             station.energyStorage.receiveEnergy(stack.getOrCreateTag().getInt("energy"), false);
             station.fluidStorage.setFluid(fluid);
+            
         }
 
         return super.updateCustomBlockEntityTag(pos, worldIn, player, stack, state);

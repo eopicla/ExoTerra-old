@@ -16,6 +16,6 @@ public class MagicHelpers {
     public static String ticksInSeconds(int ticks) {
         BigDecimal value = new BigDecimal(ticks);
         value = value.divide(TWENTY, 1, RoundingMode.HALF_UP);
-        return value.toString();
+        return value.toString(); 
     }
 }

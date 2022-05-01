@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchItem;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -77,6 +76,7 @@ public class StellarConverterBlock extends Block implements EntityBlock {
         	CompoundTag tag = new CompoundTag();
         	FluidStack fluid = tileEntity.fluidStorage.getFluid();
         	fluid.writeToNBT(tag);
+        	
             drops.stream()
                     .filter(e -> e.getItem() instanceof StellarConverterItem)
                     .findFirst() 

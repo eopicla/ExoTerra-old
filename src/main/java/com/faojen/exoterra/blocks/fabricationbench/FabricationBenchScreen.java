@@ -21,7 +21,7 @@ public class FabricationBenchScreen extends AbstractContainerScreen<FabricationB
 	private final FabricationBenchContainer container;
 
 	public FabricationBenchScreen(FabricationBenchContainer container, Inventory playerInventory, Component title) {
-		super(container, playerInventory, title);
+		super(container, playerInventory, title); 
 		this.container = container;
 	}
 
