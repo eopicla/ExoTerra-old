@@ -162,19 +162,25 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 		 Item item = handler.getStackInSlot(Slots.STELLAR.id).getItem();
 //		 EXAMPLE ITEMS
 		 Item infrefinedstellar = Registration.INF_REFINED_STELLAR.get();
+		 Item infrawstellar = Registration.INF_RAW_STELLAR.get();
 //		 -
+		 String iteminslot;
 		 int purifyTime = 0;
 		 
-		 if(item == infrefinedstellar) {purifyTime = 5000;} // Sets burn times for stellar items. 5000 purifyTime is equal to 100 MB of Aqueous Stellar.
-//		 if(item == exampleitem) {purifyTime = (50 * expected MB per item) ;}
+		 if(item == infrefinedstellar) 
+		 	{purifyTime = 5000;} // Sets burn times for stellar items. 5000 purifyTime is equal to 100 MB of Aqueous Stellar.
+		 else if(item == infrawstellar) 
+		 	{purifyTime = 2500;} // Sets burn times for stellar items. 2500 purifyTime is equal to 50 MB of Aqueous Stellar.
 		 
 		 if(purifyTime > 0 && energyStorage.getEnergyStored() >= 20000 && this.fluidStorage.getFluidAmount() <= 4900) {
 			 
+			 iteminslot = handler.getStackInSlot(1).toString() ;
 			 handler.extractItem(1, 1, false);
 			 energyStorage.consumeEnergy(20000, false);
 			 
 			 setChanged();
 			 scounter = (int) Math.floor(purifyTime) / 50;
+			 System.out.print("| set purify time to: " + purifyTime + " because input was: " + iteminslot);
 			 maxSBurn = scounter;
 			 return true;
 		 }

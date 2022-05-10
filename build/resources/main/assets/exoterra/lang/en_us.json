@@ -32,5 +32,6 @@
   "screen.exoterra.powerload": "\u00A77Load:\u00A7r %s FE/Tick",
   "screen.exoterra.purify_time": "\u00A77Time until purification: %ss",
   "screen.exoterra.stellar": "\u00A73Stellar:\u00A7r %s MB",
+  "screen.exoterra.stellar_converter_guititle": "Purification Bestower",
   "screen.exoterra.test": "facpanel: %s"
 }

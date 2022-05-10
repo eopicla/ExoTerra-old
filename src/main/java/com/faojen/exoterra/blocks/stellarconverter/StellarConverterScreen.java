@@ -199,8 +199,8 @@ public class StellarConverterScreen extends AbstractContainerScreen<StellarConve
 	@Override
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
 		
-		Minecraft.getInstance().font.draw(stack, I18n.get("block.exoterra.stellar_converter"), 
-				15, 28,Color.DARK_GRAY.getRGB());
+		Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.stellar_converter_guititle"), 
+				62, 4,Color.DARK_GRAY.getRGB());
 		
 //		Minecraft.getInstance().font.draw(stack, I18n.get("I: " + container.get), 
 //				15, 28,Color.DARK_GRAY.getRGB());

@@ -74,6 +74,8 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.powerload", "\u00A77Load:\u00A7r %s FE/Tick");
 		add("screen.exoterra.inventorytip", "%s/%s");
 		add("screen.exoterra.test", "facpanel: %s");
+		
+		add("screen.exoterra.stellar_converter_guititle", "Purification Bestower");
 
 	}
 

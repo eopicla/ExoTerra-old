@@ -36,6 +36,9 @@ public class ChargerItemHandler extends ItemStackHandler {
         
         if (slot == StellarConverterBE.Slots.STELLAR.getId() && (! stack.is(Registration.INF_REFINED_STELLAR.get()) && getStackInSlot(slot).getCount() > 0))
             return stack;
+        
+        if (slot == StellarConverterBE.Slots.STELLAR.getId() && (! stack.is(Registration.INF_RAW_STELLAR.get()) && getStackInSlot(slot).getCount() > 0))
+            return stack;
 
         return super.insertItem(slot, stack, simulate);
     }
