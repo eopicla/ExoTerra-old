@@ -22,7 +22,11 @@ public class TutBlockTags extends BlockTagsProvider {
 		tag(Registration.SPACE_SAFE_BLOCK)
 			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.STELLAR_CONVERTER.get())
-			.add(Registration.FABRICATION_BENCH.get());
+			.add(Registration.INFERIOR_POWER_BANK.get())
+			.add(Registration.COMMON_POWER_BANK.get())
+			.add(Registration.FABRICATION_BENCH.get())
+			.add(Registration.EXO_GLASS_BLOCK.get())
+			.add(Registration.FACETED_ALUMINUM_BLOCK.get());
 		
 		tag(BlockTags.MINEABLE_WITH_PICKAXE)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
@@ -31,10 +35,12 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
 			.add(Registration.STELLAR_CONVERTER.get())
 			.add(Registration.MACHINE_BODY.get())
-			.add(Registration.STELLAR_CONVERTER.get())
+			.add(Registration.INFERIOR_POWER_BANK.get())
+			.add(Registration.COMMON_POWER_BANK.get())
 			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
 			.add(Registration.BAUXITE_ORE_OVERWORLD.get())
-			.add(Registration.FABRICATION_BENCH.get());
+			.add(Registration.FABRICATION_BENCH.get())
+			.add(Registration.FACETED_ALUMINUM_BLOCK.get());
 		
 		tag(BlockTags.NEEDS_IRON_TOOL)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
@@ -44,7 +50,11 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
 			.add(Registration.BAUXITE_ORE_OVERWORLD.get())
-			.add(Registration.FABRICATION_BENCH.get());
+			.add(Registration.FABRICATION_BENCH.get())
+			.add(Registration.INFERIOR_POWER_BANK.get())
+			.add(Registration.COMMON_POWER_BANK.get())
+			.add(Registration.STELLAR_CONVERTER.get())
+			.add(Registration.FACETED_ALUMINUM_BLOCK.get());
 		
 		tag(Tags.Blocks.ORES)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
@@ -71,7 +81,11 @@ public class TutBlockTags extends BlockTagsProvider {
 		tag(Registration.EXOTERRA_BLOCKS)
 			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.STELLAR_CONVERTER.get())
-			.add(Registration.FABRICATION_BENCH.get());
+			.add(Registration.INFERIOR_POWER_BANK.get())
+			.add(Registration.COMMON_POWER_BANK.get())
+			.add(Registration.FABRICATION_BENCH.get())
+			.add(Registration.FACETED_ALUMINUM_BLOCK.get())
+			.add(Registration.EXO_GLASS_BLOCK.get());
 		
 		
 	}

@@ -3,6 +3,10 @@
   "values": [
     "exoterra:machine_body",
     "exoterra:stellar_converter",
-    "exoterra:fabrication_bench"
+    "exoterra:inferior_power_bank",
+    "exoterra:common_power_bank",
+    "exoterra:fabrication_bench",
+    "exoterra:exo_glass_block",
+    "exoterra:faceted_aluminum_block"
   ]
 }

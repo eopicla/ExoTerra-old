@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "side": "exoterra:block/common_power_bank_side",
+    "front": "exoterra:block/common_power_bank_fronton",
+    "bottom": "exoterra:block/common_power_bank_bottom",
+    "top": "exoterra:block/common_power_bank_top"
+  }
+}

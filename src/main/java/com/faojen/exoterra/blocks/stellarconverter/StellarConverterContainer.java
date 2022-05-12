@@ -3,7 +3,6 @@ package com.faojen.exoterra.blocks.stellarconverter;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;

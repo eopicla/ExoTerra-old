@@ -1,19 +1,18 @@
 package com.faojen.exoterra.capabilities;
 
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
-
+import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class ExoterraEnergyTank implements IEnergyStorage, INBTSerializable<CompoundTag> {
+public class CommonExoterraEnergyTank implements IEnergyStorage, INBTSerializable<CompoundTag> {
     private static final String KEY = "energy";
     private int energy;
     private int capacity;
     private int maxInOut = 1000000;
-    private StellarConverterBE tile;
+    private CommonPowerBankBE tile;
 
-    public ExoterraEnergyTank(StellarConverterBE tile, int energy, int capacity) {
+    public CommonExoterraEnergyTank(CommonPowerBankBE tile, int energy, int capacity) {
         this.energy = energy;
         this.capacity = capacity;
         this.tile = tile;
@@ -89,7 +88,7 @@ public class ExoterraEnergyTank implements IEnergyStorage, INBTSerializable<Comp
 
     @Override
     public String toString() {
-        return "ChargerEnergyStorage{" +
+        return "CommonEnergyTank{" +
                 "energy=" + energy +
                 ", capacity=" + capacity +
                 ", maxInOut=" + maxInOut +
