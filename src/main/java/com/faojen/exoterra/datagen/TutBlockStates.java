@@ -28,14 +28,36 @@ public class TutBlockStates extends BlockStateProvider {
  * 	BLOCKS	
  */
 		simpleBlock(Registration.MACHINE_BODY.get());
+		simpleBlock(Registration.EXO_GLASS_BLOCK.get());
+		simpleBlock(Registration.FACETED_ALUMINUM_BLOCK.get());
 /*
  * 	COMPLEX MODELS
  */
 		stellarConverterModel();
 		fabricationBenchModel();
+		inferiorPowerBankModel();
+		commonPowerBankModel();
 
 	}
 
+	private void inferiorPowerBankModel() {
+
+		horizontalBlock(Registration.INFERIOR_POWER_BANK.get(),
+				models().orientableWithBottom(Registration.INFERIOR_POWER_BANK.get().getRegistryName().getPath(),
+						modLoc("block/inferior_power_bank_side"), modLoc("block/inferior_power_bank_fronton"),
+						modLoc("block/inferior_power_bank_bottom"), modLoc("block/inferior_power_bank_top")));
+
+	}
+	
+	private void commonPowerBankModel() {
+
+		horizontalBlock(Registration.COMMON_POWER_BANK.get(),
+				models().orientableWithBottom(Registration.COMMON_POWER_BANK.get().getRegistryName().getPath(),
+						modLoc("block/common_power_bank_side"), modLoc("block/common_power_bank_fronton"),
+						modLoc("block/common_power_bank_bottom"), modLoc("block/common_power_bank_top")));
+
+	}
+	
 	private void stellarConverterModel() {
 
 		horizontalBlock(Registration.STELLAR_CONVERTER.get(),

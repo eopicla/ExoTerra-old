@@ -141,9 +141,9 @@ public class StellarConverterContainer extends AbstractContainerMenu {
         @Override
         public boolean mayPlace(@Nonnull ItemStack stack) {
         	
-        	  if (getSlotIndex() == StellarConverterBE.Slots.STELLAR.getId())
-                  return stack.is(Registration.INF_REFINED_STELLAR.get());
-        	
+        	 if (getSlotIndex() == StellarConverterBE.Slots.STELLAR.getId())
+                 return true;
+        	 
             if (getSlotIndex() == StellarConverterBE.Slots.FUEL.getId())
                 return ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) != 0;
 

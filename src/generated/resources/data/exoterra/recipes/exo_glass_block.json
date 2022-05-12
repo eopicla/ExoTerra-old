@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_blocks",
+  "pattern": [
+    "ccc",
+    "cgc",
+    "ccc"
+  ],
+  "key": {
+    "c": {
+      "item": "exoterra:faceted_alluminum_part"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "exoterra:exo_glass_block"
+  }
+}

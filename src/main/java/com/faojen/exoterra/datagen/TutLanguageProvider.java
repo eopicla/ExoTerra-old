@@ -45,10 +45,14 @@ public class TutLanguageProvider extends LanguageProvider {
  */
 		addBlock(Registration.STELLAR_CONVERTER, "\u00A73Stellar\u00A7r Purification Bestower");
 		addBlock(Registration.FABRICATION_BENCH, "Component Serializer");
+		addBlock(Registration.INFERIOR_POWER_BANK, "Power Bank (Inferior)");
+		addBlock(Registration.COMMON_POWER_BANK, "Power Bank (Common)");
 /*
  * 		BASIC BLOCKS
  */
 		addBlock(Registration.MACHINE_BODY, "Machine Body");	
+		addBlock(Registration.EXO_GLASS_BLOCK, "Exo Glass");	
+		addBlock(Registration.FACETED_ALUMINUM_BLOCK, "Faceted Aluminum Block");	
 /*
  * 		CRAFTING COMPONENTS
  */
@@ -74,6 +78,10 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.powerload", "\u00A77Load:\u00A7r %s FE/Tick");
 		add("screen.exoterra.inventorytip", "%s/%s");
 		add("screen.exoterra.test", "facpanel: %s");
+		
+		add("screen.exoterra.stellar_converter_guititle", "Purification Bestower");
+		add("screen.exoterra.inferior_power_bank_guititle", "Power Bank (Inferior)");
+		add("screen.exoterra.common_power_bank_guititle", "Power Bank (Common)");
 
 	}
 

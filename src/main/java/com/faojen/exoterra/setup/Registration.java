@@ -3,11 +3,19 @@ package com.faojen.exoterra.setup;
 import static com.faojen.exoterra.ExoTerra.MODID;
 
 import com.faojen.exoterra.ExoTerra;
+import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
+import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBlock;
+import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankContainer;
+import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankItem;
 import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
 import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBlock;
 import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchContainer;
 import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchItem;
 import com.faojen.exoterra.blocks.fluid.AqueousStellarBlock;
+import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBE;
+import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBlock;
+import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankContainer;
+import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankItem;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBlock;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterContainer;
@@ -57,6 +65,8 @@ public class Registration {
 	// Some common properties for our blocks and items
 	public static final BlockBehaviour.Properties ORE_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops();
 	public static final BlockBehaviour.Properties SIMPLE_BLOCK = BlockBehaviour.Properties.of(Material.METAL).strength(2f).requiresCorrectToolForDrops();
+	public static final BlockBehaviour.Properties GLASS_BLOCK = BlockBehaviour.Properties.of(Material.GLASS).explosionResistance(6f).noOcclusion();
+	public static final BlockBehaviour.Properties SPACE_BLOCK = BlockBehaviour.Properties.of(Material.METAL).explosionResistance(6f);
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
 	public static final Item.Properties MACHINE_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP).stacksTo(1);
 	public static final Item.Properties FUEL_STELLAR = new Item.Properties().tab(ModSetup.ITEM_GROUP).rarity(Rarity.RARE).setNoRepair();
@@ -108,9 +118,46 @@ public class Registration {
 					// Item
 						public static final RegistryObject<Item> FABRICATION_BENCH_BI = ITEMS.register("fabrication_bench", 
 								() -> new FabricationBenchItem(FABRICATION_BENCH.get(), Registration.MACHINE_PROPERTIES));
+						
+						
+			// inferior powerbank
+						// Container
+							public static final RegistryObject<MenuType<InferiorPowerBankContainer>> INFERIOR_POWER_BANK_CONTAINER = CONTAINERS.register("inferior_power_bank_container", 
+									() -> IForgeMenuType.create(InferiorPowerBankContainer::new));
+						// Block
+							public static final RegistryObject<Block> INFERIOR_POWER_BANK = BLOCKS.register("inferior_power_bank", InferiorPowerBankBlock::new);
+						// Block Entity
+							public static final RegistryObject<BlockEntityType<InferiorPowerBankBE>> INFERIOR_POWER_BANK_BE =
+									BLOCK_ENTITIES.register("inferior_power_bank_be", () -> BlockEntityType.Builder.of(InferiorPowerBankBE::new, INFERIOR_POWER_BANK.get()).build(null));
+						// Item
+							public static final RegistryObject<Item> INFERIOR_POWER_BANK_BI = ITEMS.register("inferior_power_bank", 
+									() -> new InferiorPowerBankItem(INFERIOR_POWER_BANK.get(), Registration.MACHINE_PROPERTIES));
+							
+			// common powerbank
+							// Container
+								public static final RegistryObject<MenuType<CommonPowerBankContainer>> COMMON_POWER_BANK_CONTAINER = CONTAINERS.register("common_power_bank_container", 
+										() -> IForgeMenuType.create(CommonPowerBankContainer::new));
+							// Block
+								public static final RegistryObject<Block> COMMON_POWER_BANK = BLOCKS.register("common_power_bank", CommonPowerBankBlock::new);
+							// Block Entity
+								public static final RegistryObject<BlockEntityType<CommonPowerBankBE>> COMMON_POWER_BANK_BE =
+										BLOCK_ENTITIES.register("common_power_bank_be", () -> BlockEntityType.Builder.of(CommonPowerBankBE::new, COMMON_POWER_BANK.get()).build(null));
+							// Item
+								public static final RegistryObject<Item> COMMON_POWER_BANK_BI = ITEMS.register("common_power_bank", 
+										() -> new CommonPowerBankItem(COMMON_POWER_BANK.get(), Registration.MACHINE_PROPERTIES));
+						
+			
 		
 	// ---------------------------------------------------------------------------------------------------------------------------------------------------------- //
+/*
+ * 		SIMPLE BLOCKS	
+ */
+	public static final RegistryObject<Block> EXO_GLASS_BLOCK = BLOCKS.register("exo_glass_block", () -> new Block(GLASS_BLOCK));				
+	public static final RegistryObject<Item> EXO_GLASS_BLOCK_ITEM = fromBlock(EXO_GLASS_BLOCK);
 	
+	public static final RegistryObject<Block> FACETED_ALUMINUM_BLOCK = BLOCKS.register("faceted_aluminum_block", () -> new Block(SPACE_BLOCK));			
+	public static final RegistryObject<Item> FACETED_ALUMINUM_BLOCK_ITEM = fromBlock(FACETED_ALUMINUM_BLOCK);
+
 /*
  * 		ORES
  */

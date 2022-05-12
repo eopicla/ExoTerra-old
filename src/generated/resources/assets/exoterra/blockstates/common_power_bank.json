@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "exoterra:block/common_power_bank"
+    },
+    "facing=south": {
+      "model": "exoterra:block/common_power_bank",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "exoterra:block/common_power_bank",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "exoterra:block/common_power_bank",
+      "y": 90
+    }
+  }
+}

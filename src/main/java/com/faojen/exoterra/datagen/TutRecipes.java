@@ -21,7 +21,31 @@ public class TutRecipes extends RecipeProvider {
 	
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-
+		
+// EXO GLASS BLOCK
+		ShapedRecipeBuilder.shaped(Registration.EXO_GLASS_BLOCK_ITEM.get())
+		.pattern("ccc")
+		.pattern("cgc")
+		.pattern("ccc")
+				
+		.define('c', Registration.FACETED_ALLUMINUM_PART.get())
+		.define('g', Items.GLASS)
+		.group("exoterra_blocks")
+		.unlockedBy("facpart", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PART.get()))
+		.save(consumer);		
+		
+// FACETED ALUMINUM BLOCK
+		ShapedRecipeBuilder.shaped(Registration.FACETED_ALUMINUM_BLOCK_ITEM.get())
+		.pattern("ppp")
+		.pattern(" i ")
+		.pattern("ppp")
+		
+		.define('p', Registration.FACETED_ALLUMINUM_PANEL.get())
+		.define('i', Items.IRON_BLOCK)
+		.group("exoterra_blocks")
+		.unlockedBy("facpanel", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PANEL.get()))
+		.save(consumer);		
+		
 //	STELLAR CONVERTER
 		ShapedRecipeBuilder.shaped(Registration.STELLAR_CONVERTER_BI.get())
 		.pattern("pfo")

@@ -20,7 +20,11 @@ public class TutItemTags extends ItemTagsProvider {
 		tag(Registration.SPACE_SAFE_ITEM)
 			.add(Registration.MACHINE_BODY_ITEM.get())
 			.add(Registration.STELLAR_CONVERTER_BI.get())
-			.add(Registration.FABRICATION_BENCH_BI.get());
+			.add(Registration.INFERIOR_POWER_BANK_BI.get())
+			.add(Registration.COMMON_POWER_BANK_BI.get())
+			.add(Registration.FABRICATION_BENCH_BI.get())
+			.add(Registration.EXO_GLASS_BLOCK_ITEM.get())
+			.add(Registration.FACETED_ALUMINUM_BLOCK_ITEM.get());
 		
 		tag(Tags.Items.ORES)
 			.add(Registration.STELLAR_ORE_OVERWORLD_ITEM.get())
@@ -64,6 +68,7 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.FACETED_ALLUMINUM_PANEL.get())
 			.add(Registration.FLUID_OUTLET.get())
 			.add(Registration.FRACTURIZER.get())
+			.add(Registration.MACHINE_BODY_ITEM.get())
 			.add(Registration.INF_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())
 			.add(Registration.INTERFACE_PANEL.get());

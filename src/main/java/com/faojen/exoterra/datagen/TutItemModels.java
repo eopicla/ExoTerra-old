@@ -34,8 +34,12 @@ public class TutItemModels extends ItemModelProvider {
 /*
  * 	BLOCKS
  */
-		String path = Registration.MACHINE_BODY.get().getRegistryName().getPath();
-        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
+		String macbod = Registration.MACHINE_BODY.get().getRegistryName().getPath();
+        getBuilder(macbod).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + macbod)));
+        String exglass = Registration.EXO_GLASS_BLOCK.get().getRegistryName().getPath();
+        getBuilder(exglass).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + exglass)));
+        String facblock = Registration.FACETED_ALUMINUM_BLOCK.get().getRegistryName().getPath();
+        getBuilder(facblock).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + facblock)));
 /*
  * 	STELLAR
  */
@@ -55,10 +59,16 @@ public class TutItemModels extends ItemModelProvider {
 /*
  * 	MACHINES
  */
-		 String path1 = Registration.STELLAR_CONVERTER.get().getRegistryName().getPath();
-         getBuilder(path1).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path1)));
+		 String stelcon = Registration.STELLAR_CONVERTER.get().getRegistryName().getPath();
+         getBuilder(stelcon).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + stelcon)));
          
-         String path2 = Registration.FABRICATION_BENCH.get().getRegistryName().getPath();
-         getBuilder(path2).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path2)));
+         String fabbench = Registration.FABRICATION_BENCH.get().getRegistryName().getPath();
+         getBuilder(fabbench).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + fabbench)));
+         
+         String infbank = Registration.INFERIOR_POWER_BANK.get().getRegistryName().getPath();
+         getBuilder(infbank).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + infbank)));
+         
+         String combank = Registration.COMMON_POWER_BANK.get().getRegistryName().getPath();
+         getBuilder(combank).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + combank)));
 	}
 }
