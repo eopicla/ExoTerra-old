@@ -88,8 +88,8 @@ public class TutRecipes extends RecipeProvider {
 		.unlockedBy("facpanel", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PANEL.get()))
 		.save(consumer);		
 		
-//	STELLAR CONVERTER
-		ShapedRecipeBuilder.shaped(Registration.STELLAR_CONVERTER_BI.get())
+//	PURIFICATION_BESTOWER
+		ShapedRecipeBuilder.shaped(Registration.PURIFICATION_BESTOWER_BI.get())
 		.pattern("pfo")
 		.pattern("mcm")
 		.pattern("mmm")

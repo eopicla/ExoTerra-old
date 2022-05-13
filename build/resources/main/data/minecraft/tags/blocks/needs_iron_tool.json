@@ -8,11 +8,10 @@
     "exoterra:machine_body",
     "exoterra:bauxite_ore_deepslate",
     "exoterra:bauxite_ore_overworld",
-    "exoterra:fabrication_bench",
     "exoterra:inferior_power_bank",
     "exoterra:common_power_bank",
     "exoterra:superior_power_bank",
-    "exoterra:stellar_converter",
+    "exoterra:purification_bestower",
     "exoterra:faceted_aluminum_block"
   ]
 }

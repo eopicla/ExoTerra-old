@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "side": "exoterra:block/purification_bestower_side",
+    "front": "exoterra:block/purification_bestower_fronton",
+    "bottom": "exoterra:block/purification_bestower_bottom",
+    "top": "exoterra:block/purification_bestower_top"
+  }
+}

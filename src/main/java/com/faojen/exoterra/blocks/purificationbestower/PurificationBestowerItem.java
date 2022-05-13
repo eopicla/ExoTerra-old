@@ -1,4 +1,4 @@
-package com.faojen.exoterra.blocks.stellarconverter;
+package com.faojen.exoterra.blocks.purificationbestower;
 
 import com.faojen.exoterra.Config;
 import com.faojen.exoterra.utils.MagicHelpers;
@@ -20,16 +20,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
 
-public class StellarConverterItem extends BlockItem {
+public class PurificationBestowerItem extends BlockItem {
 
-    public StellarConverterItem(Block blockIn, Properties builder) {
+    public PurificationBestowerItem(Block blockIn, Properties builder) {
         super(blockIn, builder);
     }
     
     @Override
 	public int getBarWidth(ItemStack stack) {
 		int energy = stack.getOrCreateTag().getInt("energy");
-		int maxEnergy = StellarConverterBE.ENERGY_CAPACITY_PUB;
+		int maxEnergy = PurificationBestowerBE.ENERGY_CAPACITY_PUB;
 		var stored = maxEnergy - energy;
 
 		return Math.round(13.0F - stored * 13.0F / maxEnergy);
@@ -38,7 +38,7 @@ public class StellarConverterItem extends BlockItem {
 	@Override
 	public int getBarColor(ItemStack stack) {
 		int energy = stack.getOrCreateTag().getInt("energy");
-		int maxEnergy = StellarConverterBE.ENERGY_CAPACITY_PUB;
+		int maxEnergy = PurificationBestowerBE.ENERGY_CAPACITY_PUB;
 
 		float f = Math.max(0.0F, (float) energy / (float) maxEnergy);
 
@@ -61,14 +61,14 @@ public class StellarConverterItem extends BlockItem {
             return;
  
         tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(Config.GENERAL.chargerMaxPower.get())));
-        tooltip.add(new TranslatableComponent("screen.exoterra.stellar", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(StellarConverterBE.FLUID_CAP_PUB)));
+        tooltip.add(new TranslatableComponent("screen.exoterra.stellar", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(PurificationBestowerBE.FLUID_CAP_PUB)));
     }
 
     @Override
     protected boolean updateCustomBlockEntityTag(BlockPos pos, Level worldIn, @Nullable Player player, ItemStack stack, BlockState state) {
         BlockEntity te = worldIn.getBlockEntity(pos);
-        if (te instanceof StellarConverterBE) {
-        	StellarConverterBE station = (StellarConverterBE) te;
+        if (te instanceof PurificationBestowerBE) {
+        	PurificationBestowerBE station = (PurificationBestowerBE) te;
         	FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
         	
             station.energyStorage.receiveEnergy(stack.getOrCreateTag().getInt("energy"), false);

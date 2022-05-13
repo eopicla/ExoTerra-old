@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "fabrication_bench",
+      "name": "stellar_converter",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
@@ -36,7 +36,7 @@
             },
             {
               "function": "minecraft:set_contents",
-              "type": "exoterra:fabrication_bench_be",
+              "type": "exoterra:purification_bestower_be",
               "entries": [
                 {
                   "type": "minecraft:dynamic",
@@ -45,7 +45,7 @@
               ]
             }
           ],
-          "name": "exoterra:fabrication_bench"
+          "name": "exoterra:purification_bestower"
         }
       ]
     }

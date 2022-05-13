@@ -3,7 +3,7 @@ package com.faojen.exoterra.blocks.compowerbank;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.capabilities.CommonExoterraEnergyTank;
+import com.faojen.exoterra.capabilities.powerbank.CommonExoterraEnergyTank;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;

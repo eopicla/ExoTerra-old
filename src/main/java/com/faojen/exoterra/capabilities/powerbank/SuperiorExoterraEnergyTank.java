@@ -1,18 +1,19 @@
-package com.faojen.exoterra.capabilities;
+package com.faojen.exoterra.capabilities.powerbank;
 
-import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBE;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class CommonExoterraEnergyTank implements IEnergyStorage, INBTSerializable<CompoundTag> {
+public class SuperiorExoterraEnergyTank implements IEnergyStorage, INBTSerializable<CompoundTag> {
     private static final String KEY = "energy";
     private int energy;
     private int capacity;
     private int maxInOut = 1000000;
-    private CommonPowerBankBE tile;
+    private SuperiorPowerBankBE tile;
 
-    public CommonExoterraEnergyTank(CommonPowerBankBE tile, int energy, int capacity) {
+    public SuperiorExoterraEnergyTank(SuperiorPowerBankBE tile, int energy, int capacity) {
         this.energy = energy;
         this.capacity = capacity;
         this.tile = tile;

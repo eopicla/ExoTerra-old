@@ -45,8 +45,7 @@ public class TutLanguageProvider extends LanguageProvider {
 /*
  * 		MACHINES
  */
-		addBlock(Registration.STELLAR_CONVERTER, "\u00A73Stellar\u00A7r Purification Bestower");
-		addBlock(Registration.FABRICATION_BENCH, "Component Serializer");
+		addBlock(Registration.PURIFICATION_BESTOWER, "\u00A73Stellar\u00A7r Purification Bestower");
 		addBlock(Registration.INFERIOR_POWER_BANK, "Power Bank (Inferior)");
 		addBlock(Registration.COMMON_POWER_BANK, "Power Bank (Common)");
 		addBlock(Registration.SUPERIOR_POWER_BANK, "Power Bank (Superior)");

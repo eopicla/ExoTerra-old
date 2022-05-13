@@ -1,19 +1,18 @@
-package com.faojen.exoterra.capabilities;
+package com.faojen.exoterra.capabilities.powerbank;
 
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
-
+import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class FabricationEnergyStorage implements IEnergyStorage, INBTSerializable<CompoundTag> {
+public class CommonExoterraEnergyTank implements IEnergyStorage, INBTSerializable<CompoundTag> {
     private static final String KEY = "energy";
     private int energy;
     private int capacity;
     private int maxInOut = 1000000;
-    private FabricationBenchBE tile;
+    private CommonPowerBankBE tile;
 
-    public FabricationEnergyStorage(FabricationBenchBE tile, int energy, int capacity) {
+    public CommonExoterraEnergyTank(CommonPowerBankBE tile, int energy, int capacity) {
         this.energy = energy;
         this.capacity = capacity;
         this.tile = tile;
@@ -59,7 +58,12 @@ public class FabricationEnergyStorage implements IEnergyStorage, INBTSerializabl
     // We don't use this method and thus we don't let other people use it either
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
-        return 0;
+    	 int energyExtracted = Math.min(energy, Math.min(this.maxInOut, maxExtract));
+    	 
+    	 if (!simulate)
+             energy -= energyExtracted;
+
+         return energyExtracted;
     }
 
     @Override
@@ -84,7 +88,7 @@ public class FabricationEnergyStorage implements IEnergyStorage, INBTSerializabl
 
     @Override
     public String toString() {
-        return "FabricationEnergyStorage{" +
+        return "CommonEnergyTank{" +
                 "energy=" + energy +
                 ", capacity=" + capacity +
                 ", maxInOut=" + maxInOut +

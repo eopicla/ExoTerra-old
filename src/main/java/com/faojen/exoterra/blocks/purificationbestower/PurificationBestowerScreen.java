@@ -1,4 +1,4 @@
-package com.faojen.exoterra.blocks.stellarconverter;
+package com.faojen.exoterra.blocks.purificationbestower;
 
 import java.awt.Color;
 import java.util.Arrays;
@@ -17,13 +17,13 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class StellarConverterScreen extends AbstractContainerScreen<StellarConverterContainer> {
+public class PurificationBestowerScreen extends AbstractContainerScreen<PurificationBestowerContainer> {
 	private static final ResourceLocation background = new ResourceLocation(ExoTerra.MODID,
 			"textures/gui/stellar_converter.png");
 
-	private final StellarConverterContainer container;
+	private final PurificationBestowerContainer container;
 
-	public StellarConverterScreen(StellarConverterContainer container, Inventory playerInventory, Component title) {
+	public PurificationBestowerScreen(PurificationBestowerContainer container, Inventory playerInventory, Component title) {
 		super(container, playerInventory, title);
 		this.container = container;
 	}

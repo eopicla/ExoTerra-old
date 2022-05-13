@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "exoterra:block/purification_bestower"
+    },
+    "facing=south": {
+      "model": "exoterra:block/purification_bestower",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "exoterra:block/purification_bestower",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "exoterra:block/purification_bestower",
+      "y": 90
+    }
+  }
+}

@@ -58,7 +58,7 @@ public class SuperiorPowerBankItem extends BlockItem {
         if (power == 0)
             return;
  
-        tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(15000000)));
+        tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(SUP_BANK_CAPACITY_PUB)));
     }
 
     @Override

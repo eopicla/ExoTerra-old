@@ -59,11 +59,8 @@ public class TutItemModels extends ItemModelProvider {
 /*
  * 	MACHINES
  */
-		 String stelcon = Registration.STELLAR_CONVERTER.get().getRegistryName().getPath();
-         getBuilder(stelcon).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + stelcon)));
-         
-         String fabbench = Registration.FABRICATION_BENCH.get().getRegistryName().getPath();
-         getBuilder(fabbench).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + fabbench)));
+		 String purbest = Registration.PURIFICATION_BESTOWER.get().getRegistryName().getPath();
+         getBuilder(purbest).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + purbest)));
          
          String infbank = Registration.INFERIOR_POWER_BANK.get().getRegistryName().getPath();
          getBuilder(infbank).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + infbank)));

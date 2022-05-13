@@ -1,19 +1,19 @@
-package com.faojen.exoterra.capabilities;
+package com.faojen.exoterra.capabilities.purificationbestower;
 
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class ChargerEnergyStorage implements IEnergyStorage, INBTSerializable<CompoundTag> {
+public class PurificationBestowerEnergy implements IEnergyStorage, INBTSerializable<CompoundTag> {
     private static final String KEY = "energy";
     private int energy;
     private int capacity;
     private int maxInOut = 1000000;
-    private StellarConverterBE tile;
+    private PurificationBestowerBE tile;
 
-    public ChargerEnergyStorage(StellarConverterBE tile, int energy, int capacity) {
+    public PurificationBestowerEnergy(PurificationBestowerBE tile, int energy, int capacity) {
         this.energy = energy;
         this.capacity = capacity;
         this.tile = tile;

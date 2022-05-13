@@ -1,4 +1,4 @@
-package com.faojen.exoterra.blocks.stellarconverter;
+package com.faojen.exoterra.blocks.purificationbestower;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -21,21 +21,21 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class StellarConverterContainer extends AbstractContainerMenu {
+public class PurificationBestowerContainer extends AbstractContainerMenu {
     private static final int SLOTS = 4;
 
     public final ContainerData data;
     public ItemStackHandler handler;
 
     // Tile can be null and shouldn't be used for accessing any data that needs to be up to date on both sides
-    private StellarConverterBE tile;
+    private PurificationBestowerBE tile;
 
-    public StellarConverterContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((StellarConverterBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8), windowId, playerInventory, new ItemStackHandler(4));
+    public PurificationBestowerContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
+        this((PurificationBestowerBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8), windowId, playerInventory, new ItemStackHandler(4));
     }
 
-    public StellarConverterContainer(@Nullable StellarConverterBE tile, ContainerData chargingStationData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
-        super(Registration.STELLAR_CONVERTER_CONTAINER.get(), windowId);
+    public PurificationBestowerContainer(@Nullable PurificationBestowerBE tile, ContainerData chargingStationData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
+        super(Registration.PURIFICATION_BESTOWER_CONTAINER.get(), windowId);
 
         this.handler = handler;
         this.tile = tile;
@@ -141,10 +141,10 @@ public class StellarConverterContainer extends AbstractContainerMenu {
         @Override
         public boolean mayPlace(@Nonnull ItemStack stack) {
         	
-        	 if (getSlotIndex() == StellarConverterBE.Slots.STELLAR.getId())
+        	 if (getSlotIndex() == PurificationBestowerBE.Slots.STELLAR.getId())
                  return true;
         	 
-            if (getSlotIndex() == StellarConverterBE.Slots.FUEL.getId())
+            if (getSlotIndex() == PurificationBestowerBE.Slots.FUEL.getId())
                 return ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) != 0;
 
             return super.mayPlace(stack);

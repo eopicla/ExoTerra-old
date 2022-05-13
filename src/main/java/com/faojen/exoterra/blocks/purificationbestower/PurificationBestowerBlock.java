@@ -1,4 +1,4 @@
-package com.faojen.exoterra.blocks.fabricationbench;
+package com.faojen.exoterra.blocks.purificationbestower;
 
 import java.util.List;
 
@@ -38,10 +38,10 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 
-public class FabricationBenchBlock extends Block implements EntityBlock {
+public class PurificationBestowerBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    
-    public FabricationBenchBlock() {
+
+    public PurificationBestowerBlock() {
         super(Properties.of(Material.STONE).strength(2f));
 
         registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH));
@@ -62,7 +62,7 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : FabricationBenchBE::ticker;
+        return level.isClientSide() ? null : PurificationBestowerBE::ticker;
     }
 
     @Override
@@ -71,36 +71,26 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
         BlockEntity te = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
 
         List<ItemStack> drops = super.getDrops(state, builder);
-        
-        if (te instanceof FabricationBenchBE) {
-        	FabricationBenchBE tileEntity = (FabricationBenchBE) te;
-        	
-        	CompoundTag Fluidtag = new CompoundTag();
+        if (te instanceof PurificationBestowerBE) {
+        	PurificationBestowerBE tileEntity = (PurificationBestowerBE) te;
+        	CompoundTag tag = new CompoundTag();
         	FluidStack fluid = tileEntity.fluidStorage.getFluid();
-        	fluid.writeToNBT(Fluidtag);
+        	fluid.writeToNBT(tag);
         	
-//	FLUID
-            drops.stream() 
-            .filter(e -> e.getItem() instanceof FabricationBenchItem)
-            .findFirst()
-            .ifPresent(e -> e.setTag(Fluidtag));
-
-// ENERGY
             drops.stream()
-            .filter(e -> e.getItem() instanceof FabricationBenchItem)
-            .findFirst()
-            .ifPresent(e -> e.getOrCreateTag().putInt("energy", tileEntity.energyStorage.getEnergyStored()));
-  
-// POWERLOAD
+                    .filter(e -> e.getItem() instanceof PurificationBestowerItem)
+                    .findFirst() 
+                    .ifPresent(e -> e.setTag(tag));
+        	
             drops.stream()
-            .filter(e -> e.getItem() instanceof FabricationBenchItem)
-            .findFirst()
-            .ifPresent(e -> e.getOrCreateTag().putInt("powerload", tileEntity.powerLoad));
+                    .filter(e -> e.getItem() instanceof PurificationBestowerItem)
+                    .findFirst()
+                    .ifPresent(e -> e.getOrCreateTag().putInt("energy", tileEntity.energyStorage.getEnergyStored()));
+        }
 
-    }
         return drops;
     }
-    
+
     @Override
     @SuppressWarnings("deprecation")
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
@@ -116,7 +106,7 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
             super.onRemove(state, worldIn, pos, newState, isMoving);
         }
     }
-    
+
     @Override
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockRayTraceResult) {
         // Only execute on the server
@@ -124,7 +114,7 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
             return InteractionResult.SUCCESS;
 
         BlockEntity te = worldIn.getBlockEntity(pos);
-        if (!(te instanceof FabricationBenchBE))
+        if (!(te instanceof PurificationBestowerBE))
             return InteractionResult.FAIL;
 
         NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) te, pos);
@@ -134,6 +124,6 @@ public class FabricationBenchBlock extends Block implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return Registration.FABRICATION_BENCH_BE.get().create(pos, state);
+        return Registration.PURIFICATION_BESTOWER_BE.get().create(pos, state);
     }
 }

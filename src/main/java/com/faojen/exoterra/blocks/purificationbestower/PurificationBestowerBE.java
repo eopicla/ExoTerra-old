@@ -1,12 +1,12 @@
-package com.faojen.exoterra.blocks.stellarconverter;
+package com.faojen.exoterra.blocks.purificationbestower;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.faojen.exoterra.Config;
-import com.faojen.exoterra.capabilities.ChargerEnergyStorage;
-import com.faojen.exoterra.capabilities.ChargerFluidStorage;
-import com.faojen.exoterra.capabilities.ChargerItemHandler;
+import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerEnergy;
+import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerFluid;
+import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerItemHandler;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -41,7 +41,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.items.ItemStackHandler;
 
 // Todo: completely rewrite this class from the ground up
-public class StellarConverterBE extends BlockEntity implements MenuProvider {
+public class PurificationBestowerBE extends BlockEntity implements MenuProvider {
 	public enum Slots {
 		FUEL(0), STELLAR(1);
 
@@ -64,11 +64,11 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	private int maxBurn = 0;
 	private int maxSBurn = 0;
 
-	public ChargerEnergyStorage energyStorage;
-	public ChargerFluidStorage fluidStorage;
-	private LazyOptional<ChargerEnergyStorage> energy;
-	private LazyOptional<ChargerFluidStorage> fluidh;
-	private LazyOptional<ItemStackHandler> inventory = LazyOptional.of(() -> new ChargerItemHandler(this));
+	public PurificationBestowerEnergy energyStorage;
+	public PurificationBestowerFluid fluidStorage;
+	private LazyOptional<PurificationBestowerEnergy> energy;
+	private LazyOptional<PurificationBestowerFluid> fluidh;
+	private LazyOptional<ItemStackHandler> inventory = LazyOptional.of(() -> new PurificationBestowerItemHandler(this));
 
 	// Handles tracking changes, kinda messy but apparently this is how the cool
 	// kids do it these days
@@ -76,15 +76,15 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 		@Override
 		public int get(int index) {
 			return switch (index) {
-			case 0 -> StellarConverterBE.this.energyStorage.getEnergyStored() / 32;
-			case 1 -> StellarConverterBE.this.energyStorage.getMaxEnergyStored() / 32;
-			case 2 -> StellarConverterBE.this.counter; 
-			case 3 -> StellarConverterBE.this.maxBurn;
+			case 0 -> PurificationBestowerBE.this.energyStorage.getEnergyStored() / 32;
+			case 1 -> PurificationBestowerBE.this.energyStorage.getMaxEnergyStored() / 32;
+			case 2 -> PurificationBestowerBE.this.counter; 
+			case 3 -> PurificationBestowerBE.this.maxBurn;
 			
-			case 4 -> StellarConverterBE.this.fluidStorage.getFluidAmount();
-			case 5 -> StellarConverterBE.this.fluidStorage.getCapacity();
-			case 6 -> StellarConverterBE.this.scounter;
-			case 7 -> StellarConverterBE.this.maxSBurn;
+			case 4 -> PurificationBestowerBE.this.fluidStorage.getFluidAmount();
+			case 5 -> PurificationBestowerBE.this.fluidStorage.getCapacity();
+			case 6 -> PurificationBestowerBE.this.scounter;
+			case 7 -> PurificationBestowerBE.this.maxSBurn;
 			default -> throw new IllegalArgumentException("Invalid index: " + index);
 			};
 		}
@@ -100,10 +100,10 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 		}
 	};
 
-	public StellarConverterBE(BlockPos pos, BlockState state) {
-		super(Registration.STELLAR_CONVERTER_BE.get(), pos, state);
-		this.energyStorage = new ChargerEnergyStorage(this, 0, Config.GENERAL.chargerMaxPower.get());
-		this.fluidStorage = new ChargerFluidStorage(this, FLUID_CAPACITY);
+	public PurificationBestowerBE(BlockPos pos, BlockState state) {
+		super(Registration.PURIFICATION_BESTOWER_BE.get(), pos, state);
+		this.energyStorage = new PurificationBestowerEnergy(this, 0, Config.GENERAL.chargerMaxPower.get());
+		this.fluidStorage = new PurificationBestowerFluid(this, FLUID_CAPACITY);
 		this.energy = LazyOptional.of(() -> this.energyStorage);
 		this.fluidh = LazyOptional.of(() -> this.fluidStorage);
 	}
@@ -112,12 +112,12 @@ public class StellarConverterBE extends BlockEntity implements MenuProvider {
 	@Override
 	public AbstractContainerMenu createMenu(int i, Inventory playerInventory, Player playerEntity) {
 		assert level != null;
-		return new StellarConverterContainer(this, this.chargingStationData, i, playerInventory,
+		return new PurificationBestowerContainer(this, this.chargingStationData, i, playerInventory,
 				this.inventory.orElse(new ItemStackHandler(2)));
 	}
 
 	public static <T extends BlockEntity> void ticker(Level level, BlockPos blockPos, BlockState state, T t) {
-		if (t instanceof StellarConverterBE entity) {
+		if (t instanceof PurificationBestowerBE entity) {
 			entity.inventory.ifPresent(handler -> {
 				entity.tryBurn();
 				entity.tryPurify();

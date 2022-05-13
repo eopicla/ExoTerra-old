@@ -7,19 +7,15 @@ import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBlock;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankContainer;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankItem;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBlock;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchContainer;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchItem;
 import com.faojen.exoterra.blocks.fluid.AqueousStellarBlock;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBE;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBlock;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankContainer;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankItem;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBlock;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterContainer;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterItem;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBlock;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerContainer;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerItem;
 import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBE;
 import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBlock;
 import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankContainer;
@@ -100,32 +96,18 @@ public class Registration {
 	/*
 	 * 	COMPLEX BLOCKS
 	 */
-			// Stellar Converter
+			// Purification Bestower
 					// Container
-						public static final RegistryObject<MenuType<StellarConverterContainer>> STELLAR_CONVERTER_CONTAINER = CONTAINERS.register("stellar_converter_container", 
-								() -> IForgeMenuType.create(StellarConverterContainer::new));
+						public static final RegistryObject<MenuType<PurificationBestowerContainer>> PURIFICATION_BESTOWER_CONTAINER = CONTAINERS.register("purification_bestower_container", 
+								() -> IForgeMenuType.create(PurificationBestowerContainer::new));
 					// Block
-						public static final RegistryObject<Block> STELLAR_CONVERTER = BLOCKS.register("stellar_converter", StellarConverterBlock::new);
+						public static final RegistryObject<Block> PURIFICATION_BESTOWER = BLOCKS.register("purification_bestower", PurificationBestowerBlock::new);
 					// Block Entity
-						public static final RegistryObject<BlockEntityType<StellarConverterBE>> STELLAR_CONVERTER_BE =
-								BLOCK_ENTITIES.register("stellar_converter_be", () -> BlockEntityType.Builder.of(StellarConverterBE::new, STELLAR_CONVERTER.get()).build(null));
+						public static final RegistryObject<BlockEntityType<PurificationBestowerBE>> PURIFICATION_BESTOWER_BE =
+								BLOCK_ENTITIES.register("purification_bestower_be", () -> BlockEntityType.Builder.of(PurificationBestowerBE::new, PURIFICATION_BESTOWER.get()).build(null));
 					// Item
-						public static final RegistryObject<Item> STELLAR_CONVERTER_BI = ITEMS.register("stellar_converter", 
-								() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.MACHINE_PROPERTIES));
-				
-			// Fabrication Bench
-					// Container
-						public static final RegistryObject<MenuType<FabricationBenchContainer>> FABRICATION_BENCH_CONTAINER = CONTAINERS.register("fabrication_bench_container", 
-								() -> IForgeMenuType.create(FabricationBenchContainer::new));
-					// Block
-						public static final RegistryObject<Block> FABRICATION_BENCH = BLOCKS.register("fabrication_bench", FabricationBenchBlock::new);
-					// Block Entity
-						public static final RegistryObject<BlockEntityType<FabricationBenchBE>> FABRICATION_BENCH_BE =
-								BLOCK_ENTITIES.register("fabrication_bench_be", () -> BlockEntityType.Builder.of(FabricationBenchBE::new, FABRICATION_BENCH.get()).build(null));
-					// Item
-						public static final RegistryObject<Item> FABRICATION_BENCH_BI = ITEMS.register("fabrication_bench", 
-								() -> new FabricationBenchItem(FABRICATION_BENCH.get(), Registration.MACHINE_PROPERTIES));
-						
+						public static final RegistryObject<Item> PURIFICATION_BESTOWER_BI = ITEMS.register("purification_bestower", 
+								() -> new PurificationBestowerItem(PURIFICATION_BESTOWER.get(), Registration.MACHINE_PROPERTIES));
 						
 			// inferior powerbank
 						// Container

@@ -3,7 +3,7 @@ package com.faojen.exoterra.blocks.infpowerbank;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.capabilities.InferiorExoterraEnergyTank;
+import com.faojen.exoterra.capabilities.powerbank.InferiorExoterraEnergyTank;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
