@@ -22,6 +22,7 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.STELLAR_CONVERTER_BI.get())
 			.add(Registration.INFERIOR_POWER_BANK_BI.get())
 			.add(Registration.COMMON_POWER_BANK_BI.get())
+			.add(Registration.SUPERIOR_POWER_BANK_BI.get())
 			.add(Registration.FABRICATION_BENCH_BI.get())
 			.add(Registration.EXO_GLASS_BLOCK_ITEM.get())
 			.add(Registration.FACETED_ALUMINUM_BLOCK_ITEM.get());

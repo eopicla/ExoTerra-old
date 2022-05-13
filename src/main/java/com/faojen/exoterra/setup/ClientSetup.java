@@ -4,6 +4,7 @@ import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankScreen;
 import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchScreen;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankScreen;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterScreen;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankScreen;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -20,6 +21,7 @@ public class ClientSetup {
             MenuScreens.register(Registration.FABRICATION_BENCH_CONTAINER.get(), FabricationBenchScreen::new);
             MenuScreens.register(Registration.INFERIOR_POWER_BANK_CONTAINER.get(), InferiorPowerBankScreen::new);
             MenuScreens.register(Registration.COMMON_POWER_BANK_CONTAINER.get(), CommonPowerBankScreen::new);
+            MenuScreens.register(Registration.SUPERIOR_POWER_BANK_CONTAINER.get(), SuperiorPowerBankScreen::new);
             
             ItemBlockRenderTypes.setRenderLayer(Registration.AQUEOUS_STELLAR.get(), renderType -> renderType == RenderType.translucent());
 			ItemBlockRenderTypes.setRenderLayer(Registration.FLOWING_AQUEOUS_STELLAR.get(), renderType -> renderType == RenderType.translucent());

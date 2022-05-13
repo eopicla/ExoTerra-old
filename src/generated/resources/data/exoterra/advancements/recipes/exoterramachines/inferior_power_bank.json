@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "exoterra:inferior_power_bank"
+    ]
+  },
+  "criteria": {
+    "stelcore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "exoterra:inf_stellar_core"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "exoterra:inferior_power_bank"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "stelcore",
+      "has_the_recipe"
+    ]
+  ]
+}

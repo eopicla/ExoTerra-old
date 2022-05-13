@@ -70,5 +70,8 @@ public class TutItemModels extends ItemModelProvider {
          
          String combank = Registration.COMMON_POWER_BANK.get().getRegistryName().getPath();
          getBuilder(combank).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + combank)));
+         
+         String supbank = Registration.SUPERIOR_POWER_BANK.get().getRegistryName().getPath();
+         getBuilder(supbank).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + supbank)));
 	}
 }

@@ -6,6 +6,8 @@ import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import static com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE.COM_BANK_CAPACITY_PUB;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.language.I18n;
@@ -35,7 +37,7 @@ public class CommonPowerBankScreen extends AbstractContainerScreen<CommonPowerBa
 				&& mouseY < (topPos + 26) + 53) {
 			this.renderTooltip(stack, new TranslatableComponent(
 					"screen.exoterra.energy", MagicHelpers.withSuffix(this.container.getEnergy()),
-					MagicHelpers.withSuffix(this.container.getMaxPower())), mouseX, mouseY);	
+					MagicHelpers.withSuffix(COM_BANK_CAPACITY_PUB)), mouseX, mouseY);	
 		}
 		
 		

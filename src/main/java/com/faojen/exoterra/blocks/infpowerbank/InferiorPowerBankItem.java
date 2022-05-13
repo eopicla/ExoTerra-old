@@ -11,6 +11,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 
+import static com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBE.INF_BANK_CAPACITY_PUB;
+
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class InferiorPowerBankItem extends BlockItem {
     @Override
 	public int getBarWidth(ItemStack stack) {
 		int energy = stack.getOrCreateTag().getInt("energy");
-		int maxEnergy = InferiorPowerBankBE.ENERGY_CAPACITY_PUB;
+		int maxEnergy = InferiorPowerBankBE.INF_BANK_CAPACITY_PUB;
 		var stored = maxEnergy - energy;
 
 		return Math.round(13.0F - stored * 13.0F / maxEnergy);
@@ -36,7 +38,7 @@ public class InferiorPowerBankItem extends BlockItem {
 	@Override
 	public int getBarColor(ItemStack stack) {
 		int energy = stack.getOrCreateTag().getInt("energy");
-		int maxEnergy = InferiorPowerBankBE.ENERGY_CAPACITY_PUB;
+		int maxEnergy = InferiorPowerBankBE.INF_BANK_CAPACITY_PUB;
 
 		float f = Math.max(0.0F, (float) energy / (float) maxEnergy);
 
@@ -56,7 +58,7 @@ public class InferiorPowerBankItem extends BlockItem {
         if (power == 0)
             return;
  
-        tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(500000)));
+        tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(INF_BANK_CAPACITY_PUB)));
     }
 
     @Override

@@ -22,6 +22,48 @@ public class TutRecipes extends RecipeProvider {
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 		
+		// SUP POWER BANK
+				ShapedRecipeBuilder.shaped(Registration.SUPERIOR_POWER_BANK_BI.get())
+				.pattern("sns")
+				.pattern("bcb")
+				.pattern("sns")
+						
+				.define('c', Registration.INFERIOR_POWER_BANK_BI.get())
+				.define('n', Items.NETHER_STAR)
+				.define('b', Registration.MACHINE_BODY_ITEM.get())
+				.define('s', Registration.INF_REFINED_STELLAR.get())
+				.group("exoterra_machines")
+				.unlockedBy("combank", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.COMMON_POWER_BANK_BI.get()))
+				.save(consumer);
+		
+		// COM POWER BANK
+		ShapedRecipeBuilder.shaped(Registration.COMMON_POWER_BANK_BI.get())
+		.pattern("sgs")
+		.pattern("bcb")
+		.pattern("sbs")
+				
+		.define('c', Registration.INFERIOR_POWER_BANK_BI.get())
+		.define('g', Registration.EXO_GLASS_BLOCK_ITEM.get())
+		.define('b', Registration.MACHINE_BODY_ITEM.get())
+		.define('s', Registration.INF_REFINED_STELLAR.get())
+		.group("exoterra_machines")
+		.unlockedBy("infbank", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INFERIOR_POWER_BANK_BI.get()))
+		.save(consumer);		
+
+		// INF POWER BANK
+				ShapedRecipeBuilder.shaped(Registration.INFERIOR_POWER_BANK_BI.get())
+				.pattern("gag")
+				.pattern("bcb")
+				.pattern("gbg")
+						
+				.define('c', Registration.INF_STELLAR_CORE.get())
+				.define('g', Registration.EXO_GLASS_BLOCK_ITEM.get())
+				.define('b', Registration.MACHINE_BODY_ITEM.get())
+				.define('a', Registration.INTERFACE_PANEL.get())
+				.group("exoterra_machines")
+				.unlockedBy("stelcore", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_STELLAR_CORE.get()))
+				.save(consumer);
+		
 // EXO GLASS BLOCK
 		ShapedRecipeBuilder.shaped(Registration.EXO_GLASS_BLOCK_ITEM.get())
 		.pattern("ccc")
@@ -78,10 +120,11 @@ public class TutRecipes extends RecipeProvider {
 //	MACHINE BODY
 			ShapedRecipeBuilder.shaped(Registration.MACHINE_BODY.get())
 			.pattern("fff")
-			.pattern("f f")
+			.pattern("fbf")
 			.pattern("fff")
 			
 			.define('f', Registration.FACETED_ALLUMINUM_PANEL.get())
+			.define('b', Registration.FACETED_ALUMINUM_BLOCK_ITEM.get())
 			// .define('a', Items.AIR)
 			.group("exoterra_blocks")
 			.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.FACETED_ALLUMINUM_PANEL.get()))
@@ -163,17 +206,29 @@ public class TutRecipes extends RecipeProvider {
 					.save(consumer);
 
 					
-					// smelting silktouched ore to ingot
+					// smelting silktouched aluminum to chunk
 					SimpleCookingRecipeBuilder.smelting(Ingredient.of(Registration.EXOTERRA_ORE_ITEM), 
 							Registration.BAUXITE_CHUNK.get(), 8.0f, 300)
 					.unlockedBy("has_ore", has(Registration.EXOTERRA_ORE_ITEM))
 					.save(consumer, "bauxite_chunk");
 					
-					// smelting chunk to ingot
+					// smelting aluminum chunk to ingot
 					SimpleCookingRecipeBuilder.smelting(Ingredient.of(Registration.BAUXITE_CHUNK.get()), 
 							Registration.ALLUMINUM_INGOT.get(), 8.0f, 250)
 					.unlockedBy("has_chunk", has(Registration.BAUXITE_CHUNK.get()))
 					.save(consumer, "alluminum_ingot");
+					
+					// smelting silktouched stellar to raw
+					SimpleCookingRecipeBuilder.smelting(Ingredient.of(Registration.STELLAR_ORE_ITEM), 
+							Registration.INF_RAW_STELLAR.get(), 24.0f, 1000)
+					.unlockedBy("has_stel_ore", has(Registration.STELLAR_ORE_ITEM))
+					.save(consumer, "inf_raw_stellar");
+					
+					// smelting raw stellar to ingot
+					SimpleCookingRecipeBuilder.smelting(Ingredient.of(Registration.INF_RAW_STELLAR.get()), 
+							Registration.INF_REFINED_STELLAR.get(), 32.0f, 2000)
+					.unlockedBy("has_stel_chunk", has(Registration.INF_RAW_STELLAR.get()))
+					.save(consumer, "inf_refined_stellar");
 					
 					
 //		ShapedRecipeBuilder.shaped(Registration.POWER_GEN.get())

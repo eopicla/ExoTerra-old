@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "exoterra:common_power_bank"
+    ]
+  },
+  "criteria": {
+    "infbank": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "exoterra:inferior_power_bank"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "exoterra:common_power_bank"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "infbank",
+      "has_the_recipe"
+    ]
+  ]
+}

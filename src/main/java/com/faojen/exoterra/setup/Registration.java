@@ -20,6 +20,10 @@ import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBlock;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterContainer;
 import com.faojen.exoterra.blocks.stellarconverter.StellarConverterItem;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBE;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBlock;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankContainer;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.item.AqueousStellarItem;
 import com.faojen.exoterra.item.InfRefinedStellar;
@@ -68,7 +72,10 @@ public class Registration {
 	public static final BlockBehaviour.Properties GLASS_BLOCK = BlockBehaviour.Properties.of(Material.GLASS).explosionResistance(6f).noOcclusion();
 	public static final BlockBehaviour.Properties SPACE_BLOCK = BlockBehaviour.Properties.of(Material.METAL).explosionResistance(6f);
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
-	public static final Item.Properties MACHINE_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP).stacksTo(1);
+	public static final Item.Properties MACHINE_PROPERTIES = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1);
+	public static final Item.Properties INFERIOR_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.UNCOMMON);
+	public static final Item.Properties COMMON_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.RARE);
+	public static final Item.Properties SUPERIOR_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.EPIC);
 	public static final Item.Properties FUEL_STELLAR = new Item.Properties().tab(ModSetup.ITEM_GROUP).rarity(Rarity.RARE).setNoRepair();
 	public static final Item.Properties BLANK = new Item.Properties().stacksTo(1);
 
@@ -131,7 +138,7 @@ public class Registration {
 									BLOCK_ENTITIES.register("inferior_power_bank_be", () -> BlockEntityType.Builder.of(InferiorPowerBankBE::new, INFERIOR_POWER_BANK.get()).build(null));
 						// Item
 							public static final RegistryObject<Item> INFERIOR_POWER_BANK_BI = ITEMS.register("inferior_power_bank", 
-									() -> new InferiorPowerBankItem(INFERIOR_POWER_BANK.get(), Registration.MACHINE_PROPERTIES));
+									() -> new InferiorPowerBankItem(INFERIOR_POWER_BANK.get(), Registration.INFERIOR_BANK_PROP));
 							
 			// common powerbank
 							// Container
@@ -144,7 +151,20 @@ public class Registration {
 										BLOCK_ENTITIES.register("common_power_bank_be", () -> BlockEntityType.Builder.of(CommonPowerBankBE::new, COMMON_POWER_BANK.get()).build(null));
 							// Item
 								public static final RegistryObject<Item> COMMON_POWER_BANK_BI = ITEMS.register("common_power_bank", 
-										() -> new CommonPowerBankItem(COMMON_POWER_BANK.get(), Registration.MACHINE_PROPERTIES));
+										() -> new CommonPowerBankItem(COMMON_POWER_BANK.get(), Registration.COMMON_BANK_PROP));
+								
+			// common powerbank
+								// Container
+									public static final RegistryObject<MenuType<SuperiorPowerBankContainer>> SUPERIOR_POWER_BANK_CONTAINER = CONTAINERS.register("superior_power_bank_container", 
+											() -> IForgeMenuType.create(SuperiorPowerBankContainer::new));
+								// Block
+									public static final RegistryObject<Block> SUPERIOR_POWER_BANK = BLOCKS.register("superior_power_bank", SuperiorPowerBankBlock::new);
+								// Block Entity
+									public static final RegistryObject<BlockEntityType<SuperiorPowerBankBE>> SUPERIOR_POWER_BANK_BE =
+											BLOCK_ENTITIES.register("superior_power_bank_be", () -> BlockEntityType.Builder.of(SuperiorPowerBankBE::new, SUPERIOR_POWER_BANK.get()).build(null));
+								// Item
+									public static final RegistryObject<Item> SUPERIOR_POWER_BANK_BI = ITEMS.register("superior_power_bank", 
+											() -> new SuperiorPowerBankItem(SUPERIOR_POWER_BANK.get(), Registration.SUPERIOR_BANK_PROP));
 						
 			
 		

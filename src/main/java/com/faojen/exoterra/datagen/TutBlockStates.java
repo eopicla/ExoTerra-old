@@ -37,9 +37,19 @@ public class TutBlockStates extends BlockStateProvider {
 		fabricationBenchModel();
 		inferiorPowerBankModel();
 		commonPowerBankModel();
+		superiorPowerBankModel();
 
 	}
 
+	private void superiorPowerBankModel() {
+
+		horizontalBlock(Registration.SUPERIOR_POWER_BANK.get(),
+				models().orientableWithBottom(Registration.SUPERIOR_POWER_BANK.get().getRegistryName().getPath(),
+						modLoc("block/superior_power_bank_side"), modLoc("block/superior_power_bank_fronton"),
+						modLoc("block/superior_power_bank_bottom"), modLoc("block/superior_power_bank_top")));
+
+	}
+	
 	private void inferiorPowerBankModel() {
 
 		horizontalBlock(Registration.INFERIOR_POWER_BANK.get(),
