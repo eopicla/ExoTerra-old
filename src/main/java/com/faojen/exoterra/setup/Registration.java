@@ -7,6 +7,10 @@ import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBlock;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankContainer;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankItem;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystBE;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystBlock;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystContainer;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystItem;
 import com.faojen.exoterra.blocks.fluid.AqueousStellarBlock;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBE;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBlock;
@@ -23,6 +27,7 @@ import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.item.AqueousStellarItem;
 import com.faojen.exoterra.item.InfRefinedStellar;
+import com.faojen.exoterra.item.PureStellar;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -96,6 +101,20 @@ public class Registration {
 	/*
 	 * 	COMPLEX BLOCKS
 	 */
+	
+		// Crystallization Catalyst
+				// Container
+					public static final RegistryObject<MenuType<CrystalCatalystContainer>> CRYSTAL_CATALYST_CONTAINER = CONTAINERS.register("crystal_catalyst_container", 
+							() -> IForgeMenuType.create(CrystalCatalystContainer::new));
+				// Block
+					public static final RegistryObject<Block> CRYSTAL_CATALYST = BLOCKS.register("crystal_catalyst", CrystalCatalystBlock::new);
+				// Block Entity
+					public static final RegistryObject<BlockEntityType<CrystalCatalystBE>> CRYSTAL_CATALYST_BE =
+							BLOCK_ENTITIES.register("crystal_catalyst_be", () -> BlockEntityType.Builder.of(CrystalCatalystBE::new, CRYSTAL_CATALYST.get()).build(null));
+				// Item
+					public static final RegistryObject<Item> CRYSTAL_CATALYST_BI = ITEMS.register("crystal_catalyst", 
+							() -> new CrystalCatalystItem(CRYSTAL_CATALYST.get(), Registration.MACHINE_PROPERTIES));
+	
 			// Purification Bestower
 					// Container
 						public static final RegistryObject<MenuType<PurificationBestowerContainer>> PURIFICATION_BESTOWER_CONTAINER = CONTAINERS.register("purification_bestower_container", 
@@ -184,6 +203,8 @@ public class Registration {
 	public static final RegistryObject<Item> BAUXITE_CHUNK = ITEMS.register("bauxite_chunk", () -> new Item(ITEM_PROPERTIES));
 	public static final RegistryObject<Item> BLOCKER = ITEMS.register("blocker", () -> new Item(BLANK));
 	public static final RegistryObject<Item> ALLUMINUM_INGOT = ITEMS.register("alluminum_ingot", () -> new Item(ITEM_PROPERTIES));
+	public static final RegistryObject<Item> PURE_STELLAR = ITEMS.register("pure_stellar", () -> new Item(ITEM_PROPERTIES));
+	
 /*
  * 		MACHINE BLOCKS	
  */

@@ -45,6 +45,7 @@ public class TutItemModels extends ItemModelProvider {
  */
 		singleTexture(Registration.INF_RAW_STELLAR.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/inf_raw_stellar"));
 		singleTexture(Registration.INF_REFINED_STELLAR.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/inf_refined_stellar"));
+		singleTexture(Registration.PURE_STELLAR.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/pure_stellar"));
 /*
  * 	COMPONENTS
  */
@@ -70,5 +71,8 @@ public class TutItemModels extends ItemModelProvider {
          
          String supbank = Registration.SUPERIOR_POWER_BANK.get().getRegistryName().getPath();
          getBuilder(supbank).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + supbank)));
+         
+         String crycat = Registration.CRYSTAL_CATALYST.get().getRegistryName().getPath();
+         getBuilder(crycat).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + crycat)));
 	}
 }

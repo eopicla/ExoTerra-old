@@ -38,6 +38,7 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.INFERIOR_POWER_BANK.get())
 			.add(Registration.COMMON_POWER_BANK.get())
 			.add(Registration.SUPERIOR_POWER_BANK.get())
+			.add(Registration.CRYSTAL_CATALYST.get())
 			.add(Registration.BAUXITE_ORE_DEEPSLATE.get())
 			.add(Registration.BAUXITE_ORE_OVERWORLD.get())
 			.add(Registration.FACETED_ALUMINUM_BLOCK.get());
@@ -54,7 +55,9 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.COMMON_POWER_BANK.get())
 			.add(Registration.SUPERIOR_POWER_BANK.get())
 			.add(Registration.PURIFICATION_BESTOWER.get())
+			.add(Registration.CRYSTAL_CATALYST.get())
 			.add(Registration.FACETED_ALUMINUM_BLOCK.get());
+		
 		
 		tag(Tags.Blocks.ORES)
 			.add(Registration.STELLAR_ORE_OVERWORLD.get())
@@ -81,6 +84,7 @@ public class TutBlockTags extends BlockTagsProvider {
 		tag(Registration.EXOTERRA_BLOCKS)
 			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.PURIFICATION_BESTOWER.get())
+			.add(Registration.CRYSTAL_CATALYST.get())
 			.add(Registration.INFERIOR_POWER_BANK.get())
 			.add(Registration.COMMON_POWER_BANK.get())
 			.add(Registration.SUPERIOR_POWER_BANK.get())

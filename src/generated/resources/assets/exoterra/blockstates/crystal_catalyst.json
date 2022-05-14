@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "exoterra:block/crystal_catalyst"
+    },
+    "facing=south": {
+      "model": "exoterra:block/crystal_catalyst",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "exoterra:block/crystal_catalyst",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "exoterra:block/crystal_catalyst",
+      "y": 90
+    }
+  }
+}

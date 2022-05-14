@@ -16,6 +16,7 @@ public class TutLootTables extends BaseLootTableProvider {
 		lootTables.put(Registration.INFERIOR_POWER_BANK.get(), createStandardTable("inferior_power_bank", Registration.INFERIOR_POWER_BANK.get(), Registration.INFERIOR_POWER_BANK_BE.get()));
 		lootTables.put(Registration.COMMON_POWER_BANK.get(), createStandardTable("common_power_bank", Registration.COMMON_POWER_BANK.get(), Registration.COMMON_POWER_BANK_BE.get()));
 		lootTables.put(Registration.SUPERIOR_POWER_BANK.get(), createStandardTable("superior_power_bank", Registration.SUPERIOR_POWER_BANK.get(), Registration.SUPERIOR_POWER_BANK_BE.get()));
+		lootTables.put(Registration.CRYSTAL_CATALYST.get(), createStandardTable("crystal_catalyst", Registration.CRYSTAL_CATALYST.get(), Registration.CRYSTAL_CATALYST_BE.get()));
 		
 		lootTables.put(Registration.MACHINE_BODY.get(), createSimpleTable("machine_body", Registration.MACHINE_BODY.get()));
 		lootTables.put(Registration.EXO_GLASS_BLOCK.get(), createSimpleTable("exo_glass_block", Registration.EXO_GLASS_BLOCK.get()));

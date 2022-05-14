@@ -37,6 +37,16 @@ public class TutBlockStates extends BlockStateProvider {
 		inferiorPowerBankModel();
 		commonPowerBankModel();
 		superiorPowerBankModel();
+		crystalCatalystModel();
+
+	}
+	
+	private void crystalCatalystModel() {
+
+		horizontalBlock(Registration.CRYSTAL_CATALYST.get(),
+				models().orientableWithBottom(Registration.CRYSTAL_CATALYST.get().getRegistryName().getPath(),
+						modLoc("block/fabrication_bench_side"), modLoc("block/fabrication_bench_fronton"),
+						modLoc("block/fabrication_bench_bottom"), modLoc("block/fabrication_bench_top")));
 
 	}
 
