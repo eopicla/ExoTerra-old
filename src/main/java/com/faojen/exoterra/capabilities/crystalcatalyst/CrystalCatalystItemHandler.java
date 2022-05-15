@@ -27,10 +27,10 @@ public class CrystalCatalystItemHandler extends ItemStackHandler {
     
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
     	
-        if (slot == CrystalCatalystBE.Slots.INPUTFUEL.getId() && (! stack.is(Items.DIAMOND)))
+        if (slot == CrystalCatalystBE.Slots.INPUTFUEL.getId() && (! stack.is(Items.DIAMOND) && stack.getCount() == 1))
             return stack;
         
-        if (slot == CrystalCatalystBE.Slots.INPUTGHAST.getId() && (! stack.is(Items.GHAST_TEAR)))
+        if (slot == CrystalCatalystBE.Slots.INPUTGHAST.getId() && (! stack.is(Items.GHAST_TEAR) && stack.getCount() == 1))
             return stack;
 
         return super.insertItem(slot, stack, simulate);

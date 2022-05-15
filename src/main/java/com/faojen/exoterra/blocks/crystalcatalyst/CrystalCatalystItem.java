@@ -57,11 +57,13 @@ public class CrystalCatalystItem extends BlockItem {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
         FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
+        int crystallizing = stack.getOrCreateTag().getInt("cry");
     	int fluidAmount = fluid.getAmount();
         if (fluidAmount == 0)
             return;
  
         tooltip.add(new TranslatableComponent("screen.exoterra.stellar", MagicHelpers.withSuffix(fluidAmount), MagicHelpers.withSuffix(CrystalCatalystBE.FLUID_CAP_PUB)));
+        tooltip.add(new TranslatableComponent("screen.exoterra.crytooltip", MagicHelpers.withSuffix(crystallizing*100/2400)));
     }
 
     @Override
@@ -71,6 +73,7 @@ public class CrystalCatalystItem extends BlockItem {
         	CrystalCatalystBE station = (CrystalCatalystBE) te;
         	FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
         	
+        	station.setCrystallizing(stack.getOrCreateTag().getInt("cry"));
             station.fluidStorage.setFluid(fluid);
         }
 

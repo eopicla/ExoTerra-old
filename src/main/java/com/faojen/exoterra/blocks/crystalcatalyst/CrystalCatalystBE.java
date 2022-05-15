@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.faojen.exoterra.Config;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE.Slots;
 import com.faojen.exoterra.capabilities.crystalcatalyst.CrystalCatalystFluid;
 import com.faojen.exoterra.capabilities.crystalcatalyst.CrystalCatalystItemHandler;
 import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerEnergy;
@@ -45,7 +46,7 @@ import net.minecraftforge.items.ItemStackHandler;
 // Todo: completely rewrite this class from the ground up
 public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 	public enum Slots {
-		INPUTFUEL(0), INPUTGHAST(2), OUTPUT(3);
+		INPUTFUEL(0), INPUTGHAST(1), OUTPUT(2);
 
 		int id; 
 
@@ -58,15 +59,21 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 		}
 	}
 	
-	private static final int FLUID_CAPACITY = 25000;
-	public static final int FLUID_CAP_PUB = FLUID_CAPACITY;
+	private static final String CRY_KEY = "cry";
 	
-	private final int crystallizeTime = 50000;
-	public final int crystallizeTimePub = crystallizeTime;
+	private static final int FLUID_CAPACITY = 6000;
+	public static final int FLUID_CAP_PUB = FLUID_CAPACITY;
+	private int crystallizing;
+	
+	private int cryTime = 2400;
 	
 	private int scounter = 0;
 	private int maxSBurn = 0;
-
+	
+	private boolean isReady;
+	private boolean isFueled;
+	private boolean isSeeded;
+	
 	public CrystalCatalystFluid fluidStorage;
 	private LazyOptional<CrystalCatalystFluid> fluidh;
 	private LazyOptional<ItemStackHandler> inventory = LazyOptional.of(() -> new CrystalCatalystItemHandler(this));
@@ -82,6 +89,8 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 			case 1 -> CrystalCatalystBE.this.fluidStorage.getCapacity();
 			case 2 -> CrystalCatalystBE.this.scounter;
 			case 3 -> CrystalCatalystBE.this.maxSBurn;
+			case 4 -> CrystalCatalystBE.this.crystallizing;
+			case 5 -> CrystalCatalystBE.this.cryTime;
 			default -> throw new IllegalArgumentException("Invalid index: " + index);
 			};
 		}
@@ -93,7 +102,7 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 
 		@Override
 		public int getCount() {
-			return 4;
+			return 6;
 		}
 	};
 
@@ -108,17 +117,109 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 	public AbstractContainerMenu createMenu(int i, Inventory playerInventory, Player playerEntity) {
 		assert level != null;
 		return new CrystalCatalystContainer(this, this.crystalCatalystData, i, playerInventory,
-				this.inventory.orElse(new ItemStackHandler(4)));
+				this.inventory.orElse(new ItemStackHandler(3)));
 	}
 
+	public int getCrystallizing() {
+		return crystallizing;
+	}
+	
+	public void setCrystallizing(Integer num) {
+		crystallizing = num;
+	}
+	
+	public CompoundTag crystallizingToNBT() {
+		CompoundTag tag = new CompoundTag();
+        tag.putInt(CRY_KEY, this.crystallizing);
+        return tag;
+	}
+	
+	public void crystallizingFromNBT(CompoundTag nbt) {
+		this.crystallizing = nbt.getInt(CRY_KEY);
+	}
+	
 	public static <T extends BlockEntity> void ticker(Level level, BlockPos blockPos, BlockState state, T t) {
 		if (t instanceof CrystalCatalystBE entity) {
 			entity.inventory.ifPresent(handler -> {
-				// entity.tryCrystallize();
+				entity.tickCrystallize();
 			});
 		}
 	}
 	
+	private void tickCrystallize() {
+		if (level == null)
+			return;
+		FluidStack fluidtest = new FluidStack(Registration.AQUEOUS_STELLAR.get(), 1);
+		
+		boolean canCrystallize = fluidStorage.fill(fluidtest, FluidAction.SIMULATE) > 0;
+		System.out.println("crystallizing: " + crystallizing);
+		if(crystallizing > 0 && canCrystallize && crystallizing <= 2399) {
+			crystallize(fluidStorage);
+		} else if(canCrystallize) {
+			if (initCrystallize())
+				crystallize(fluidStorage);
+		} 
+			
+	}
+	// fluid drain should happen in initcrystallize, as the first action of the ticker.
+	// item extraction and insertion should exist in the crystallize funcion
+	private void crystallize(IFluidHandler fluidStorage) {
+		
+		crystallizing++;
+		scounter--;
+		
+		if(scounter == 0 && crystallizing == 0 ) {
+			maxSBurn = 0;
+			initCrystallize();
+		} else if(crystallizing >= cryTime) {
+			insertPure();
+			}
+		
+	}
+	
+	private void insertPure() {
+		ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+		ItemStack pure = new ItemStack(Registration.PURE_STELLAR.get());
+		
+		handler.insertItem(2, pure, false);
+		System.out.println("inserted pure ???");
+		System.out.println("current scounter: " + scounter + "curent crystallizing: " + crystallizing);
+		crystallizing = 0;
+		scounter = 0;
+		System.out.println("set crystallizing to 0... -> " + crystallizing);
+	}
+	
+	private boolean initCrystallize() {
+		
+		ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+		Item fuelitem = handler.getStackInSlot(Slots.INPUTFUEL.id).getItem();
+		Item seeditem = handler.getStackInSlot(Slots.INPUTGHAST.id).getItem();
+		
+		isFueled = fuelitem == Items.DIAMOND;
+		isSeeded = seeditem == Items.GHAST_TEAR;
+		
+		isReady = isFueled && isSeeded;
+		int purifyTime = 0;
+		
+		if(isReady) {
+			purifyTime = cryTime;
+		}
+		
+		if(purifyTime > 0 && fluidStorage.getFluidAmount() > 3000) {
+			 FluidStack stellar = new FluidStack(Registration.AQUEOUS_STELLAR.get(), purifyTime);
+			
+			 handler.extractItem(0, 1, false);
+			 handler.extractItem(1, 1, false);
+			 fluidStorage.drain(stellar, FluidAction.EXECUTE);
+			 
+			 setChanged();
+			 scounter = (int) Math.floor(purifyTime) / 1;
+			 maxSBurn = scounter;
+			 return true;
+		 }
+		 return false;
+		
+	}
 	
 	@Override
 	public void load(CompoundTag compound) {
@@ -126,6 +227,7 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 
 		inventory.ifPresent(h -> h.deserializeNBT(compound.getCompound("inv")));
 		fluidh.ifPresent(h -> h.deserializeNBT(compound.getCompound("fluid")));
+		crystallizingFromNBT(compound.getCompound("cry"));
 		
 		scounter = compound.getInt("scounter");
 		maxSBurn = compound.getInt("maxsburn");
@@ -136,10 +238,11 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 		
 		inventory.ifPresent(h -> compound.put("inv", h.serializeNBT()));
 		fluidh.ifPresent(h -> compound.put("fluid", h.serializeNBT()));
+		compound.put("cry", crystallizingToNBT());
 		
 		compound.putInt("scounter", scounter);
 		compound.putInt("maxsburn", maxSBurn);
-
+		
 	}
 	
 	@Nonnull

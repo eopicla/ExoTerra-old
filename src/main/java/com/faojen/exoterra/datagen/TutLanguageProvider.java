@@ -81,7 +81,8 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.empty", "Empty");
 		add("screen.exoterra.powerload", "\u00A77Load:\u00A7r %s FE/Tick");
 		add("screen.exoterra.inventorytip", "%s/%s");
-		add("screen.exoterra.crystal_crystallize_time", "Crystallization: %s");
+		add("screen.exoterra.percentage", "%s%%");
+		add("screen.exoterra.crytooltip", "Crystallization: %s%%");
 		
 		add("screen.exoterra.stellar_converter_guititle", "Purification Bestower");
 		add("screen.exoterra.crystal_catalyst_guititle", "Crystallization Catalyst");

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerItem;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -81,6 +82,11 @@ public class CrystalCatalystBlock extends Block implements EntityBlock {
                     .filter(e -> e.getItem() instanceof CrystalCatalystItem)
                     .findFirst() 
                     .ifPresent(e -> e.setTag(tag));
+            
+            drops.stream()
+            .filter(e -> e.getItem() instanceof CrystalCatalystItem)
+            .findFirst()
+            .ifPresent(e -> e.getOrCreateTag().putInt("cry", tileEntity.getCrystallizing()));
         	
         }
 

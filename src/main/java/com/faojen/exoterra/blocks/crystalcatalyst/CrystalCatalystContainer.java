@@ -30,7 +30,7 @@ public class CrystalCatalystContainer extends AbstractContainerMenu {
     private CrystalCatalystBE tile;
 
     public CrystalCatalystContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((CrystalCatalystBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4), windowId, playerInventory, new ItemStackHandler(4));
+        this((CrystalCatalystBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(6), windowId, playerInventory, new ItemStackHandler(4));
     }
 
     public CrystalCatalystContainer(@Nullable CrystalCatalystBE tile, ContainerData crystalCatalystData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
@@ -103,11 +103,11 @@ public class CrystalCatalystContainer extends AbstractContainerMenu {
     }
     
     public int getMaxCapacity() {
-        return this.data.get(1) * 32;
+        return this.data.get(1);
     }
 
     public int getFluidStored() {
-        return this.data.get(0) * 32;
+        return this.data.get(0);
     }
 
     public int getMaxBurn() {
@@ -116,6 +116,14 @@ public class CrystalCatalystContainer extends AbstractContainerMenu {
 
     public int getRemaining() {
         return this.data.get(2);
+    }
+    
+    public int getCrystallizing() {
+        return this.data.get(4);
+    }
+    
+    public int getMaxCrystallizing() {
+        return this.data.get(5);
     }
 
     static class RestrictedSlot extends SlotItemHandler {
@@ -126,10 +134,10 @@ public class CrystalCatalystContainer extends AbstractContainerMenu {
         @Override
         public boolean mayPlace(@Nonnull ItemStack stack) {
         	
-        	 if (getSlotIndex() == CrystalCatalystBE.Slots.INPUTFUEL.getId())
+        	 if (getSlotIndex() == CrystalCatalystBE.Slots.INPUTFUEL.getId() && stack.getCount() == 1)
         		 return stack.getItem() == Items.DIAMOND;
             
-            if (getSlotIndex() == CrystalCatalystBE.Slots.INPUTGHAST.getId())
+            if (getSlotIndex() == CrystalCatalystBE.Slots.INPUTGHAST.getId() && stack.getCount() == 1)
                 return stack.getItem() == Items.GHAST_TEAR;
             
             if (getSlotIndex() == CrystalCatalystBE.Slots.OUTPUT.getId())

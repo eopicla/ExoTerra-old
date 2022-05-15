@@ -72,16 +72,6 @@ public class CrystalCatalystFluid implements IFluidHandler, IFluidTank {
     }
     
     public CrystalCatalystFluid deserializeNBT(CompoundTag compound) {
-//    	int amount = nbt.getInt(FLUID_STORED);
-//    	FluidStack fluid;
-//    	
-//    	System.out.println("FROM DESERIALIZE | amount: " + nbt.getInt(FLUID_STORED) + " | fluid: " + nbt.getString(FLUID) + " | ");
-//    	
-//    	if(nbt.getString(FLUID) == "stellarwaterrrrrrrr") {
-//    		
-//    		fluid = new FluidStack(Registration.AQUEOUS_STELLAR.get(), amount);
-//    		setFluid(fluid);
-//    	}
     	
     	this.fluid = FluidStack.loadFluidStackFromNBT(compound.getCompound(FLUID));
     	

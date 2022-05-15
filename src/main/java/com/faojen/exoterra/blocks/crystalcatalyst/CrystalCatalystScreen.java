@@ -1,6 +1,6 @@
 package com.faojen.exoterra.blocks.crystalcatalyst;
 
-import static com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE.COM_BANK_CAPACITY_PUB;
+import static com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystBE.FLUID_CAP_PUB;
 
 import java.awt.Color;
 import java.util.Arrays;
@@ -83,7 +83,7 @@ public class CrystalCatalystScreen extends AbstractContainerScreen<CrystalCataly
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
 		
 		Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.crystal_catalyst_guititle"), 
-				62, 15,Color.WHITE.getRGB());
+				62, 4,Color.WHITE.getRGB());
 		
 //		Minecraft.getInstance().font.draw(stack, I18n.get("I: " + container.get), 
 //				15, 28,Color.DARK_GRAY.getRGB());
@@ -92,8 +92,7 @@ public class CrystalCatalystScreen extends AbstractContainerScreen<CrystalCataly
 //				15, 28,Color.DARK_GRAY.getRGB());
 		
 		
-//		this.font.draw(stack, new TranslatableComponent("screen.exoterra.fluidplaque", MagicHelpers.withSuffix(this.container.getFluidStored()), MagicHelpers.withSuffix(this.container.get())), 
-//				98 ,63 ,Color.BLACK.getRGB());
+		this.font.draw(stack, new TranslatableComponent("screen.exoterra.percentage", MagicHelpers.withSuffix(this.container.getCrystallizing()*100/2400)),  102 ,65 ,Color.WHITE.getRGB());
 //		
 //		this.font.draw(stack, new TranslatableComponent("screen.exoterra.powerplaque", MagicHelpers.withSuffix(this.container.getEnergy()), MagicHelpers.withSuffix(this.container.getMaxPower())), 
 //				8 ,63 ,Color.BLACK.getRGB());
