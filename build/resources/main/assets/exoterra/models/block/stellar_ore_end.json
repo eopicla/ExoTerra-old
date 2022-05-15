@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "exoterra:block/stellar_ore_end"
-  }
-}

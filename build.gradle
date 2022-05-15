@@ -29,7 +29,7 @@ gradle.startParameter.showStacktrace = org.gradle.api.logging.configuration.Show
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2022.03.13-1.18.2'
+    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
 
     runs {
         client {
