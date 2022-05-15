@@ -414,6 +414,7 @@ forge*changelog.txt
 
 /build
 /build/**
+/build/
 /run
 /.gradle
 *.classpath
