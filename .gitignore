@@ -409,3 +409,22 @@ test/unit/specs/mask_diffs
 
 # Files from Forge MDK
 forge*changelog.txt
+
+# Forge specific outputs
+/run
+/.gradle
+*.classpath
+*.project
+.settings
+/eclipse
+*.txt
+*.launch
+
+*.blend1
+*.blend2
+/bin
+/logs
+/src/datagen/*/resources
+/src/datagen/*/annotation_generated
+/annotation-processor/bin
+libs/
