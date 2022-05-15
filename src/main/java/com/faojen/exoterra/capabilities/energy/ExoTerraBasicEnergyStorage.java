@@ -1,21 +1,21 @@
-package com.faojen.exoterra.capabilities.powerbank;
+package com.faojen.exoterra.capabilities.energy;
 
-import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class CommonExoterraEnergyTank implements IEnergyStorage, INBTSerializable<CompoundTag> {
+public class ExoTerraBasicEnergyStorage implements IEnergyStorage, INBTSerializable<CompoundTag> {
     private static final String KEY = "energy";
     private int energy;
-    private int capacity;
-    private int maxInOut = 1000000;
-    private CommonPowerBankBE tile;
-
-    public CommonExoterraEnergyTank(CommonPowerBankBE tile, int energy, int capacity) {
+    private int capacity; // Needs to be handed INT
+    private int maxInOut; // Needs to be handed INT
+    private BlockEntity tile;
+    public ExoTerraBasicEnergyStorage(BlockEntity tile, int energy, int capacity, int inout) {
         this.energy = energy;
         this.capacity = capacity;
         this.tile = tile;
+        this.maxInOut = inout;
     }
 
     @Override
@@ -58,12 +58,12 @@ public class CommonExoterraEnergyTank implements IEnergyStorage, INBTSerializabl
     // We don't use this method and thus we don't let other people use it either
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
-    	 int energyExtracted = Math.min(energy, Math.min(this.maxInOut, maxExtract));
-    	 
-    	 if (!simulate)
-             energy -= energyExtracted;
+        int energyExtracted = Math.min(energy, Math.min(this.maxInOut, maxExtract));
 
-         return energyExtracted;
+        if (!simulate)
+            energy -= energyExtracted;
+
+        return energyExtracted;
     }
 
     @Override
@@ -88,7 +88,7 @@ public class CommonExoterraEnergyTank implements IEnergyStorage, INBTSerializabl
 
     @Override
     public String toString() {
-        return "CommonEnergyTank{" +
+        return "ChargerEnergyStorage{" +
                 "energy=" + energy +
                 ", capacity=" + capacity +
                 ", maxInOut=" + maxInOut +

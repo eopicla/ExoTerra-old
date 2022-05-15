@@ -3,7 +3,7 @@ package com.faojen.exoterra.blocks.superiorpowerbank;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.capabilities.powerbank.SuperiorExoterraEnergyTank;
+import com.faojen.exoterra.capabilities.energy.ExoTerraBasicEnergyStorage;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -40,11 +40,19 @@ public class SuperiorPowerBankBE extends BlockEntity implements MenuProvider {
 			return id;
 		}
 	}
-	
+	/**
+	 * Plug in numbers here for BE configuration
+	 */
+	private int energyCapacity = 50000000;
+	private int energyMaxInOut = 200000;
+	/**
+	 * When changing energy capacity, make sure to also change the static public value below
+	 * to the same number, otherwise guis will not display energy correctly.
+	 */
 	public static final int SUP_BANK_CAPACITY_PUB = 50000000;
 
-	public SuperiorExoterraEnergyTank energyStorage;
-	private LazyOptional<SuperiorExoterraEnergyTank> energy;
+	public ExoTerraBasicEnergyStorage energyStorage;
+	private LazyOptional<ExoTerraBasicEnergyStorage> energy;
 
 	// Handles tracking changes, kinda messy but apparently this is how the cool
 	// kids do it these days
@@ -72,7 +80,7 @@ public class SuperiorPowerBankBE extends BlockEntity implements MenuProvider {
 
 	public SuperiorPowerBankBE(BlockPos pos, BlockState state) {
 		super(Registration.SUPERIOR_POWER_BANK_BE.get(), pos, state);
-		this.energyStorage = new SuperiorExoterraEnergyTank(this, 0, SUP_BANK_CAPACITY_PUB);
+		this.energyStorage = new ExoTerraBasicEnergyStorage(this, 0, energyCapacity, energyMaxInOut);
 		this.energy = LazyOptional.of(() -> this.energyStorage);
 	}
 
