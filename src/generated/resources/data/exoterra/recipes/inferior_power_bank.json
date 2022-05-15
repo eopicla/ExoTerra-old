@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "exoterra_machines",
+  "pattern": [
+    "gag",
+    "bcb",
+    "gbg"
+  ],
+  "key": {
+    "c": {
+      "item": "exoterra:inf_stellar_core"
+    },
+    "g": {
+      "item": "exoterra:exo_glass_block"
+    },
+    "b": {
+      "item": "exoterra:machine_body"
+    },
+    "a": {
+      "item": "exoterra:interface_panel"
+    }
+  },
+  "result": {
+    "item": "exoterra:inferior_power_bank"
+  }
+}

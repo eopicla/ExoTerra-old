@@ -34,12 +34,31 @@ public class TutBlockStates extends BlockStateProvider {
  * 	COMPLEX MODELS
  */
 		stellarConverterModel();
-		fabricationBenchModel();
 		inferiorPowerBankModel();
 		commonPowerBankModel();
+		superiorPowerBankModel();
+		crystalCatalystModel();
+
+	}
+	
+	private void crystalCatalystModel() {
+
+		horizontalBlock(Registration.CRYSTAL_CATALYST.get(),
+				models().orientableWithBottom(Registration.CRYSTAL_CATALYST.get().getRegistryName().getPath(),
+						modLoc("block/fabrication_bench_side"), modLoc("block/fabrication_bench_fronton"),
+						modLoc("block/fabrication_bench_bottom"), modLoc("block/fabrication_bench_top")));
 
 	}
 
+	private void superiorPowerBankModel() {
+
+		horizontalBlock(Registration.SUPERIOR_POWER_BANK.get(),
+				models().orientableWithBottom(Registration.SUPERIOR_POWER_BANK.get().getRegistryName().getPath(),
+						modLoc("block/superior_power_bank_side"), modLoc("block/superior_power_bank_fronton"),
+						modLoc("block/superior_power_bank_bottom"), modLoc("block/superior_power_bank_top")));
+
+	}
+	
 	private void inferiorPowerBankModel() {
 
 		horizontalBlock(Registration.INFERIOR_POWER_BANK.get(),
@@ -60,19 +79,11 @@ public class TutBlockStates extends BlockStateProvider {
 	
 	private void stellarConverterModel() {
 
-		horizontalBlock(Registration.STELLAR_CONVERTER.get(),
-				models().orientableWithBottom(Registration.STELLAR_CONVERTER.get().getRegistryName().getPath(),
-						modLoc("block/stellar_converter_side"), modLoc("block/stellar_converter_fronton"),
-						modLoc("block/stellar_converter_bottom"), modLoc("block/stellar_converter_top")));
+		horizontalBlock(Registration.PURIFICATION_BESTOWER.get(),
+				models().orientableWithBottom(Registration.PURIFICATION_BESTOWER.get().getRegistryName().getPath(),
+						modLoc("block/purification_bestower_side"), modLoc("block/purification_bestower_fronton"),
+						modLoc("block/purification_bestower_bottom"), modLoc("block/purification_bestower_top")));
 
 	}
 	
-	private void fabricationBenchModel() {
-
-		horizontalBlock(Registration.FABRICATION_BENCH.get(),
-				models().orientableWithBottom(Registration.FABRICATION_BENCH.get().getRegistryName().getPath(),
-						modLoc("block/fabrication_bench_side"), modLoc("block/fabrication_bench_fronton"),
-						modLoc("block/fabrication_bench_bottom"), modLoc("block/fabrication_bench_top")));
-
-	}
 }

@@ -2,10 +2,11 @@
   "replace": false,
   "values": [
     "exoterra:machine_body",
-    "exoterra:stellar_converter",
+    "exoterra:purification_bestower",
+    "exoterra:crystal_catalyst",
     "exoterra:inferior_power_bank",
     "exoterra:common_power_bank",
-    "exoterra:fabrication_bench",
+    "exoterra:superior_power_bank",
     "exoterra:faceted_aluminum_block",
     "exoterra:exo_glass_block"
   ]

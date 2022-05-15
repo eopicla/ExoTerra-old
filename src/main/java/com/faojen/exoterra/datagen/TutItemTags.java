@@ -19,10 +19,10 @@ public class TutItemTags extends ItemTagsProvider {
 	protected void addTags() {
 		tag(Registration.SPACE_SAFE_ITEM)
 			.add(Registration.MACHINE_BODY_ITEM.get())
-			.add(Registration.STELLAR_CONVERTER_BI.get())
+			.add(Registration.PURIFICATION_BESTOWER_BI.get())
 			.add(Registration.INFERIOR_POWER_BANK_BI.get())
 			.add(Registration.COMMON_POWER_BANK_BI.get())
-			.add(Registration.FABRICATION_BENCH_BI.get())
+			.add(Registration.SUPERIOR_POWER_BANK_BI.get())
 			.add(Registration.EXO_GLASS_BLOCK_ITEM.get())
 			.add(Registration.FACETED_ALUMINUM_BLOCK_ITEM.get());
 		

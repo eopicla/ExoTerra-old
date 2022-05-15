@@ -3,7 +3,7 @@ package com.faojen.exoterra.blocks.compowerbank;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.capabilities.CommonExoterraEnergyTank;
+import com.faojen.exoterra.capabilities.powerbank.CommonExoterraEnergyTank;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -41,7 +41,7 @@ public class CommonPowerBankBE extends BlockEntity implements MenuProvider {
 		}
 	}
 	
-	public static final int ENERGY_CAPACITY_PUB = 1000000;
+	public static final int COM_BANK_CAPACITY_PUB = 20000000;
 
 	public CommonExoterraEnergyTank energyStorage;
 	private LazyOptional<CommonExoterraEnergyTank> energy;
@@ -72,7 +72,7 @@ public class CommonPowerBankBE extends BlockEntity implements MenuProvider {
 
 	public CommonPowerBankBE(BlockPos pos, BlockState state) {
 		super(Registration.COMMON_POWER_BANK_BE.get(), pos, state);
-		this.energyStorage = new CommonExoterraEnergyTank(this, 0, 1000000);
+		this.energyStorage = new CommonExoterraEnergyTank(this, 0, COM_BANK_CAPACITY_PUB);
 		this.energy = LazyOptional.of(() -> this.energyStorage);
 	}
 

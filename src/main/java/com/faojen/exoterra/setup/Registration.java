@@ -7,22 +7,27 @@ import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBE;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankBlock;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankContainer;
 import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankItem;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBE;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchBlock;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchContainer;
-import com.faojen.exoterra.blocks.fabricationbench.FabricationBenchItem;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystBE;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystBlock;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystContainer;
+import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystItem;
 import com.faojen.exoterra.blocks.fluid.AqueousStellarBlock;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBE;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankBlock;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankContainer;
 import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankItem;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBE;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterBlock;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterContainer;
-import com.faojen.exoterra.blocks.stellarconverter.StellarConverterItem;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBlock;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerContainer;
+import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerItem;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBE;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankBlock;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankContainer;
+import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.item.AqueousStellarItem;
 import com.faojen.exoterra.item.InfRefinedStellar;
+import com.faojen.exoterra.item.PureStellar;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -68,7 +73,10 @@ public class Registration {
 	public static final BlockBehaviour.Properties GLASS_BLOCK = BlockBehaviour.Properties.of(Material.GLASS).explosionResistance(6f).noOcclusion();
 	public static final BlockBehaviour.Properties SPACE_BLOCK = BlockBehaviour.Properties.of(Material.METAL).explosionResistance(6f);
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
-	public static final Item.Properties MACHINE_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP).stacksTo(1);
+	public static final Item.Properties MACHINE_PROPERTIES = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1);
+	public static final Item.Properties INFERIOR_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.UNCOMMON);
+	public static final Item.Properties COMMON_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.RARE);
+	public static final Item.Properties SUPERIOR_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.EPIC);
 	public static final Item.Properties FUEL_STELLAR = new Item.Properties().tab(ModSetup.ITEM_GROUP).rarity(Rarity.RARE).setNoRepair();
 	public static final Item.Properties BLANK = new Item.Properties().stacksTo(1);
 
@@ -93,32 +101,32 @@ public class Registration {
 	/*
 	 * 	COMPLEX BLOCKS
 	 */
-			// Stellar Converter
+	
+		// Crystallization Catalyst
+				// Container
+					public static final RegistryObject<MenuType<CrystalCatalystContainer>> CRYSTAL_CATALYST_CONTAINER = CONTAINERS.register("crystal_catalyst_container", 
+							() -> IForgeMenuType.create(CrystalCatalystContainer::new));
+				// Block
+					public static final RegistryObject<Block> CRYSTAL_CATALYST = BLOCKS.register("crystal_catalyst", CrystalCatalystBlock::new);
+				// Block Entity
+					public static final RegistryObject<BlockEntityType<CrystalCatalystBE>> CRYSTAL_CATALYST_BE =
+							BLOCK_ENTITIES.register("crystal_catalyst_be", () -> BlockEntityType.Builder.of(CrystalCatalystBE::new, CRYSTAL_CATALYST.get()).build(null));
+				// Item
+					public static final RegistryObject<Item> CRYSTAL_CATALYST_BI = ITEMS.register("crystal_catalyst", 
+							() -> new CrystalCatalystItem(CRYSTAL_CATALYST.get(), Registration.MACHINE_PROPERTIES));
+	
+			// Purification Bestower
 					// Container
-						public static final RegistryObject<MenuType<StellarConverterContainer>> STELLAR_CONVERTER_CONTAINER = CONTAINERS.register("stellar_converter_container", 
-								() -> IForgeMenuType.create(StellarConverterContainer::new));
+						public static final RegistryObject<MenuType<PurificationBestowerContainer>> PURIFICATION_BESTOWER_CONTAINER = CONTAINERS.register("purification_bestower_container", 
+								() -> IForgeMenuType.create(PurificationBestowerContainer::new));
 					// Block
-						public static final RegistryObject<Block> STELLAR_CONVERTER = BLOCKS.register("stellar_converter", StellarConverterBlock::new);
+						public static final RegistryObject<Block> PURIFICATION_BESTOWER = BLOCKS.register("purification_bestower", PurificationBestowerBlock::new);
 					// Block Entity
-						public static final RegistryObject<BlockEntityType<StellarConverterBE>> STELLAR_CONVERTER_BE =
-								BLOCK_ENTITIES.register("stellar_converter_be", () -> BlockEntityType.Builder.of(StellarConverterBE::new, STELLAR_CONVERTER.get()).build(null));
+						public static final RegistryObject<BlockEntityType<PurificationBestowerBE>> PURIFICATION_BESTOWER_BE =
+								BLOCK_ENTITIES.register("purification_bestower_be", () -> BlockEntityType.Builder.of(PurificationBestowerBE::new, PURIFICATION_BESTOWER.get()).build(null));
 					// Item
-						public static final RegistryObject<Item> STELLAR_CONVERTER_BI = ITEMS.register("stellar_converter", 
-								() -> new StellarConverterItem(STELLAR_CONVERTER.get(), Registration.MACHINE_PROPERTIES));
-				
-			// Fabrication Bench
-					// Container
-						public static final RegistryObject<MenuType<FabricationBenchContainer>> FABRICATION_BENCH_CONTAINER = CONTAINERS.register("fabrication_bench_container", 
-								() -> IForgeMenuType.create(FabricationBenchContainer::new));
-					// Block
-						public static final RegistryObject<Block> FABRICATION_BENCH = BLOCKS.register("fabrication_bench", FabricationBenchBlock::new);
-					// Block Entity
-						public static final RegistryObject<BlockEntityType<FabricationBenchBE>> FABRICATION_BENCH_BE =
-								BLOCK_ENTITIES.register("fabrication_bench_be", () -> BlockEntityType.Builder.of(FabricationBenchBE::new, FABRICATION_BENCH.get()).build(null));
-					// Item
-						public static final RegistryObject<Item> FABRICATION_BENCH_BI = ITEMS.register("fabrication_bench", 
-								() -> new FabricationBenchItem(FABRICATION_BENCH.get(), Registration.MACHINE_PROPERTIES));
-						
+						public static final RegistryObject<Item> PURIFICATION_BESTOWER_BI = ITEMS.register("purification_bestower", 
+								() -> new PurificationBestowerItem(PURIFICATION_BESTOWER.get(), Registration.MACHINE_PROPERTIES));
 						
 			// inferior powerbank
 						// Container
@@ -131,7 +139,7 @@ public class Registration {
 									BLOCK_ENTITIES.register("inferior_power_bank_be", () -> BlockEntityType.Builder.of(InferiorPowerBankBE::new, INFERIOR_POWER_BANK.get()).build(null));
 						// Item
 							public static final RegistryObject<Item> INFERIOR_POWER_BANK_BI = ITEMS.register("inferior_power_bank", 
-									() -> new InferiorPowerBankItem(INFERIOR_POWER_BANK.get(), Registration.MACHINE_PROPERTIES));
+									() -> new InferiorPowerBankItem(INFERIOR_POWER_BANK.get(), Registration.INFERIOR_BANK_PROP));
 							
 			// common powerbank
 							// Container
@@ -144,7 +152,20 @@ public class Registration {
 										BLOCK_ENTITIES.register("common_power_bank_be", () -> BlockEntityType.Builder.of(CommonPowerBankBE::new, COMMON_POWER_BANK.get()).build(null));
 							// Item
 								public static final RegistryObject<Item> COMMON_POWER_BANK_BI = ITEMS.register("common_power_bank", 
-										() -> new CommonPowerBankItem(COMMON_POWER_BANK.get(), Registration.MACHINE_PROPERTIES));
+										() -> new CommonPowerBankItem(COMMON_POWER_BANK.get(), Registration.COMMON_BANK_PROP));
+								
+			// common powerbank
+								// Container
+									public static final RegistryObject<MenuType<SuperiorPowerBankContainer>> SUPERIOR_POWER_BANK_CONTAINER = CONTAINERS.register("superior_power_bank_container", 
+											() -> IForgeMenuType.create(SuperiorPowerBankContainer::new));
+								// Block
+									public static final RegistryObject<Block> SUPERIOR_POWER_BANK = BLOCKS.register("superior_power_bank", SuperiorPowerBankBlock::new);
+								// Block Entity
+									public static final RegistryObject<BlockEntityType<SuperiorPowerBankBE>> SUPERIOR_POWER_BANK_BE =
+											BLOCK_ENTITIES.register("superior_power_bank_be", () -> BlockEntityType.Builder.of(SuperiorPowerBankBE::new, SUPERIOR_POWER_BANK.get()).build(null));
+								// Item
+									public static final RegistryObject<Item> SUPERIOR_POWER_BANK_BI = ITEMS.register("superior_power_bank", 
+											() -> new SuperiorPowerBankItem(SUPERIOR_POWER_BANK.get(), Registration.SUPERIOR_BANK_PROP));
 						
 			
 		
@@ -182,6 +203,8 @@ public class Registration {
 	public static final RegistryObject<Item> BAUXITE_CHUNK = ITEMS.register("bauxite_chunk", () -> new Item(ITEM_PROPERTIES));
 	public static final RegistryObject<Item> BLOCKER = ITEMS.register("blocker", () -> new Item(BLANK));
 	public static final RegistryObject<Item> ALLUMINUM_INGOT = ITEMS.register("alluminum_ingot", () -> new Item(ITEM_PROPERTIES));
+	public static final RegistryObject<Item> PURE_STELLAR = ITEMS.register("pure_stellar", () -> new Item(ITEM_PROPERTIES));
+	
 /*
  * 		MACHINE BLOCKS	
  */

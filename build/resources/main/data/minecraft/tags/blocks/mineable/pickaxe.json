@@ -5,13 +5,14 @@
     "exoterra:stellar_ore_nether",
     "exoterra:stellar_ore_end",
     "exoterra:stellar_ore_deepslate",
-    "exoterra:stellar_converter",
+    "exoterra:purification_bestower",
     "exoterra:machine_body",
     "exoterra:inferior_power_bank",
     "exoterra:common_power_bank",
+    "exoterra:superior_power_bank",
+    "exoterra:crystal_catalyst",
     "exoterra:bauxite_ore_deepslate",
     "exoterra:bauxite_ore_overworld",
-    "exoterra:fabrication_bench",
     "exoterra:faceted_aluminum_block"
   ]
 }

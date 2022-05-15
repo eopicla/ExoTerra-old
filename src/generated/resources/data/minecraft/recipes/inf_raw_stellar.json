@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "exoterra:stellar_ore"
+  },
+  "result": "exoterra:inf_raw_stellar",
+  "experience": 24.0,
+  "cookingtime": 1000
+}

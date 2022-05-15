@@ -1,6 +1,7 @@
 package com.faojen.exoterra.datagen;
 
-import static com.faojen.exoterra.setup.ModSetup.TAB_NAME;
+import static com.faojen.exoterra.setup.ModSetup.IGROUPNAME;
+import static com.faojen.exoterra.setup.ModSetup.MGROUPNAME;
 
 import com.faojen.exoterra.ExoTerra;
 import com.faojen.exoterra.setup.Registration;
@@ -16,7 +17,8 @@ public class TutLanguageProvider extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
-		add("itemGroup." + TAB_NAME, "ExoTerra");
+		add("itemGroup." + IGROUPNAME, "ExoTerra Items");
+		add("itemGroup." + MGROUPNAME, "ExoTerra Machines");
 /*
  * 		ORES
  */
@@ -30,12 +32,13 @@ public class TutLanguageProvider extends LanguageProvider {
  * 	ITEMS
  */
 		add(Registration.BAUXITE_CHUNK.get(), "Bauxite Chunk");
+		add(Registration.PURE_STELLAR.get(), "Pure \u00a73Stellar\u00a7r Material");
 		add(Registration.ALLUMINUM_INGOT.get(), "Aluminum Ingot");
 /*
  * 		STELLAR
  */
-		add(Registration.INF_RAW_STELLAR.get(), "Raw \u00A73Stellar\u00A7r (Inferior)");
-		add(Registration.INF_REFINED_STELLAR.get(), "Refined \u00A73Stellar\u00A7r (Inferior)");
+		add(Registration.INF_RAW_STELLAR.get(), "Raw \u00A73Stellar\u00A7r Material (Inferior)");
+		add(Registration.INF_REFINED_STELLAR.get(), "Refined \u00A73Stellar\u00A7r Material (Inferior)");
 /*
  * 		FLUIDS
  */
@@ -43,10 +46,11 @@ public class TutLanguageProvider extends LanguageProvider {
 /*
  * 		MACHINES
  */
-		addBlock(Registration.STELLAR_CONVERTER, "\u00A73Stellar\u00A7r Purification Bestower");
-		addBlock(Registration.FABRICATION_BENCH, "Component Serializer");
+		addBlock(Registration.PURIFICATION_BESTOWER, "\u00A73Stellar\u00A7r Purification Bestower");
+		addBlock(Registration.CRYSTAL_CATALYST, "Crystal Catalyst");
 		addBlock(Registration.INFERIOR_POWER_BANK, "Power Bank (Inferior)");
 		addBlock(Registration.COMMON_POWER_BANK, "Power Bank (Common)");
+		addBlock(Registration.SUPERIOR_POWER_BANK, "Power Bank (Superior)");
 /*
  * 		BASIC BLOCKS
  */
@@ -77,12 +81,14 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.empty", "Empty");
 		add("screen.exoterra.powerload", "\u00A77Load:\u00A7r %s FE/Tick");
 		add("screen.exoterra.inventorytip", "%s/%s");
-		add("screen.exoterra.test", "facpanel: %s");
+		add("screen.exoterra.percentage", "%s%%");
+		add("screen.exoterra.crytooltip", "Crystallization: %s%%");
 		
 		add("screen.exoterra.stellar_converter_guititle", "Purification Bestower");
+		add("screen.exoterra.crystal_catalyst_guititle", "Crystallization Catalyst");
 		add("screen.exoterra.inferior_power_bank_guititle", "Power Bank (Inferior)");
 		add("screen.exoterra.common_power_bank_guititle", "Power Bank (Common)");
-
+		add("screen.exoterra.superior_power_bank_guititle", "Power Bank (Superior)");
 	}
 
 }
