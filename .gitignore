@@ -411,6 +411,9 @@ test/unit/specs/mask_diffs
 forge*changelog.txt
 
 # Forge specific outputs
+
+/build
+/build/**
 /run
 /.gradle
 *.classpath
