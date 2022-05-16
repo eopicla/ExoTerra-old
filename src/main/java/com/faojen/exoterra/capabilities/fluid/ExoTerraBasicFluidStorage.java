@@ -1,47 +1,41 @@
-package com.faojen.exoterra.capabilities.crystalcatalyst;
+package com.faojen.exoterra.capabilities.fluid;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import javax.annotation.Nonnull;
 
-import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystBE;
 import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE;
 
 import java.util.function.Predicate;
 
 /**
- * Flexible implementation of a Fluid Storage object. NOT REQUIRED.
- *
- * @author King Lemming
+ * This fluid tank class will hold any fluid. Haven't yet figured out how to use the validator stuff...
  */
-public class CrystalCatalystFluid implements IFluidHandler, IFluidTank {
-
-	private static final String FLUID = "fluid";
-	@SuppressWarnings("unused")
-	private CrystalCatalystBE tile;
-	protected FluidStack fluid = FluidStack.EMPTY;
-    protected int capacity;
+public class ExoTerraBasicFluidStorage implements IFluidHandler, IFluidTank {
+    private static final String FLUID = "fluid";
+    private BlockEntity tile;
+    protected FluidStack fluid = FluidStack.EMPTY;
+    private int capacity;
     @Nonnull
-    
-    
-    public CrystalCatalystFluid(CrystalCatalystBE tile ,int capacity)
+
+    public ExoTerraBasicFluidStorage(BlockEntity tile , int capacity)
     {
         this.capacity = capacity;
         this.tile = tile;
     }
 
-    public CrystalCatalystFluid setCapacity(int capacity)
+    public ExoTerraBasicFluidStorage setCapacity(int capacity)
     {
         this.capacity = capacity;
         return this;
     }
 
-    public CrystalCatalystFluid setValidator(Predicate<FluidStack> validator)
+    public ExoTerraBasicFluidStorage setValidator(Predicate<FluidStack> validator)
     {
-       
         return this;
     }
 
@@ -60,7 +54,7 @@ public class CrystalCatalystFluid implements IFluidHandler, IFluidTank {
     {
         return fluid;
     }
-    
+
     public Fluid getFluidSingle()
     {
         return fluid.getFluid();
@@ -70,18 +64,18 @@ public class CrystalCatalystFluid implements IFluidHandler, IFluidTank {
     {
         return fluid.getAmount();
     }
-    
-    public CrystalCatalystFluid deserializeNBT(CompoundTag compound) {
-    	
-    	this.fluid = FluidStack.loadFluidStackFromNBT(compound.getCompound(FLUID));
-    	
-    	return this;
-    	
+
+    public ExoTerraBasicFluidStorage deserializeNBT(CompoundTag compound) {
+
+        this.fluid = FluidStack.loadFluidStackFromNBT(compound.getCompound(FLUID));
+
+        return this;
+
     }
 
     public CompoundTag serializeNBT() {
 
-    	CompoundTag compound = new CompoundTag();
+        CompoundTag compound = new CompoundTag();
         compound.put(FLUID, this.fluid.writeToNBT(new CompoundTag()));
         return compound;
 
@@ -207,11 +201,11 @@ public class CrystalCatalystFluid implements IFluidHandler, IFluidTank {
     }
 
     public String toString() {
-    	 return "ChargerFluidStorage{" +
-                 "fluid=" + fluid +
-                 ", capacity=" + capacity +
-                 '}';
+        return "ChargerFluidStorage{" +
+                "fluid=" + fluid +
+                ", capacity=" + capacity +
+                '}';
     }
-    
+
 }
 

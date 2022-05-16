@@ -3,13 +3,7 @@ package com.faojen.exoterra.blocks.crystalcatalyst;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.Config;
-import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE.Slots;
-import com.faojen.exoterra.capabilities.crystalcatalyst.CrystalCatalystFluid;
-import com.faojen.exoterra.capabilities.crystalcatalyst.CrystalCatalystItemHandler;
-import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerEnergy;
-import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerFluid;
-import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerItemHandler;
+import com.faojen.exoterra.capabilities.fluid.ExoTerraBasicFluidStorage;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -24,19 +18,14 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -58,14 +47,20 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 			return id;
 		}
 	}
-	
+	// This is the key for the compoundtag that gets saved for the crystallization percent.
 	private static final String CRY_KEY = "cry";
-	
+	/**
+	 * The below integers can be changed to affect the block.
+	 * -
+	 * cryTime is the time in ticks that it takes to crystallize 1 pure stellar material.
+	 */
 	private static final int FLUID_CAPACITY = 6000;
+	private int cryTime = 2400;
+	/**
+	 * -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	 */
 	public static final int FLUID_CAP_PUB = FLUID_CAPACITY;
 	private int crystallizing;
-	
-	private int cryTime = 2400;
 	
 	private int scounter = 0;
 	private int maxSBurn = 0;
@@ -74,8 +69,8 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 	private boolean isFueled;
 	private boolean isSeeded;
 	
-	public CrystalCatalystFluid fluidStorage;
-	private LazyOptional<CrystalCatalystFluid> fluidh;
+	public ExoTerraBasicFluidStorage fluidStorage;
+	private LazyOptional<ExoTerraBasicFluidStorage> fluidh;
 	private LazyOptional<ItemStackHandler> inventory = LazyOptional.of(() -> new CrystalCatalystItemHandler(this));
 
 	// Handles tracking changes, kinda messy but apparently this is how the cool
@@ -108,7 +103,7 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 
 	public CrystalCatalystBE(BlockPos pos, BlockState state) {
 		super(Registration.CRYSTAL_CATALYST_BE.get(), pos, state);
-		this.fluidStorage = new CrystalCatalystFluid(this, FLUID_CAPACITY);
+		this.fluidStorage = new ExoTerraBasicFluidStorage(this, FLUID_CAPACITY);
 		this.fluidh = LazyOptional.of(() -> this.fluidStorage);
 	}
 

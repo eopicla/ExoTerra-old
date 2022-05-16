@@ -1,4 +1,4 @@
-package com.faojen.exoterra.capabilities.crystalcatalyst;
+package com.faojen.exoterra.blocks.crystalcatalyst;
 
 import javax.annotation.Nonnull;
 
