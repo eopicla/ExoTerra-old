@@ -1,10 +1,10 @@
 package com.faojen.exoterra.setup;
 
-import com.faojen.exoterra.blocks.compowerbank.CommonPowerBankScreen;
-import com.faojen.exoterra.blocks.crystalcatalyst.CrystalCatalystScreen;
-import com.faojen.exoterra.blocks.infpowerbank.InferiorPowerBankScreen;
-import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerScreen;
-import com.faojen.exoterra.blocks.superiorpowerbank.SuperiorPowerBankScreen;
+import com.faojen.exoterra.blocks.simple.compowerbank.CommonPowerBankScreen;
+import com.faojen.exoterra.blocks.machine.crystalcatalyst.CrystalCatalystScreen;
+import com.faojen.exoterra.blocks.simple.infpowerbank.InferiorPowerBankScreen;
+import com.faojen.exoterra.blocks.machine.purificationbestower.PurificationBestowerScreen;
+import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankScreen;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
