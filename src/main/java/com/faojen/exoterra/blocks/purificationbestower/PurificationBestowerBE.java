@@ -1,7 +1,7 @@
 package com.faojen.exoterra.blocks.purificationbestower;
 
-import com.faojen.exoterra.capabilities.energy.ExoTerraBasicEnergyStorage;
-import com.faojen.exoterra.capabilities.fluid.ExoTerraBasicFluidStorage;
+import com.faojen.exoterra.api.capabilities.energy.ExoTerraBasicEnergyStorage;
+import com.faojen.exoterra.api.capabilities.fluid.ExoTerraBasicFluidStorage;
 import com.faojen.exoterra.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

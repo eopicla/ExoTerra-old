@@ -1,4 +1,4 @@
-package com.faojen.exoterra.capabilities.fluid;
+package com.faojen.exoterra.api.capabilities.fluid;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -7,8 +7,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import javax.annotation.Nonnull;
-
-import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE;
 
 import java.util.function.Predicate;
 
