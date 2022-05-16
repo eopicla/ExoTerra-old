@@ -1,4 +1,4 @@
-package com.faojen.exoterra.capabilities.purificationbestower;
+package com.faojen.exoterra.blocks.purificationbestower;
 
 import com.faojen.exoterra.blocks.purificationbestower.PurificationBestowerBE;
 import com.faojen.exoterra.setup.Registration;

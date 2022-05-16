@@ -44,13 +44,13 @@ public class InferiorPowerBankBE extends BlockEntity implements MenuProvider {
 	/**
 	 * Plug in numbers here for BE configuration
 	 */
-	private int energyCapacity = 5000000;
-	private int energyMaxInOut = 100000;
+	private static int energyCapacity = 5000000;
+	private static int energyMaxInOut = 100000;
 	/**
-	 * When changing energy capacity, make sure to also change the static public value
-	 * below to the same number, otherwise guis will not display energy correctly.
+	 * -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	 */
-	public static final int INF_BANK_CAPACITY_PUB = 5000000;
+	public static final int INF_BANK_CAPACITY_PUB = energyCapacity;
+	public static final int INF_BANK_MAXINOUT_PUB = energyMaxInOut;
 
 	public ExoTerraBasicEnergyStorage energyStorage;
 	private LazyOptional<ExoTerraBasicEnergyStorage> energy;

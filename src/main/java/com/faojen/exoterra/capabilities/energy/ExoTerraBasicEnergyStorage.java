@@ -10,7 +10,7 @@ public class ExoTerraBasicEnergyStorage implements IEnergyStorage, INBTSerializa
     private int energy;
     private int capacity; // Needs to be handed INT
     private int maxInOut; // Needs to be handed INT
-    private BlockEntity tile;
+    private BlockEntity tile; // Needs to be handed BE
     public ExoTerraBasicEnergyStorage(BlockEntity tile, int energy, int capacity, int inout) {
         this.energy = energy;
         this.capacity = capacity;

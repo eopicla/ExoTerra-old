@@ -1,8 +1,7 @@
 package com.faojen.exoterra.blocks.purificationbestower;
 
 import com.faojen.exoterra.capabilities.energy.ExoTerraBasicEnergyStorage;
-import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerFluid;
-import com.faojen.exoterra.capabilities.purificationbestower.PurificationBestowerItemHandler;
+import com.faojen.exoterra.capabilities.fluid.ExoTerraBasicFluidStorage;
 import com.faojen.exoterra.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -53,30 +52,28 @@ public class PurificationBestowerBE extends BlockEntity implements MenuProvider 
 			return id;
 		}
 	}
-	
-	private static final int FLUID_CAPACITY = 5000;
-	public static final int FLUID_CAP_PUB = 5000;
-	public static final int ENERGY_CAPACITY_PUB = 1000000;
+
 	/**
 	 * Plug in numbers here for BE configuration
-	 * (only power is done right now, all other caps are done through the BE's
-	 * respective capability class.)
 	 */
-	private int energyCapacity = 1000000;
-	private int energyMaxInOut = 1000000;
+	private static int energyCapacity = 1000000; // (energyCapacity is in FE)
+	private static int energyMaxInOut = 1000000; // (energyMaxInOut is in FE/tick)
+	private static final int fluidCapacity = 5000; // (fluidCapacity is in MB)
 	/**
-	 * When changing energy capacity, make sure to also change the static public value
-	 * to the same number, otherwise guis will not display energy correctly.
+	 * -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	 */
+	public static final int FLUID_CAP_PUB = fluidCapacity;
+	public static final int ENERGY_CAPACITY_PUB = energyCapacity;
+	public static final int ENERGY_MAXINOUT_PUB = energyMaxInOut;
 	private int counter = 0;
 	private int scounter = 0;
 	private int maxBurn = 0;
 	private int maxSBurn = 0;
 
 	public ExoTerraBasicEnergyStorage energyStorage;
-	public PurificationBestowerFluid fluidStorage;
+	public ExoTerraBasicFluidStorage fluidStorage;
 	private LazyOptional<ExoTerraBasicEnergyStorage> energy;
-	private LazyOptional<PurificationBestowerFluid> fluidh;
+	private LazyOptional<ExoTerraBasicFluidStorage> fluidh;
 	private LazyOptional<ItemStackHandler> inventory = LazyOptional.of(() -> new PurificationBestowerItemHandler(this));
 
 	// Handles tracking changes, kinda messy but apparently this is how the cool
@@ -112,7 +109,7 @@ public class PurificationBestowerBE extends BlockEntity implements MenuProvider 
 	public PurificationBestowerBE(BlockPos pos, BlockState state) {
 		super(Registration.PURIFICATION_BESTOWER_BE.get(), pos, state);
 		this.energyStorage = new ExoTerraBasicEnergyStorage(this, 0, energyCapacity, energyMaxInOut);
-		this.fluidStorage = new PurificationBestowerFluid(this, FLUID_CAPACITY);
+		this.fluidStorage = new ExoTerraBasicFluidStorage(this, fluidCapacity);
 		this.energy = LazyOptional.of(() -> this.energyStorage);
 		this.fluidh = LazyOptional.of(() -> this.fluidStorage);
 	}
