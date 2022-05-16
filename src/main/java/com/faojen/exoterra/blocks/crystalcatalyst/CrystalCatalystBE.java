@@ -3,7 +3,7 @@ package com.faojen.exoterra.blocks.crystalcatalyst;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.faojen.exoterra.capabilities.fluid.ExoTerraBasicFluidStorage;
+import com.faojen.exoterra.api.capabilities.fluid.ExoTerraBasicFluidStorage;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;

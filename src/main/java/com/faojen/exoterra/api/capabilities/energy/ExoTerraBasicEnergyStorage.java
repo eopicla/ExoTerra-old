@@ -1,4 +1,4 @@
-package com.faojen.exoterra.capabilities.energy;
+package com.faojen.exoterra.api.capabilities.energy;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
