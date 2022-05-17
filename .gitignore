@@ -413,6 +413,7 @@ forge*changelog.txt
 
 # Forge specific outputs
 
+/generated/
 /build
 /build/**
 /build/

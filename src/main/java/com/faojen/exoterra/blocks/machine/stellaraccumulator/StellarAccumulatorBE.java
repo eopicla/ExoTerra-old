@@ -212,7 +212,7 @@ public class StellarAccumulatorBE extends BlockEntity implements MenuProvider {
             return;
 
         this.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyStorage ->  {
-            boolean canAccumulate = energyStorage.receiveEnergy(1, true) > 0;
+            boolean canAccumulate = energyStorage.getMaxEnergyStored() > 0;
 
             if (accumulateCounter > 0 && canAccumulate) {
                 accumulate(energyStorage);
