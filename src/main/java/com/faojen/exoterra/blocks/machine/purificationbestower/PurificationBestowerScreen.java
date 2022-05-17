@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.util.Arrays;
 
 import com.faojen.exoterra.ExoTerra;
+import com.faojen.exoterra.api.generic.ScreenUtils;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.locale.Language;
@@ -73,148 +75,66 @@ public class PurificationBestowerScreen extends AbstractContainerScreen<Purifica
 		RenderSystem.setShaderTexture(0, background);
 		this.blit(stack, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-		// burn status thing
+		// Burn Status
 		if (this.container.getMaxBurn() > 0) {
 			int burnStatusMaxHeight = 16;
 			int remaining = (this.container.getRemaining() * burnStatusMaxHeight) / this.container.getMaxBurn();
 			this.blit(stack, leftPos + 28, topPos + 42 + 16 - remaining, 177, 48 - remaining, 5, remaining + 1);
 		}
-		
-//purify status thing
-		// Stellar drop thing
+
+		// Stellar Drop
 		if (this.container.getPurifyMaxBurn() > 0) {
-			int purifyBarMaxWidth = 58;
-			int remaining = (this.container.getPurifyRemaining() * purifyBarMaxWidth) / this.container.getPurifyMaxBurn();
-			this.blit(stack, 
-					leftPos + 144 - 58 + remaining, 				    
-					topPos + 50, 			   
-					188, 
-					33, 							    // Source top-left corner Y
-					4, 			    // Source Image Width - Iterates remaining in order scale width
-					2);							    // Source Image height
-			// chamber edge layer
-			this.blit(stack, 
-					leftPos + 98, 				    
-					topPos + 50, 			   
-					98, 
-					50, 							    // Source top-left corner Y
-					3, 			    // Source Image Width - Iterates remaining in order scale width
-					2);	
-			// chamber center layer
-			this.blit(stack, 
-					leftPos + 86, 				    
-					topPos + 50, 			   
-					86, 
-					50, 							    // Source top-left corner Y
-					4, 			    // Source Image Width - Iterates remaining in order scale width
-					2);	
-			// tunnel cover thing layer
-			this.blit(stack, 
-					leftPos + 145, 				    
-					topPos + 48, 			   
-					145, 
-					48, 							    // Source top-left corner Y
-					5, 			    // Source Image Width - Iterates remaining in order scale width
-					6);	
+
+			ScreenUtils.drawMovingBlitLeft(this.container.getPurifyMaxBurn(), this.container.getPurifyRemaining(), this, stack, 58, 144, 50, 188, 33, 4, 2, leftPos, topPos);
+
 		}
-		// Energy drop thing
+		// Energy Drop
 		if (this.container.getPurifyMaxBurn() > 0) {
-			int powerPurifyMaxWidth = 48;
-			int remaining = (this.container.getPurifyRemaining() * powerPurifyMaxWidth) / this.container.getPurifyMaxBurn();
-			this.blit(stack, 
-					leftPos + 38 + 48 - remaining, 				    
-					topPos + 50, 			   
-					184, 
-					33, 
-					4, 	
-					2);	
-			// chamber edge layer
-			this.blit(stack, 
-					leftPos + 74, 				    
-					topPos + 50, 			   
-					74, 
-					50, 			
-					4, 		
-					2);	
-			// chamber center layer
-			this.blit(stack, 
-					leftPos + 86, 				    
-					topPos + 50, 			   
-					86, 
-					50, 					
-					4, 			
-					2);	
-		}	
-		
+
+			ScreenUtils.drawMovingBlitRight(this.container.getPurifyMaxBurn(), this.container.getPurifyRemaining(), this, stack, 48, 38, 50, 184, 33, 4, 2, leftPos, topPos);
+
+		}
+
 		// Power Display
+		if (this.container.getEnergy() > 0) {
 
-		int maxEnergy = this.container.getMaxPower(), energywidth = 70;
-		if (maxEnergy > 0) {
-			int remaining = (this.container.getEnergy() * energywidth) / maxEnergy;
+			ScreenUtils.drawRevHorizontalMeter(this.container.getMaxPower(), this.container.getEnergy(), this, stack, 70, 8, 63, 176, 16, 16, leftPos, topPos);
+			// Meter Decoration
+			ScreenUtils.drawSimpleBlit(this, stack, 9, 64, 184, 36, 68, 14, leftPos, topPos);
 
-			this.blit(stack, 
-					leftPos + 8 + 70 - remaining, 				    // Destination top-left corner X
-					topPos + 63, 			    // Destination top-left corner Y
-					176 + 70 - remaining,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-					16, 							    // Source top-left corner Y
-					remaining + 1, 			    // Source Image Width - Iterates remaining in order scale width
-					16);							    // Source Image height
-			
-			// meter overlay
-			this.blit(stack, 
-					leftPos + 9, 				    
-					topPos + 64, 			   
-					184, 
-					36, 					
-					68, 			  
-					14);	
 		}
 
 		// Stellar display
-		int maxFluid = this.container.getMaxCapacity(), stellarwidth = 70;
-		if (maxFluid > 0) {
-			int remaining = (this.container.getFluidStored() * stellarwidth) / maxFluid;
+		if (this.container.getFluidStored() > 0) {
 
-			this.blit(stack, 
-					leftPos + 98,
-					topPos + 63, 			  
-					176,  
-					0, 								 
-					remaining + 1, 			   
-					15);					
-			
+			ScreenUtils.drawHorizontalMeter(this.container.getMaxCapacity(), this.container.getFluidStored(), this, stack, 70, 98, 63, 176, 0, 15, leftPos, topPos);
 			// meter overlay
-			this.blit(stack, 
-					leftPos + 99, 				    
-					topPos + 64, 			   
-					184, 
-					36, 							 
-					68, 			   
-					14);	
+			ScreenUtils.drawSimpleBlit(this, stack, 99, 64, 184, 36, 68, 14, leftPos, topPos);
 			
 		}
+
+		buildDecoBlits(stack, partialTicks);
+	}
+
+	private void buildDecoBlits(PoseStack stack, float partialTicks){
+		// Tank Decoration
+		ScreenUtils.drawSimpleBlit(this, stack, 99, 64, 184, 36, 68, 14, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 9, 64, 184, 36, 68, 14, leftPos, topPos);
+		// Chamber Blits
+		ScreenUtils.drawSimpleBlit(this, stack, 86, 50, 86, 50, 4, 2, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 74, 50, 74, 50, 4, 2, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 74, 50, 74, 50, 4, 2, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 145, 48, 145, 48, 5, 6, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 86, 50, 86, 50, 4, 2, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 98, 50, 98, 50, 3, 2, leftPos, topPos);
+
 	}
 
 	@SuppressWarnings("resource")
 	@Override
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
-		
-		Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.stellar_converter_guititle"), 
-				62, 4,Color.DARK_GRAY.getRGB());
-		
-//		Minecraft.getInstance().font.draw(stack, I18n.get("I: " + container.get), 
-//				15, 28,Color.DARK_GRAY.getRGB());
-//		
-//		Minecraft.getInstance().font.draw(stack, I18n.get("O: "), 
-//				15, 28,Color.DARK_GRAY.getRGB());
-		
-		
-//		this.font.draw(stack, new TranslatableComponent("screen.exoterra.fluidplaque", MagicHelpers.withSuffix(this.container.getFluidStored()), MagicHelpers.withSuffix(this.container.get())), 
-//				98 ,63 ,Color.BLACK.getRGB());
-//		
-//		this.font.draw(stack, new TranslatableComponent("screen.exoterra.powerplaque", MagicHelpers.withSuffix(this.container.getEnergy()), MagicHelpers.withSuffix(this.container.getMaxPower())), 
-//				8 ,63 ,Color.BLACK.getRGB());
-		
+		// Gui Title
+		ScreenUtils.drawTranslateWithShadow(stack, font, "screen.exoterra.stellar_converter_guititle", 62, 4, 1, Color.DARK_GRAY.getRGB());
 
 	}
 }
