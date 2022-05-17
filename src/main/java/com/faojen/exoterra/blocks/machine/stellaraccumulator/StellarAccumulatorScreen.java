@@ -9,6 +9,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
@@ -34,23 +35,13 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
     public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(stack);
         super.render(stack, mouseX, mouseY, partialTicks);
-
         this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
-        if (mouseX > (leftPos + 9) && mouseX < (leftPos + 9) + 14 && mouseY > (topPos + 26)
-                && mouseY < (topPos + 26) + 52) {
-            this.renderTooltip(stack, new TranslatableComponent(
-                    "screen.exoterra.energy", MagicHelpers.withSuffix(this.container.getEnergy()),
-                    MagicHelpers.withSuffix(this.container.getMaxPower())), mouseX, mouseY);
-        }
 
-        this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
-        if (mouseX > (leftPos + 30) && mouseX < (leftPos + 30) + 38 && mouseY > (topPos + 26)
-                && mouseY < (topPos + 26) + 52) {
-            this.renderTooltip(stack, new TranslatableComponent(
-                    "screen.exoterra.sludge", MagicHelpers.withSuffix(this.container.getFluidStored()),
-                    MagicHelpers.withSuffix(this.container.getMaxFluid())), mouseX, mouseY);
-        }
+        // Energy tooltip
+        ScreenUtils.renderToolTip(stack, this, mouseX, mouseY, 9, 14, 26, 52, "screen.exoterra.energy", this.container.getEnergy(), this.container.getMaxPower(), leftPos, topPos);
 
+        // Sludge tooltip
+        ScreenUtils.renderToolTip(stack, this, mouseX, mouseY, 30, 38, 26, 52, "screen.exoterra.sludge", this.container.getFluidStored(), this.container.getMaxFluid(), leftPos, topPos);
 
     }
 
@@ -67,9 +58,11 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
 
         // Power Display
         int maxEnergy = this.container.getMaxPower(), height = 52;
-        if (maxEnergy > 0) {
+        if (this.container.getMaxPower() > 0) {
             int remainingEnergy = (this.container.getEnergy() * height) / maxEnergy;
 
+            ScreenUtils.drawVerticalMeter(this.container.getMaxPower(),this.container.getEnergy(),this, stack,52, 9, 26, 177, 71, 14, topPos, leftPos);
+            /*
             // power
             this.blit(stack,
                     leftPos + 9,                    // Destination top-left corner X
@@ -78,6 +71,8 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
                     71 - remainingEnergy,                                // Source top-left corner Y
                     14,                // Source Image Width - Iterates remaining in order scale width
                     remainingEnergy + 1);                                // Source Image height
+
+             */
         }
         // sludge
         int maxSludge = this.container.getMaxFluid();
