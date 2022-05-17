@@ -79,6 +79,7 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
                     14,                // Source Image Width - Iterates remaining in order scale width
                     remainingEnergy + 1);                                // Source Image height
         }
+        // sludge
         int maxSludge = this.container.getMaxFluid();
         if(maxSludge > 0){
             int remainingSludge = (this.container.getFluidStored() * height) / maxSludge;
@@ -91,6 +92,20 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
                     38, 			    // Source Image Width - Iterates remaining in order scale width
                     remainingSludge + 1);							    // Source Image height
 
+        }
+
+        int maxFilter = 512, width = 79;
+        if (this.container.getFilterProgress() > 0) {
+            int remainingFilter = (this.container.getFilterProgress() * width) / maxFilter;
+
+            // filter progress
+            this.blit(stack,
+                    leftPos + 72,                    // Destination top-left corner X
+                    topPos + 24,                // Destination top-left corner Y
+                    176,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
+                    1,                                // Source top-left corner Y
+                    remainingFilter + 1,                // Source Image Width - Iterates remaining in order scale width
+                    18);                                // Source Image height
         }
 
     }
@@ -113,6 +128,7 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
         float testX = 74 + num;
         float newX = Math.round(testX);
 
+        // percentage progress of filtering
         this.font.draw(stack,
                 new TranslatableComponent("screen.exoterra.accumulator_progress",
                         MagicHelpers.withSuffix(this.container.getFilterProgress()*100/512)), testX, scaleY(46), Color.WHITE.getRGB());
