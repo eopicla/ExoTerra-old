@@ -65,7 +65,6 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
         this.blit(stack, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
         // Power Display
-
         int maxEnergy = this.container.getMaxPower(), height = 52;
         if (maxEnergy > 0) {
             int remainingEnergy = (this.container.getEnergy() * height) / maxEnergy;

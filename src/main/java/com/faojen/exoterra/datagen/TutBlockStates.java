@@ -38,15 +38,16 @@ public class TutBlockStates extends BlockStateProvider {
 		commonPowerBankModel();
 		superiorPowerBankModel();
 		crystalCatalystModel();
+		stellarAccumulatorModel();
 
 	}
 
 	private void stellarAccumulatorModel() {
 
-		horizontalBlock(Registration.CRYSTAL_CATALYST.get(),
-				models().orientableWithBottom(Registration.CRYSTAL_CATALYST.get().getRegistryName().getPath(),
-						modLoc("block/fabrication_bench_side"), modLoc("block/fabrication_bench_fronton"),
-						modLoc("block/fabrication_bench_bottom"), modLoc("block/fabrication_bench_top")));
+		horizontalBlock(Registration.STELLAR_ACCUMULATOR.get(),
+				models().orientableWithBottom(Registration.STELLAR_ACCUMULATOR.get().getRegistryName().getPath(),
+						modLoc("block/stellar_accumulator_side"), modLoc("block/stellar_accumulator_fronton"),
+						modLoc("block/stellar_accumulator_bottom"), modLoc("block/stellar_accumulator_top")));
 
 	}
 
