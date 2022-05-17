@@ -1,5 +1,6 @@
 package com.faojen.exoterra.api.generic;
 
+import com.faojen.exoterra.blocks.simple.compowerbank.CommonPowerBankBE;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -200,6 +201,31 @@ public class ScreenUtils {
                 sourceY,
                 remaining + 1,
                 sourceHeight);
+    }
+
+    /** Renders a tooltip with 2 suffixes.
+     *
+     * @param stack The target PoseStack.
+     * @param screen The target screen. ( "this" is fine )
+     * @param mouseX Mouse's X position. ( passing "mouseX" is fine)
+     * @param mouseY Mouse's Y position. ( passing "mouseY" is fine)
+     * @param minX Minimum X coordinate to trigger the tooltip.
+     * @param maxX Maximum X coordinate to trigger the tooltip under.
+     * @param minY Minimum Y coordinate to trigger the tooltip.
+     * @param maxY Maximum Y coordinate to trigger the tooltip under.
+     * @param key Key for the TranslatableComponent.
+     * @param suffix1 Suffix 1 for the key provided.
+     * @param suffix2 Suffix 2 for the key provided.
+     * @param leftPos leftPos of the screen. ( passing leftPos is fine )
+     * @param topPos topPos of the screen. ( passing topPos is fine )
+     */
+    public static void renderToolTip(PoseStack stack, AbstractContainerScreen screen, int mouseX, int mouseY, int minX, int maxX, int minY, int maxY, String key, int suffix1, int suffix2, int leftPos, int topPos){
+        if (mouseX > (leftPos + minX) && mouseX < (leftPos + minX) + maxX && mouseY > (topPos + minY)
+                && mouseY < (topPos + minY) + maxY) {
+            screen.renderTooltip(stack, new TranslatableComponent(
+                    key, MagicHelpers.withSuffix(suffix1),
+                    MagicHelpers.withSuffix(suffix2)), mouseX, mouseY);
+        }
     }
 
 }
