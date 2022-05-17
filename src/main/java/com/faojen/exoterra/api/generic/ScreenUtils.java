@@ -131,6 +131,9 @@ public class ScreenUtils {
 
     /**
      * This method will allow you to create a vertical meter on your gui ( e.g. power, fluid, any other integer tracked value )
+     * -
+     * This method should be used: if(currentVal > 0){drawVerticalMeter} to avoid issues.
+     * -
      * @param maxCap The maximum capacity of whatever type of storage the meter is representing.
      * @param currentVal The current stored value of whatever the meter is representing.
      * @param screen The target screen. ( "this" is fine )
