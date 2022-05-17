@@ -66,6 +66,6 @@ public class SuperiorPowerBankScreen extends AbstractContainerScreen<SuperiorPow
 
 		// Gui title
 		ScreenUtils.drawTranslateWithShadow(stack, font, "screen.exoterra.superior_power_bank_guititle", 62, 4, 1, Color.DARK_GRAY.getRGB());
-		
+
 	}
 }

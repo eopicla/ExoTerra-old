@@ -3,6 +3,7 @@ package com.faojen.exoterra.blocks.machine.crystalcatalyst;
 import java.awt.Color;
 
 import com.faojen.exoterra.ExoTerra;
+import com.faojen.exoterra.api.generic.ScreenUtils;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -30,14 +31,10 @@ public class CrystalCatalystScreen extends AbstractContainerScreen<CrystalCataly
 	public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(stack);
 		super.render(stack, mouseX, mouseY, partialTicks);
-		
 		this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
-		if (mouseX > (leftPos + 142) && mouseX < (leftPos + 142) + 23 && mouseY > (topPos + 28)
-				&& mouseY < (topPos + 28) + 49) {
-			this.renderTooltip(stack, new TranslatableComponent(
-					"screen.exoterra.fluid", MagicHelpers.withSuffix(this.container.getFluidStored()),
-					MagicHelpers.withSuffix(this.container.getMaxCapacity())), mouseX, mouseY);	
-		}
+
+		// Fluid Tooltip
+		ScreenUtils.renderToolTip(stack, this, mouseX, mouseY, 142, 23, 28, 49, "screen.exoterra.fluid", this.container.getFluidStored(), this.container.getMaxCapacity(), leftPos, topPos);
 		
 	}
 
@@ -56,43 +53,29 @@ public class CrystalCatalystScreen extends AbstractContainerScreen<CrystalCataly
 		if (this.container.getMaxBurn() > 0) {
 			int burnStatusMaxHeight = 16;
 			int remaining = (this.container.getRemaining() * burnStatusMaxHeight) / this.container.getMaxBurn();
-			this.blit(stack, leftPos + 80, topPos + 35 + 16 - remaining, 187, 67 - remaining, 16, remaining + 1);
+			this.blit(stack,
+					leftPos + 80,
+					topPos + 35 + 16 - remaining,
+					187,
+					67 - remaining,
+					16,
+					remaining + 1);
 		}
-		
-		// Stellar display
-		int maxFluid = this.container.getMaxCapacity(), stellarheight = 49;
-		if (maxFluid > 0) {
-			int remaining = (this.container.getFluidStored() * stellarheight) / maxFluid;
-			this.blit(stack, 
-					leftPos + 142, 			
-					topPos + 28 + 49 - remaining, 			  
-					176,  
-					129 - remaining, 								 
-					23, 			   
-					remaining + 1);			
+
+		// Stellar Display
+		ScreenUtils.drawVerticalMeter(this.container.getMaxCapacity(), this.container.getFluidStored(), this, stack, 49, 142, 28, 176, 129, 23, leftPos, topPos);
 			
 		}
-	}
 
 	@SuppressWarnings("resource")
 	@Override
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
-		
-		Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.crystal_catalyst_guititle"), 
-				62, 4,Color.WHITE.getRGB());
-		
-//		Minecraft.getInstance().font.draw(stack, I18n.get("I: " + container.get), 
-//				15, 28,Color.DARK_GRAY.getRGB());
-//		
-//		Minecraft.getInstance().font.draw(stack, I18n.get("O: "), 
-//				15, 28,Color.DARK_GRAY.getRGB());
-		
-		
-		this.font.draw(stack, new TranslatableComponent("screen.exoterra.percentage", MagicHelpers.withSuffix(this.container.getCrystallizing()*100/2400)),  102 ,65 ,Color.WHITE.getRGB());
-//		
-//		this.font.draw(stack, new TranslatableComponent("screen.exoterra.powerplaque", MagicHelpers.withSuffix(this.container.getEnergy()), MagicHelpers.withSuffix(this.container.getMaxPower())), 
-//				8 ,63 ,Color.BLACK.getRGB());
-		
+
+		// Gui Title
+		ScreenUtils.drawTranslateWithShadow(stack, font, "screen.exoterra.crystal_catalyst_guititle", 62, 4, 1, Color.DARK_GRAY.getRGB());
+
+		// Crystallizing Percentage
+		ScreenUtils.drawComponent(stack, font, "screen.exoterra.percentage", this.container.getCrystallizing()*100/2400, 102, 65, 1, Color.WHITE.getRGB());
 
 	}
 }
