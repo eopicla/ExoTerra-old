@@ -34,34 +34,19 @@ public class PurificationBestowerScreen extends AbstractContainerScreen<Purifica
 	public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(stack);
 		super.render(stack, mouseX, mouseY, partialTicks);
-
 		this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
-		if (mouseX > (leftPos + 7) && mouseX < (leftPos + 7) + 70 && mouseY > (topPos + 62)
-				&& mouseY < (topPos + 62) + 17)
-			this.renderTooltip(stack, 
-					Language.getInstance()
-							.getVisualOrder(Arrays.asList(new TranslatableComponent(
-									"screen.exoterra.energy", MagicHelpers.withSuffix(this.container.getEnergy()),
-									MagicHelpers.withSuffix(this.container.getMaxPower())),
-									this.container.getRemaining() <= 0
-											? new TranslatableComponent("screen.exoterra.no_fuel")
-											: new TranslatableComponent("screen.exoterra.burn_time",
-													MagicHelpers.ticksInSeconds(this.container.getRemaining())))),
-					mouseX, mouseY);
 
-		this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
-		if (mouseX > (leftPos + 97) && mouseX < (leftPos + 97) + 70 && mouseY > (topPos + 62)
-				&& mouseY < (topPos + 62) + 17)
-			this.renderTooltip(stack,
-					Language.getInstance()
-							.getVisualOrder(Arrays.asList(new TranslatableComponent(
-									"screen.exoterra.fluid", MagicHelpers.withSuffix(this.container.getFluidStored()),
-									MagicHelpers.withSuffix(this.container.getMaxCapacity())),
-									this.container.getEnergy() <= 19999
-											? new TranslatableComponent("screen.exoterra.no_energy")
-											: new TranslatableComponent("screen.exoterra.purify_time",
-													MagicHelpers.ticksInSeconds(this.container.getPurifyRemaining())))),
-					mouseX, mouseY);
+		ScreenUtils.renderToolTip3x2(stack, this, mouseX, mouseY, 7, 70, 62, 17,
+				this.container.getRemaining(), 0, this.container.getRemaining(),
+				"screen.exoterra.energy", "screen.exoterra.no_fuel", "screen.exoterra.burn_time",
+				this.container.getEnergy(), this.container.getMaxPower(),
+				leftPos, topPos);
+
+		ScreenUtils.renderToolTip3x2(stack, this, mouseX, mouseY, 97, 70, 62, 17,
+				this.container.getEnergy(), 19999, this.container.getPurifyRemaining(),
+				"screen.exoterra.fluid", "screen.exoterra.no_energy", "screen.exoterra.purify_time",
+				this.container.getFluidStored(), this.container.getMaxCapacity(),
+				leftPos, topPos);
 	}
 
 	@Override
