@@ -129,11 +129,25 @@ public class ScreenUtils {
         matrixStack.popPose();
     }
 
-    /**
-     * This method will allow you to create a vertical meter on your gui ( e.g. power, fluid, any other integer tracked value )
-     * -
+    /** This method draws a simple blit on your screen.
+     *
+     * @param screen The target screen. ( "this" is fine )
+     * @param stack The target PoseStack
+     * @param targetX The desired X location of the meter.
+     * @param targetY The desired Y location of the meter.
+     * @param sourceX The X location on your texture of the overlay you intend to use.
+     * @param sourceY The Y location on your texture of the overlay you intend to use.
+     * @param sourceWidth The width of the overlay.
+     * @param sourceHeight The height of the overlay.
+     */
+    public void drawSimpleBlit(AbstractContainerScreen screen, PoseStack stack, int targetX, int targetY, int sourceX, int sourceY, int sourceWidth, int sourceHeight) {
+        screen.blit(stack, targetX, targetY, sourceX, sourceY, sourceWidth, sourceHeight);
+    }
+
+    /**This method will allow you to create a vertical meter on your gui ( e.g. power, fluid, any other integer tracked value )
+     * ---------
      * This method should be used: if(currentVal > 0){drawVerticalMeter} to avoid issues.
-     * -
+     * ---------
      * @param maxCap The maximum capacity of whatever type of storage the meter is representing.
      * @param currentVal The current stored value of whatever the meter is representing.
      * @param screen The target screen. ( "this" is fine )
@@ -143,7 +157,7 @@ public class ScreenUtils {
      * @param targetY The desired Y location of the meter.
      * @param sourceX The X location on your texture of the overlay you intend to use.
      * @param sourceBottomY The Y coordinate of the bottom pixel of your overlay.
-     * @param sourceWidth The width of the meter.
+     * @param sourceWidth The width of the overlay.
      * @param topPos Pass your screen's topPos.
      * @param leftPos Pass your screen's leftPos.
      */
@@ -158,6 +172,34 @@ public class ScreenUtils {
                 sourceWidth,
                 remaining + 1);
 
+    }
+
+    /**This method will allow you to create a horizontal meter on your gui ( e.g. power, fluid, any other integer tracked value )
+     * ---------
+     * This method should be used: if(currentVal > 0){drawHorizontalMeter} to avoid issues.
+     * ---------
+     * @param maxCap The maximum capacity of whatever type of storage the meter is representing.
+     * @param currentVal The current stored value of whatever the meter is representing.
+     * @param screen The target screen. ( "this" is fine )
+     * @param stack The target PoseStack
+     * @param meterWidth The width of meter on your texture.
+     * @param targetX The desired X location of the meter.
+     * @param targetY The desired Y location of the meter.
+     * @param sourceX The X location of the meter overlay on your texture.
+     * @param sourceY The Y location of the meter overlay on your texture.
+     * @param sourceHeight The height of the overlay.
+     * @param topPos Pass your screen's topPos.
+     * @param leftPos Pass your screen's leftPos.
+     */
+    public static void drawHorizontalMeter(int maxCap, int currentVal, AbstractContainerScreen screen, PoseStack stack, int meterWidth, int targetX, int targetY, int sourceX, int sourceY, int sourceHeight, int topPos, int leftPos){
+        int remaining = (currentVal * meterWidth) / maxCap;
+        screen.blit(stack,
+                leftPos + targetX,
+                topPos + targetY,
+                sourceX,
+                sourceY,
+                remaining + 1,
+                sourceHeight);
     }
 
 }
