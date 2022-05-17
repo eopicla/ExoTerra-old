@@ -1,4 +1,4 @@
-package com.faojen.exoterra.blocks.machine.purificationbestower;
+package com.faojen.exoterra.blocks.machine.stellaraccumulator;
 
 import com.faojen.exoterra.Config;
 import com.faojen.exoterra.utils.MagicHelpers;
@@ -20,36 +20,36 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
 
-public class PurificationBestowerItem extends BlockItem {
+public class StellarAccumulatorItem extends BlockItem {
 
-    public PurificationBestowerItem(Block blockIn, Properties builder) {
+    public StellarAccumulatorItem(Block blockIn, Properties builder) {
         super(blockIn, builder);
     }
-    
+
     @Override
-	public int getBarWidth(ItemStack stack) {
-		int energy = stack.getOrCreateTag().getInt("energy");
-		int maxEnergy = PurificationBestowerBE.ENERGY_CAPACITY_PUB;
-		var stored = maxEnergy - energy;
+    public int getBarWidth(ItemStack stack) {
+        int energy = stack.getOrCreateTag().getInt("energy");
+        int maxEnergy = StellarAccumulatorBE.ENERGY_CAPACITY_PUB;
+        var stored = maxEnergy - energy;
 
-		return Math.round(13.0F - stored * 13.0F / maxEnergy);
-	}
+        return Math.round(13.0F - stored * 13.0F / maxEnergy);
+    }
 
-	@Override
-	public int getBarColor(ItemStack stack) {
-		int energy = stack.getOrCreateTag().getInt("energy");
-		int maxEnergy = PurificationBestowerBE.ENERGY_CAPACITY_PUB;
+    @Override
+    public int getBarColor(ItemStack stack) {
+        int energy = stack.getOrCreateTag().getInt("energy");
+        int maxEnergy = StellarAccumulatorBE.ENERGY_CAPACITY_PUB;
 
-		float f = Math.max(0.0F, (float) energy / (float) maxEnergy);
+        float f = Math.max(0.0F, (float) energy / (float) maxEnergy);
 
-		return Mth.hsvToRgb(f / 190.0F, 76.0F, 90.0F);
-	}
+        return Mth.hsvToRgb(f / 190.0F, 76.0F, 90.0F);
+    }
 
-	@Override
-	public boolean isBarVisible(ItemStack stack) {
-		return true;
-	}
-    
+    @Override
+    public boolean isBarVisible(ItemStack stack) {
+        return true;
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -59,18 +59,18 @@ public class PurificationBestowerItem extends BlockItem {
         int fluidamount = fluid.getAmount();
         if (power == 0){
             return;}
- 
+
         tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(Config.GENERAL.chargerMaxPower.get())));
-        tooltip.add(new TranslatableComponent("screen.exoterra.stellar", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(PurificationBestowerBE.FLUID_CAP_PUB)));
+        tooltip.add(new TranslatableComponent("screen.exoterra.sludge", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(StellarAccumulatorBE.FLUID_CAP_PUB)));
     }
 
     @Override
     protected boolean updateCustomBlockEntityTag(BlockPos pos, Level worldIn, @Nullable Player player, ItemStack stack, BlockState state) {
         BlockEntity te = worldIn.getBlockEntity(pos);
-        if (te instanceof PurificationBestowerBE) {
-        	PurificationBestowerBE station = (PurificationBestowerBE) te;
-        	FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
-        	
+        if (te instanceof StellarAccumulatorBE) {
+            StellarAccumulatorBE station = (StellarAccumulatorBE) te;
+
+            FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
             station.energyStorage.receiveEnergy(stack.getOrCreateTag().getInt("energy"), false);
             station.fluidStorage.setFluid(fluid);
         }

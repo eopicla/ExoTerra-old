@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "side": "exoterra:block/stellar_accumulator_side",
+    "front": "exoterra:block/stellar_accumulator_fronton",
+    "bottom": "exoterra:block/stellar_accumulator_bottom",
+    "top": "exoterra:block/stellar_accumulator_top"
+  }
+}

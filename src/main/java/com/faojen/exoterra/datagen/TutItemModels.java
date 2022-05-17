@@ -22,6 +22,7 @@ public class TutItemModels extends ItemModelProvider {
  */
 		singleTexture(Registration.BAUXITE_CHUNK.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/bauxite_chunk"));
 		singleTexture(Registration.ALLUMINUM_INGOT.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/alluminum_ingot"));
+		singleTexture(Registration.ALUMINUM_FILTER.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/aluminum_filter"));
 /*
  * 	ORES
  */
@@ -74,5 +75,8 @@ public class TutItemModels extends ItemModelProvider {
          
          String crycat = Registration.CRYSTAL_CATALYST.get().getRegistryName().getPath();
          getBuilder(crycat).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + crycat)));
+
+		String stellac = Registration.STELLAR_ACCUMULATOR.get().getRegistryName().getPath();
+		getBuilder(stellac).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + stellac)));
 	}
 }

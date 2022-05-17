@@ -31,6 +31,7 @@ public class TutLanguageProvider extends LanguageProvider {
 /*
  * 	ITEMS
  */
+		add(Registration.ALUMINUM_FILTER.get(), "Aluminum Sludge Filter");
 		add(Registration.BAUXITE_CHUNK.get(), "Bauxite Chunk");
 		add(Registration.PURE_STELLAR.get(), "Pure \u00a73Stellar\u00a7r Material");
 		add(Registration.ALLUMINUM_INGOT.get(), "Aluminum Ingot");
@@ -51,6 +52,7 @@ public class TutLanguageProvider extends LanguageProvider {
 		addBlock(Registration.INFERIOR_POWER_BANK, "Power Bank (Inferior)");
 		addBlock(Registration.COMMON_POWER_BANK, "Power Bank (Common)");
 		addBlock(Registration.SUPERIOR_POWER_BANK, "Power Bank (Superior)");
+		addBlock(Registration.STELLAR_ACCUMULATOR, "Stellar Accumulator");
 /*
  * 		BASIC BLOCKS
  */
@@ -83,7 +85,13 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.inventorytip", "%s/%s");
 		add("screen.exoterra.percentage", "%s%%");
 		add("screen.exoterra.crytooltip", "Crystallization: %s%%");
-		
+		add("screen.exoterra.sludge", "\u00A72Sludge:\u00A7r %s/%s");
+		add("screen.exoterra.accumulator_progress", "Filtering Progress: %s%%");
+		add("screen.exoterra.accumulator_filterin", "Filter installed");
+		add("screen.exoterra.accumulator_filterout", "Filter not installed");
+		add("screen.exoterra.accumulator_filterdurability", "Filter Durability: %s%%");
+
+		add("screen.exoterra.stellar_accumulator_guititle", "Stellar Accumulator");
 		add("screen.exoterra.stellar_converter_guititle", "Purification Bestower");
 		add("screen.exoterra.crystal_catalyst_guititle", "Crystallization Catalyst");
 		add("screen.exoterra.inferior_power_bank_guititle", "Power Bank (Inferior)");

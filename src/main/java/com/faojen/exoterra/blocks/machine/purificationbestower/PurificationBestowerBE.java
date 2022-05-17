@@ -135,8 +135,8 @@ public class PurificationBestowerBE extends BlockEntity implements MenuProvider 
 		if (level == null)
 			return;
 		FluidStack fluidpoke = new FluidStack(Registration.AQUEOUS_STELLAR.get(), 1);
-		
-		this.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY).ifPresent(fluidStorage -> {
+
+		this.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyStorage -> {
 			boolean canPurifyStellar = fluidStorage.fill(fluidpoke, FluidAction.SIMULATE) >0;
 			
 			if (scounter > 0 && canPurifyStellar) {
