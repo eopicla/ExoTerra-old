@@ -2,6 +2,7 @@ package com.faojen.exoterra.blocks.simple.compowerbank;
 
 import java.awt.Color;
 import com.faojen.exoterra.ExoTerra;
+import com.faojen.exoterra.api.generic.ScreenUtils;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -29,15 +30,10 @@ public class CommonPowerBankScreen extends AbstractContainerScreen<CommonPowerBa
 	public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(stack);
 		super.render(stack, mouseX, mouseY, partialTicks);
-
 		this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
-		if (mouseX > (leftPos + 9) && mouseX < (leftPos + 9) + 158 && mouseY > (topPos + 26)
-				&& mouseY < (topPos + 26) + 53) {
-			this.renderTooltip(stack, new TranslatableComponent(
-					"screen.exoterra.energy", MagicHelpers.withSuffix(this.container.getEnergy()),
-					MagicHelpers.withSuffix(CommonPowerBankBE.COM_BANK_CAPACITY_PUB)), mouseX, mouseY);
-		}
 		
+		// Energy tooltip
+		ScreenUtils.renderToolTip(stack, this, mouseX, mouseY, 9, 158, 26, 53, "screen.exoterra.energy", this.container.getEnergy(), CommonPowerBankBE.COM_BANK_CAPACITY_PUB, leftPos, topPos);
 		
 	}
 
@@ -52,48 +48,24 @@ public class CommonPowerBankScreen extends AbstractContainerScreen<CommonPowerBa
 		RenderSystem.setShaderTexture(0, background);
 		this.blit(stack, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
+
 		// Power Display
-
-		int maxEnergy = this.container.getMaxPower(), energywidth = 158;
-		if (maxEnergy > 0) {
-			int remaining = (this.container.getEnergy() * energywidth) / maxEnergy;
-
-			this.blit(stack, 
-					leftPos + 9, 				    // Destination top-left corner X
-					topPos + 26, 			    // Destination top-left corner Y
-					0,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-					166, 							    // Source top-left corner Y
-					remaining + 1, 			    // Source Image Width - Iterates remaining in order scale width
-					53);							    // Source Image height
-			
-			// corner top
-			this.blit(stack, 
-					leftPos + 11, 				    // Destination top-left corner X
-					topPos + 28, 			    // Destination top-left corner Y
-					2,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-					221, 							    // Source top-left corner Y
-					154, 			    // Source Image Width - Iterates remaining in order scale width
-					9);							    // Source Image height
-			
-			// corner bottom
-						this.blit(stack, 
-								leftPos + 11, 				    // Destination top-left corner X
-								topPos + 68, 			    // Destination top-left corner Y
-								2,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-								245, 							    // Source top-left corner Y
-								154, 			    // Source Image Width - Iterates remaining in order scale width
-								9);							    // Source Image height
-			
+		if (this.container.getEnergy() > 0) {
+			ScreenUtils.drawHorizontalMeter(this.container.getMaxPower(), this.container.getEnergy(), this, stack, 158, 9, 26, 0, 166, 53, topPos, leftPos);
 		}
+
+		// Draw power meter corners
+		ScreenUtils.drawSimpleBlit(this, stack, 11, 28, 2, 221,154, 9, leftPos, topPos);
+		ScreenUtils.drawSimpleBlit(this, stack, 11, 68, 2, 245,154, 9, leftPos, topPos);
 
 	}
 
 	@SuppressWarnings("resource")
 	@Override
 	protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
-		
-		Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.common_power_bank_guititle"), 
-				62, 4,Color.DARK_GRAY.getRGB());
+
+		// Gui title
+		ScreenUtils.drawTranslateWithShadow(stack, font, "screen.exoterra.common_power_bank_guititle", 62, 4, 1, Color.DARK_GRAY.getRGB());
 
 	}
 }
