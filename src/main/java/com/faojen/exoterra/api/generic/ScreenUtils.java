@@ -7,10 +7,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.locale.Language;
 import net.minecraft.network.chat.TranslatableComponent;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.util.Arrays;
 
 public class ScreenUtils {
 
@@ -253,6 +255,22 @@ public class ScreenUtils {
             screen.renderTooltip(stack, new TranslatableComponent(
                     key, MagicHelpers.withSuffix(suffix1),
                     MagicHelpers.withSuffix(suffix2)), mouseX, mouseY);
+        }
+    }
+
+    public static void renderToolTip3x2(PoseStack stack, AbstractContainerScreen screen, int mouseX, int mouseY, int minX, int maxX, int minY, int maxY,int conditionalInt, int lessThan, int tickToSec,String key, String key2, String key3, int suffix1, int suffix2, int leftPos, int topPos){
+        if (mouseX > (leftPos + minX) && mouseX < (leftPos + minX) + maxX && mouseY > (topPos + minY)
+                && mouseY < (topPos + minY) + maxY) {
+            screen.renderTooltip(stack,
+                    Language.getInstance()
+                            .getVisualOrder(Arrays.asList(new TranslatableComponent(
+                                            key, MagicHelpers.withSuffix(suffix1),
+                                            MagicHelpers.withSuffix(suffix2)),
+                                    conditionalInt <= lessThan
+                                            ? new TranslatableComponent(key2)
+                                            : new TranslatableComponent(key3,
+                                            MagicHelpers.ticksInSeconds(tickToSec)))),
+                    mouseX, mouseY);
         }
     }
 
