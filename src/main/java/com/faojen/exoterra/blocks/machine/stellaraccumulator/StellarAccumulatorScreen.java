@@ -2,6 +2,7 @@ package com.faojen.exoterra.blocks.machine.stellaraccumulator;
 
 import java.awt.Color;
 import com.faojen.exoterra.ExoTerra;
+import com.faojen.exoterra.api.generic.ScreenUtils;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -112,42 +113,22 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
     @SuppressWarnings("resource")
     @Override
     protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
-        float scaleAmount;
 
         Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.stellar_accumulator_guititle"),
                 62, 4,Color.DARK_GRAY.getRGB());
         /**
          *Status stuff
          */
-        scaleAmount = 0.8f;
-        int round = Math.round(scaleAmount);
-        stack.scale(scaleAmount,scaleAmount,scaleAmount);
-        // Percent progress
-        float num = 74 * 0.25f;
-        float testX = 74 + num;
-        float newX = Math.round(testX);
-
-        // percentage progress of filtering
-        this.font.draw(stack,
-                new TranslatableComponent("screen.exoterra.accumulator_progress",
-                        MagicHelpers.withSuffix(this.container.getFilterProgress()*100/512)), testX, scaleY(46), Color.WHITE.getRGB());
-
+        ScreenUtils.drawComponent(stack, font, "screen.exoterra.accumulator_progress",this.container.getFilterProgress()*100/512,74,46,0.8f,Color.WHITE.getRGB());
         // if there is a filter installed
         if (this.container.getIsFilterInstalled() == true){
-            Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.accumulator_filterin"), newX, scaleY(54), Color.WHITE.getRGB());
+            ScreenUtils.drawTranslate(stack, font, "screen.exoterra.accumulator_filterin", 74, 52, 0.8f, Color.WHITE.getRGB());
         // if there is no filter installed
         }else if (this.container.getIsFilterInstalled() == false){
-            Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.accumulator_filterout"), newX, scaleY(54), Color.WHITE.getRGB());
+            ScreenUtils.drawTranslate(stack, font, "screen.exoterra.accumulator_filterout", 74, 58, 0.8f, Color.WHITE.getRGB());
         }
 
     }
 
-    private float scaleY(float in){
-        float num = in * 0.25f;
-        float testX = in + num;
-        float newX = Math.round(testX);
-
-        return newX;
-    }
 }
 
