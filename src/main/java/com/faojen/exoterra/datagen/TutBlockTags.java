@@ -34,6 +34,7 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.STELLAR_ORE_END.get())
 			.add(Registration.STELLAR_ORE_DEEPSLATE.get())
 			.add(Registration.PURIFICATION_BESTOWER.get())
+			.add(Registration.STELLAR_ACCUMULATOR.get())
 			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.INFERIOR_POWER_BANK.get())
 			.add(Registration.COMMON_POWER_BANK.get())
@@ -56,6 +57,7 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.SUPERIOR_POWER_BANK.get())
 			.add(Registration.PURIFICATION_BESTOWER.get())
 			.add(Registration.CRYSTAL_CATALYST.get())
+			.add(Registration.STELLAR_ACCUMULATOR.get())
 			.add(Registration.FACETED_ALUMINUM_BLOCK.get());
 		
 		
@@ -85,6 +87,7 @@ public class TutBlockTags extends BlockTagsProvider {
 			.add(Registration.MACHINE_BODY.get())
 			.add(Registration.PURIFICATION_BESTOWER.get())
 			.add(Registration.CRYSTAL_CATALYST.get())
+			.add(Registration.STELLAR_ACCUMULATOR.get())
 			.add(Registration.INFERIOR_POWER_BANK.get())
 			.add(Registration.COMMON_POWER_BANK.get())
 			.add(Registration.SUPERIOR_POWER_BANK.get())

@@ -40,7 +40,16 @@ public class TutBlockStates extends BlockStateProvider {
 		crystalCatalystModel();
 
 	}
-	
+
+	private void stellarAccumulatorModel() {
+
+		horizontalBlock(Registration.CRYSTAL_CATALYST.get(),
+				models().orientableWithBottom(Registration.CRYSTAL_CATALYST.get().getRegistryName().getPath(),
+						modLoc("block/fabrication_bench_side"), modLoc("block/fabrication_bench_fronton"),
+						modLoc("block/fabrication_bench_bottom"), modLoc("block/fabrication_bench_top")));
+
+	}
+
 	private void crystalCatalystModel() {
 
 		horizontalBlock(Registration.CRYSTAL_CATALYST.get(),

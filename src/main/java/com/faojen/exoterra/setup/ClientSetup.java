@@ -17,7 +17,7 @@ public class ClientSetup {
     public static void init(FMLClientSetupEvent event) {
     	
         event.enqueueWork(() -> {
-            
+
         	// Machines
             MenuScreens.register(Registration.PURIFICATION_BESTOWER_CONTAINER.get(), PurificationBestowerScreen::new);
             MenuScreens.register(Registration.CRYSTAL_CATALYST_CONTAINER.get(), CrystalCatalystScreen::new);

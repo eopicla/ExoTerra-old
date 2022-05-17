@@ -56,9 +56,9 @@ public class PurificationBestowerItem extends BlockItem {
 
         int power = stack.getOrCreateTag().getInt("energy");
         FluidStack fluid = FluidStack.loadFluidStackFromNBT(stack.getTag());
-        Integer fluidamount = fluid.getAmount();
-        if (power == 0)
-            return;
+        int fluidamount = fluid.getAmount();
+        if (power == 0){
+            return;}
  
         tooltip.add(new TranslatableComponent("screen.exoterra.energy", MagicHelpers.withSuffix(power), MagicHelpers.withSuffix(Config.GENERAL.chargerMaxPower.get())));
         tooltip.add(new TranslatableComponent("screen.exoterra.stellar", MagicHelpers.withSuffix(fluidamount), MagicHelpers.withSuffix(PurificationBestowerBE.FLUID_CAP_PUB)));

@@ -3,9 +3,11 @@ package com.faojen.exoterra.setup;
 import static com.faojen.exoterra.ExoTerra.MODID;
 
 import com.faojen.exoterra.ExoTerra;
+import com.faojen.exoterra.blocks.fluid.InterestingSludgeBlock;
 import com.faojen.exoterra.blocks.machine.stellaraccumulator.StellarAccumulatorBE;
 import com.faojen.exoterra.blocks.machine.stellaraccumulator.StellarAccumulatorBlock;
 import com.faojen.exoterra.blocks.machine.stellaraccumulator.StellarAccumulatorContainer;
+import com.faojen.exoterra.blocks.machine.stellaraccumulator.StellarAccumulatorItem;
 import com.faojen.exoterra.blocks.simple.compowerbank.CommonPowerBankBE;
 import com.faojen.exoterra.blocks.simple.compowerbank.CommonPowerBankBlock;
 import com.faojen.exoterra.blocks.simple.compowerbank.CommonPowerBankContainer;
@@ -28,6 +30,8 @@ import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankBloc
 import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankContainer;
 import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
+import com.faojen.exoterra.fluid.InterestingSludgeFluid;
+import com.faojen.exoterra.item.AluminumFilter;
 import com.faojen.exoterra.item.AqueousStellarItem;
 import com.faojen.exoterra.item.InfRefinedStellar;
 
@@ -79,7 +83,6 @@ public class Registration {
     public static final Item.Properties INFERIOR_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.UNCOMMON);
     public static final Item.Properties COMMON_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.RARE);
     public static final Item.Properties SUPERIOR_BANK_PROP = new Item.Properties().tab(ModSetup.MACHINE_GROUP).stacksTo(1).rarity(Rarity.EPIC);
-    public static final Item.Properties FUEL_STELLAR = new Item.Properties().tab(ModSetup.ITEM_GROUP).rarity(Rarity.RARE).setNoRepair();
     public static final Item.Properties BLANK = new Item.Properties().stacksTo(1);
 
 
@@ -96,8 +99,13 @@ public class Registration {
     public static final RegistryObject<Fluid> AQUEOUS_STELLAR = FLUIDS.register("aqueous_stellar", () -> new AqueousStellarFluid.Source());
     public static final RegistryObject<Fluid> FLOWING_AQUEOUS_STELLAR = FLUIDS.register("flowing_aqueous_stellar",
             () -> new AqueousStellarFluid.Flowing());
-
     public static final RegistryObject<Block> AQUEOUS_STELLAR_BLOCK = BLOCKS.register("aqueous_stellar", () -> new AqueousStellarBlock());
+
+
+    public static final RegistryObject<Fluid> INTERESTING_SLUDGE = FLUIDS.register("interesting_sludge", () -> new InterestingSludgeFluid.Source());
+    public static final RegistryObject<Fluid> FLOWING_INTERESTING_SLUDGE = FLUIDS.register("flowing_interesting_sludge",
+            () -> new InterestingSludgeFluid.Flowing());
+    public static final RegistryObject<Block> INTERESTING_SLUDGE_BLOCK = BLOCKS.register("interesting_sludge", () -> new InterestingSludgeBlock());
 
     // -----------------------------------------------------------------------------------------------------------------------------------------------------------//
     /**
@@ -188,11 +196,11 @@ public class Registration {
 	// Block
 	public static final RegistryObject<Block> STELLAR_ACCUMULATOR = BLOCKS.register("stellar_accumulator", StellarAccumulatorBlock::new);
 	// Block Entity
-	public static final RegistryObject<BlockEntityType<SuperiorPowerBankBE>> STELLAR_ACCUMULATOR_BE =
+	public static final RegistryObject<BlockEntityType<StellarAccumulatorBE>> STELLAR_ACCUMULATOR_BE =
 			BLOCK_ENTITIES.register("stellar_accumulator_be", () -> BlockEntityType.Builder.of(StellarAccumulatorBE::new, STELLAR_ACCUMULATOR.get()).build(null));
 	// Item
 	public static final RegistryObject<Item> STELLAR_ACCUMULATOR_BI = ITEMS.register("stellar_accumulator",
-			() -> new SuperiorPowerBankItem(STELLAR_ACCUMULATOR.get(), Registration.MACHINE_PROPERTIES));
+			() -> new StellarAccumulatorItem(STELLAR_ACCUMULATOR.get(), Registration.MACHINE_PROPERTIES));
 
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -230,6 +238,7 @@ public class Registration {
     public static final RegistryObject<Item> BLOCKER = ITEMS.register("blocker", () -> new Item(BLANK));
     public static final RegistryObject<Item> ALLUMINUM_INGOT = ITEMS.register("alluminum_ingot", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> PURE_STELLAR = ITEMS.register("pure_stellar", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> ALUMINUM_FILTER = ITEMS.register("aluminum_filter", () -> new AluminumFilter());
 
     /**
      * 		MACHINE BLOCKS
