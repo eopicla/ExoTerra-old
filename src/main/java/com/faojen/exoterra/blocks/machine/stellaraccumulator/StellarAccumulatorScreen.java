@@ -57,36 +57,12 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
         this.blit(stack, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
         // Power Display
-        int maxEnergy = this.container.getMaxPower(), height = 52;
-        if (this.container.getMaxPower() > 0) {
-            int remainingEnergy = (this.container.getEnergy() * height) / maxEnergy;
-
-            ScreenUtils.drawVerticalMeter(this.container.getMaxPower(),this.container.getEnergy(),this, stack,52, 9, 26, 177, 71, 14, topPos, leftPos);
-            /*
-            // power
-            this.blit(stack,
-                    leftPos + 9,                    // Destination top-left corner X
-                    topPos + 25 + 52 - remainingEnergy,                // Destination top-left corner Y
-                    177,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-                    71 - remainingEnergy,                                // Source top-left corner Y
-                    14,                // Source Image Width - Iterates remaining in order scale width
-                    remainingEnergy + 1);                                // Source Image height
-
-             */
+        if (this.container.getEnergy() > 0) {
+            ScreenUtils.drawVerticalMeter(this.container.getMaxPower(),this.container.getEnergy(),this, stack,52, 9, 26, 177, 71, 14, leftPos, topPos);
         }
-        // sludge
-        int maxSludge = this.container.getMaxFluid();
-        if(maxSludge > 0){
-            int remainingSludge = (this.container.getFluidStored() * height) / maxSludge;
-            // sludge
-            this.blit(stack,
-                    leftPos + 30, 				    // Destination top-left corner X
-                    topPos + 25 + 52 - remainingSludge, 			    // Destination top-left corner Y
-                    177,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-                    124 - remainingSludge, 							    // Source top-left corner Y
-                    38, 			    // Source Image Width - Iterates remaining in order scale width
-                    remainingSludge + 1);							    // Source Image height
-
+        // Sludge Display
+        if(this.container.getFluidStored() > 0){
+            ScreenUtils.drawVerticalMeter(this.container.getMaxFluid(), this.container.getFluidStored(), this, stack, 52, 30, 25, 177, 124, 38, leftPos, topPos);
         }
 
         int maxFilter = 512, width = 79;
