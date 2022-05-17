@@ -203,6 +203,34 @@ public class ScreenUtils {
                 sourceHeight);
     }
 
+    /**This method will allow you to create a horizontal meter on your gui. It differs from "drawHorizontalMeter" in that it will fill the meter from right to left.
+     * ---------
+     * This method should be used: if(currentVal > 0){drawRevHorizontalMeter} to avoid issues.
+     * ---------
+     * @param maxCap The maximum capacity of whatever type of storage the meter is representing.
+     * @param currentVal The current stored value of whatever the meter is representing.
+     * @param screen The target screen. ( "this" is fine )
+     * @param stack The target PoseStack
+     * @param meterWidth The width of meter on your texture.
+     * @param targetX The desired X location of the meter.
+     * @param targetY The desired Y location of the meter.
+     * @param sourceX The X location of the meter overlay on your texture.
+     * @param sourceY The Y location of the meter overlay on your texture.
+     * @param sourceHeight The height of the overlay.
+     * @param topPos Pass your screen's topPos.
+     * @param leftPos Pass your screen's leftPos.
+     */
+    public static void drawRevHorizontalMeter(int maxCap, int currentVal, AbstractContainerScreen screen, PoseStack stack, int meterWidth, int targetX, int targetY, int sourceX, int sourceY, int sourceHeight, int leftPos, int topPos){
+        int remaining = (currentVal * meterWidth) / maxCap;
+        screen.blit(stack,
+                leftPos + targetX + meterWidth - remaining,
+                topPos + targetY,
+                sourceX + meterWidth - remaining,
+                sourceY,
+                remaining + 1,
+                sourceHeight);
+    }
+
     /** Renders a tooltip with 2 suffixes.
      *
      * @param stack The target PoseStack.
