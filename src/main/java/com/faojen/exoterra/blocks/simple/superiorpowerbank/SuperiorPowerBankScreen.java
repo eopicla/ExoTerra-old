@@ -51,7 +51,7 @@ public class SuperiorPowerBankScreen extends AbstractContainerScreen<SuperiorPow
 
 		// Power Display
 		if (this.container.getEnergy() > 0) {
-			ScreenUtils.drawHorizontalMeter(this.container.getMaxPower(), this.container.getEnergy(), this, stack, 158, 9, 26, 0, 166, 53, topPos, leftPos);
+			ScreenUtils.drawHorizontalMeter(this.container.getMaxPower(), this.container.getEnergy(), this, stack, 158, 9, 26, 0, 166, 53, leftPos, topPos);
 		}
 
 		// Draw power meter corners
