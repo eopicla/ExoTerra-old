@@ -75,12 +75,12 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
     @Override
     protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
 
-        Minecraft.getInstance().font.draw(stack, I18n.get("screen.exoterra.stellar_accumulator_guititle"),
-                62, 4,Color.DARK_GRAY.getRGB());
-        /**
-         *Status stuff
-         */
+        // Gui Title
+        ScreenUtils.drawTranslateWithShadow(stack, font, "screen.exoterra.stellar_accumulator_guititle", 62, 4, 1, Color.DARK_GRAY.getRGB());
+
+        // Filter Progress
         ScreenUtils.drawComponent(stack, font, "screen.exoterra.accumulator_progress",this.container.getFilterProgress()*100/512,74,46,0.8f,Color.WHITE.getRGB());
+        
         // if there is a filter installed
         if (this.container.getIsFilterInstalled() == true){
             ScreenUtils.drawTranslate(stack, font, "screen.exoterra.accumulator_filterin", 74, 52, 0.8f, Color.WHITE.getRGB());
