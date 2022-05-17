@@ -1,20 +1,15 @@
 package com.faojen.exoterra.blocks.machine.crystalcatalyst;
 
-import java.awt.Color;
-
 import com.faojen.exoterra.ExoTerra;
 import com.faojen.exoterra.api.generic.ScreenUtils;
-import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+
+import java.awt.*;
 
 public class CrystalCatalystScreen extends AbstractContainerScreen<CrystalCatalystContainer> {
 	private static final ResourceLocation background = new ResourceLocation(ExoTerra.MODID,

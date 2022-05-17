@@ -258,6 +258,9 @@ public class ScreenUtils {
         }
     }
 
+    /**
+     * Used very sparingly. not going to provide documentation :( check uses.
+     */
     public static void renderToolTip3x2(PoseStack stack, AbstractContainerScreen screen, int mouseX, int mouseY, int minX, int maxX, int minY, int maxY,int conditionalInt, int lessThan, int tickToSec,String key, String key2, String key3, int suffix1, int suffix2, int leftPos, int topPos){
         if (mouseX > (leftPos + minX) && mouseX < (leftPos + minX) + maxX && mouseY > (topPos + minY)
                 && mouseY < (topPos + minY) + maxY) {
