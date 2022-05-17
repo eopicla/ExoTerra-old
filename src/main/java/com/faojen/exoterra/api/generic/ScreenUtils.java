@@ -256,4 +256,32 @@ public class ScreenUtils {
         }
     }
 
+    /**
+     * This will move a blit from its initialization point to the left. Same params as horizontal peter.
+     */
+    public static void drawMovingBlitLeft(int maxCap, int currentVal, AbstractContainerScreen screen, PoseStack stack, int meterWidth, int targetX, int targetY, int sourceX, int sourceY, int sourceHeight, int sourceWidth, int leftPos, int topPos){
+        int remaining = (currentVal * meterWidth) / maxCap;
+        screen.blit(stack,
+                leftPos + targetX - meterWidth + remaining,
+                topPos + targetY,
+                sourceX,
+                sourceY,
+                sourceWidth,
+                sourceHeight);
+    }
+
+    /**
+     * This will move a blit from its initialization point to the right. Same params as horizontal meter.
+     */
+    public static void drawMovingBlitRight(int maxCap, int currentVal, AbstractContainerScreen screen, PoseStack stack, int meterWidth, int targetX, int targetY, int sourceX, int sourceY, int sourceWidth, int sourceHeight, int leftPos, int topPos){
+        int remaining = (currentVal * meterWidth) / maxCap;
+        screen.blit(stack,
+                leftPos + targetX + meterWidth - remaining,
+                topPos + targetY,
+                sourceX,
+                sourceY,
+                sourceWidth,
+                sourceHeight);
+    }
+
 }
