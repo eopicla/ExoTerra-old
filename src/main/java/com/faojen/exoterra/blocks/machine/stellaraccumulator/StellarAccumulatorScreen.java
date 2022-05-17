@@ -65,18 +65,8 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
             ScreenUtils.drawVerticalMeter(this.container.getMaxFluid(), this.container.getFluidStored(), this, stack, 52, 30, 25, 177, 124, 38, leftPos, topPos);
         }
 
-        int maxFilter = 512, width = 79;
         if (this.container.getFilterProgress() > 0) {
-            int remainingFilter = (this.container.getFilterProgress() * width) / maxFilter;
-
-            // filter progress
-            this.blit(stack,
-                    leftPos + 72,                    // Destination top-left corner X
-                    topPos + 24,                // Destination top-left corner Y
-                    176,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
-                    1,                                // Source top-left corner Y
-                    remainingFilter + 1,                // Source Image Width - Iterates remaining in order scale width
-                    18);                                // Source Image height
+            ScreenUtils.drawHorizontalMeter(512,this.container.getFilterProgress(), this, stack, 79, 72, 24, 176, 1, 18, leftPos, topPos);
         }
 
     }
