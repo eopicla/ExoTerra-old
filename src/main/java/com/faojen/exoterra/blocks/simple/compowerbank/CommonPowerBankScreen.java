@@ -33,7 +33,7 @@ public class CommonPowerBankScreen extends AbstractContainerScreen<CommonPowerBa
 		this.renderTooltip(stack, mouseX, mouseY); // @mcp: renderTooltip = renderHoveredToolTip
 		
 		// Energy tooltip
-		ScreenUtils.renderToolTip(stack, this, mouseX, mouseY, 9, 158, 26, 53, "screen.exoterra.energy", this.container.getEnergy(), CommonPowerBankBE.COM_BANK_CAPACITY_PUB, leftPos, topPos);
+		ScreenUtils.renderToolTip(stack, this, mouseX, mouseY, 9, 158, 26, 53, "screen.exoterra.energy", this.container.getEnergy(), this.container.getMaxPower(), leftPos, topPos);
 		
 	}
 
