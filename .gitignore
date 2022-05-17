@@ -433,3 +433,4 @@ forge*changelog.txt
 /src/datagen/*/annotation_generated
 /annotation-processor/bin
 libs/
+src/generated/resources/.cache/cache
