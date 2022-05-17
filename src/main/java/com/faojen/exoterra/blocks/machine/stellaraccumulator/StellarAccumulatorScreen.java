@@ -80,7 +80,7 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
 
         // Filter Progress
         ScreenUtils.drawComponent(stack, font, "screen.exoterra.accumulator_progress",this.container.getFilterProgress()*100/512,74,46,0.8f,Color.WHITE.getRGB());
-        
+
         // if there is a filter installed
         if (this.container.getIsFilterInstalled() == true){
             ScreenUtils.drawTranslate(stack, font, "screen.exoterra.accumulator_filterin", 74, 52, 0.8f, Color.WHITE.getRGB());
