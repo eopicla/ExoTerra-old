@@ -73,7 +73,7 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
             // power
             this.blit(stack,
                     leftPos + 9,                    // Destination top-left corner X
-                    topPos + 26 + 52 - remainingEnergy,                // Destination top-left corner Y
+                    topPos + 25 + 52 - remainingEnergy,                // Destination top-left corner Y
                     177,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
                     71 - remainingEnergy,                                // Source top-left corner Y
                     14,                // Source Image Width - Iterates remaining in order scale width
@@ -86,7 +86,7 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
             // sludge
             this.blit(stack,
                     leftPos + 30, 				    // Destination top-left corner X
-                    topPos + 26 + 52 - remainingSludge, 			    // Destination top-left corner Y
+                    topPos + 25 + 52 - remainingSludge, 			    // Destination top-left corner Y
                     177,  // Source top-left corner X, adding the horizontal bar's width, subtracting the remaining space in the tank.
                     124 - remainingSludge, 							    // Source top-left corner Y
                     38, 			    // Source Image Width - Iterates remaining in order scale width
