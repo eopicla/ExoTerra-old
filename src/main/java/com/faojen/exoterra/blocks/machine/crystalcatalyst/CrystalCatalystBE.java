@@ -144,9 +144,8 @@ public class CrystalCatalystBE extends BlockEntity implements MenuProvider {
 	private void tickCrystallize() {
 		if (level == null)
 			return;
-		FluidStack fluidtest = new FluidStack(Registration.AQUEOUS_STELLAR.get(), 1);
 		
-		boolean canCrystallize = fluidStorage.fill(fluidtest, FluidAction.SIMULATE) > 0;
+		boolean canCrystallize = fluidStorage.getCapacity() > 0;
 		System.out.println("crystallizing: " + crystallizing);
 		if(crystallizing > 0 && canCrystallize && crystallizing <= 2399) {
 			crystallize(fluidStorage);

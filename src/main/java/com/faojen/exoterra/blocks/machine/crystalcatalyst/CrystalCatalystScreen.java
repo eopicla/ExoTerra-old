@@ -63,7 +63,7 @@ public class CrystalCatalystScreen extends AbstractContainerScreen<CrystalCataly
 		}
 
 		// Stellar Display
-		ScreenUtils.drawVerticalMeter(this.container.getMaxCapacity(), this.container.getFluidStored(), this, stack, 49, 142, 28, 176, 129, 23, leftPos, topPos);
+		ScreenUtils.drawVerticalMeter(this.container.getMaxCapacity(), this.container.getFluidStored(), this, stack, 49, 142, 29, 176, 129, 23, leftPos, topPos);
 			
 		}
 
