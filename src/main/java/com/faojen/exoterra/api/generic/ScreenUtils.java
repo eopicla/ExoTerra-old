@@ -1,5 +1,6 @@
 package com.faojen.exoterra.api.generic;
 
+import com.faojen.exoterra.blocks.simple.compowerbank.CommonPowerBankBE;
 import com.faojen.exoterra.utils.MagicHelpers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -129,11 +130,25 @@ public class ScreenUtils {
         matrixStack.popPose();
     }
 
-    /**
-     * This method will allow you to create a vertical meter on your gui ( e.g. power, fluid, any other integer tracked value )
-     * -
+    /** This method draws a simple blit on your screen.
+     *
+     * @param screen The target screen. ( "this" is fine )
+     * @param stack The target PoseStack
+     * @param targetX The desired X location of the meter.
+     * @param targetY The desired Y location of the meter.
+     * @param sourceX The X location on your texture of the overlay you intend to use.
+     * @param sourceY The Y location on your texture of the overlay you intend to use.
+     * @param sourceWidth The width of the overlay.
+     * @param sourceHeight The height of the overlay.
+     */
+    public static void drawSimpleBlit(AbstractContainerScreen screen, PoseStack stack, int targetX, int targetY, int sourceX, int sourceY, int sourceWidth, int sourceHeight, int leftPos, int topPos) {
+        screen.blit(stack, leftPos + targetX, topPos + targetY, sourceX, sourceY, sourceWidth, sourceHeight);
+    }
+
+    /**This method will allow you to create a vertical meter on your gui ( e.g. power, fluid, any other integer tracked value )
+     * ---------
      * This method should be used: if(currentVal > 0){drawVerticalMeter} to avoid issues.
-     * -
+     * ---------
      * @param maxCap The maximum capacity of whatever type of storage the meter is representing.
      * @param currentVal The current stored value of whatever the meter is representing.
      * @param screen The target screen. ( "this" is fine )
@@ -143,7 +158,7 @@ public class ScreenUtils {
      * @param targetY The desired Y location of the meter.
      * @param sourceX The X location on your texture of the overlay you intend to use.
      * @param sourceBottomY The Y coordinate of the bottom pixel of your overlay.
-     * @param sourceWidth The width of the meter.
+     * @param sourceWidth The width of the overlay.
      * @param topPos Pass your screen's topPos.
      * @param leftPos Pass your screen's leftPos.
      */
@@ -158,6 +173,59 @@ public class ScreenUtils {
                 sourceWidth,
                 remaining + 1);
 
+    }
+
+    /**This method will allow you to create a horizontal meter on your gui ( e.g. power, fluid, any other integer tracked value )
+     * ---------
+     * This method should be used: if(currentVal > 0){drawHorizontalMeter} to avoid issues.
+     * ---------
+     * @param maxCap The maximum capacity of whatever type of storage the meter is representing.
+     * @param currentVal The current stored value of whatever the meter is representing.
+     * @param screen The target screen. ( "this" is fine )
+     * @param stack The target PoseStack
+     * @param meterWidth The width of meter on your texture.
+     * @param targetX The desired X location of the meter.
+     * @param targetY The desired Y location of the meter.
+     * @param sourceX The X location of the meter overlay on your texture.
+     * @param sourceY The Y location of the meter overlay on your texture.
+     * @param sourceHeight The height of the overlay.
+     * @param topPos Pass your screen's topPos.
+     * @param leftPos Pass your screen's leftPos.
+     */
+    public static void drawHorizontalMeter(int maxCap, int currentVal, AbstractContainerScreen screen, PoseStack stack, int meterWidth, int targetX, int targetY, int sourceX, int sourceY, int sourceHeight, int topPos, int leftPos){
+        int remaining = (currentVal * meterWidth) / maxCap;
+        screen.blit(stack,
+                leftPos + targetX,
+                topPos + targetY,
+                sourceX,
+                sourceY,
+                remaining + 1,
+                sourceHeight);
+    }
+
+    /** Renders a tooltip with 2 suffixes.
+     *
+     * @param stack The target PoseStack.
+     * @param screen The target screen. ( "this" is fine )
+     * @param mouseX Mouse's X position. ( passing "mouseX" is fine)
+     * @param mouseY Mouse's Y position. ( passing "mouseY" is fine)
+     * @param minX Minimum X coordinate to trigger the tooltip.
+     * @param maxX Maximum X coordinate to trigger the tooltip under.
+     * @param minY Minimum Y coordinate to trigger the tooltip.
+     * @param maxY Maximum Y coordinate to trigger the tooltip under.
+     * @param key Key for the TranslatableComponent.
+     * @param suffix1 Suffix 1 for the key provided.
+     * @param suffix2 Suffix 2 for the key provided.
+     * @param leftPos leftPos of the screen. ( passing leftPos is fine )
+     * @param topPos topPos of the screen. ( passing topPos is fine )
+     */
+    public static void renderToolTip(PoseStack stack, AbstractContainerScreen screen, int mouseX, int mouseY, int minX, int maxX, int minY, int maxY, String key, int suffix1, int suffix2, int leftPos, int topPos){
+        if (mouseX > (leftPos + minX) && mouseX < (leftPos + minX) + maxX && mouseY > (topPos + minY)
+                && mouseY < (topPos + minY) + maxY) {
+            screen.renderTooltip(stack, new TranslatableComponent(
+                    key, MagicHelpers.withSuffix(suffix1),
+                    MagicHelpers.withSuffix(suffix2)), mouseX, mouseY);
+        }
     }
 
 }
