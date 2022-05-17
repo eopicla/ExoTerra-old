@@ -140,8 +140,8 @@ public class ScreenUtils {
      * @param sourceWidth The width of the overlay.
      * @param sourceHeight The height of the overlay.
      */
-    public void drawSimpleBlit(AbstractContainerScreen screen, PoseStack stack, int targetX, int targetY, int sourceX, int sourceY, int sourceWidth, int sourceHeight) {
-        screen.blit(stack, targetX, targetY, sourceX, sourceY, sourceWidth, sourceHeight);
+    public static void drawSimpleBlit(AbstractContainerScreen screen, PoseStack stack, int targetX, int targetY, int sourceX, int sourceY, int sourceWidth, int sourceHeight, int leftPos, int topPos) {
+        screen.blit(stack, leftPos + targetX, topPos + targetY, sourceX, sourceY, sourceWidth, sourceHeight);
     }
 
     /**This method will allow you to create a vertical meter on your gui ( e.g. power, fluid, any other integer tracked value )
