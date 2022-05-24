@@ -57,6 +57,7 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.FLUID_OUTLET.get())
 			.add(Registration.FRACTURIZER.get())
 			.add(Registration.INF_STELLAR_CORE.get())
+			.add(Registration.PURE_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())
 			.add(Registration.INTERFACE_PANEL.get())
 			.add(Registration.MACHINE_BODY_ITEM.get())
@@ -70,6 +71,7 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.FRACTURIZER.get())
 			.add(Registration.MACHINE_BODY_ITEM.get())
 			.add(Registration.INF_STELLAR_CORE.get())
+			.add(Registration.PURE_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())
 			.add(Registration.INTERFACE_PANEL.get());
 

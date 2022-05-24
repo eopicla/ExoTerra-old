@@ -67,6 +67,7 @@ public class TutLanguageProvider extends LanguageProvider {
 		addItem(Registration.FLUID_OUTLET, "Fluid Outlet"); 
 		addItem(Registration.FRACTURIZER, "Fracturizer");
 		addItem(Registration.INF_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Inferior)");
+		addItem(Registration.PURE_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Pure)");
 		addItem(Registration.INF_STELLAR_PART, "\u00A73Stellar Component\u00A7r (Inferior)");
 		addItem(Registration.INTERFACE_PANEL, "Interface Panel");
 /*
