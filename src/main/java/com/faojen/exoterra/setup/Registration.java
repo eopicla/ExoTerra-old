@@ -31,9 +31,9 @@ import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankCont
 import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.fluid.InterestingSludgeFluid;
-import com.faojen.exoterra.items.AluminumFilter;
-import com.faojen.exoterra.items.AqueousStellarItem;
-import com.faojen.exoterra.items.InfRefinedStellar;
+import com.faojen.exoterra.items.basic.AluminumFilter;
+import com.faojen.exoterra.items.fluid.AqueousStellarItem;
+import com.faojen.exoterra.items.basic.InfRefinedStellar;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
