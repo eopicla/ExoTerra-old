@@ -1,5 +1,5 @@
 
-package com.faojen.exoterra.items;
+package com.faojen.exoterra.items.fluid;
 
 import com.faojen.exoterra.setup.ModSetup;
 import com.faojen.exoterra.setup.Registration;
