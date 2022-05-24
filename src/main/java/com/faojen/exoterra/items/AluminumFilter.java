@@ -1,9 +1,7 @@
-package com.faojen.exoterra.item;
+package com.faojen.exoterra.items;
 
 import com.faojen.exoterra.setup.ModSetup;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 public class AluminumFilter extends Item {
 

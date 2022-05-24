@@ -1,4 +1,4 @@
-package com.faojen.exoterra.item;
+package com.faojen.exoterra.items;
 
 import com.faojen.exoterra.setup.ModSetup;
 import net.minecraft.world.item.Item;
