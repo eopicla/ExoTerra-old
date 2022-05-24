@@ -49,13 +49,14 @@ public class StellarAccumulatorScreen extends AbstractContainerScreen<StellarAcc
 
         // Power Display
         if (this.container.getEnergy() > 0) {
-            ScreenUtils.drawVerticalMeter(this.container.getMaxPower(),this.container.getEnergy(),this, stack,52, 9, 26, 177, 71, 14, leftPos, topPos);
+            ScreenUtils.drawVerticalMeter(StellarAccumulatorBE.ENERGY_CAPACITY_PUB,this.container.getEnergy(),this, stack,52, 9, 26, 177, 71, 14, leftPos, topPos);
         }
         // Sludge Display
         if(this.container.getFluidStored() > 0){
-            ScreenUtils.drawVerticalMeter(this.container.getMaxFluid(), this.container.getFluidStored(), this, stack, 52, 30, 25, 177, 124, 38, leftPos, topPos);
+            ScreenUtils.drawVerticalMeter(StellarAccumulatorBE.FLUID_CAP_PUB, this.container.getFluidStored(), this, stack, 52, 30, 25, 177, 124, 38, leftPos, topPos);
         }
 
+        // Filter Progress
         if (this.container.getFilterProgress() > 0) {
             ScreenUtils.drawHorizontalMeter(512,this.container.getFilterProgress(), this, stack, 79, 72, 24, 176, 1, 18, leftPos, topPos);
         }
