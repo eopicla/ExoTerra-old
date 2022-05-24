@@ -31,9 +31,9 @@ import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankCont
 import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.fluid.InterestingSludgeFluid;
-import com.faojen.exoterra.item.AluminumFilter;
-import com.faojen.exoterra.item.AqueousStellarItem;
-import com.faojen.exoterra.item.InfRefinedStellar;
+import com.faojen.exoterra.items.AluminumFilter;
+import com.faojen.exoterra.items.AqueousStellarItem;
+import com.faojen.exoterra.items.InfRefinedStellar;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -93,6 +93,7 @@ public class Registration {
 
     // Item
     public static final RegistryObject<InfRefinedStellar> INF_REFINED_STELLAR = ITEMS.register("inf_refined_stellar", InfRefinedStellar::new);
+    public static final RegistryObject<PureStellarCore> PURE_STELLAR_CORE = ITEMS.register("pure_stellar_core", PureStellarCore::new);
 
     // Fluid
 

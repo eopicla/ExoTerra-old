@@ -6,7 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.item.Item;
 
-import com.faojen.exoterra.item.AqueousStellarItem;
+import com.faojen.exoterra.items.AqueousStellarItem;
 import com.faojen.exoterra.ExoTerra;
 
 public class ExoTerraItems {
