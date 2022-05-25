@@ -33,6 +33,7 @@ import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.fluid.InterestingSludgeFluid;
 import com.faojen.exoterra.items.basic.AluminumFilter;
 import com.faojen.exoterra.items.basic.PureStellarCore;
+import com.faojen.exoterra.items.basic.SentientCore;
 import com.faojen.exoterra.items.fluid.AqueousStellarItem;
 import com.faojen.exoterra.items.basic.InfRefinedStellar;
 
@@ -96,6 +97,8 @@ public class Registration {
     public static final RegistryObject<InfRefinedStellar> INF_REFINED_STELLAR = ITEMS.register("inf_refined_stellar", InfRefinedStellar::new);
     public static final RegistryObject<Item> INF_STELLAR_CORE = ITEMS.register("inf_stellar_core", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<PureStellarCore> PURE_STELLAR_CORE = ITEMS.register("pure_stellar_core", PureStellarCore::new);
+
+    public static final RegistryObject<SentientCore> SENTIENT_CORE = ITEMS.register("sentient_core", SentientCore::new);
 
     // Fluid
 

@@ -11,7 +11,7 @@ public class PureStellarCore extends Item {
     public PureStellarCore() {
         super(new Item.Properties()
                 .tab(ModSetup.ITEM_GROUP)
-                .rarity(Rarity.EPIC)
+                .rarity(Rarity.RARE)
                 .stacksTo(1)
                 .craftRemainder(Registration.INF_STELLAR_CORE.get()));
 
@@ -25,11 +25,5 @@ public class PureStellarCore extends Item {
 //    public boolean hasCraftingRemainingItem() {
 //        return super.hasCraftingRemainingItem();
 //    }
-
-
-    @Override
-    public boolean isFoil(ItemStack pStack) {
-        return true;
-    }
 
 }
