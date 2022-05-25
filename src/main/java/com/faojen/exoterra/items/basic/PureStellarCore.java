@@ -43,13 +43,4 @@ public class PureStellarCore extends Item {
         return InteractionResult.FAIL;
     }
 
-    //    public Item getCraftingRemainingItem() {
-//        return this.craftingRemainingItem;
-//    }
-
-//    @Override
-//    public boolean hasCraftingRemainingItem() {
-//        return super.hasCraftingRemainingItem();
-//    }
-
 }

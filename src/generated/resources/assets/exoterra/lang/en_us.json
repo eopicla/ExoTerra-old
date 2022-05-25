@@ -40,6 +40,7 @@
   "itemGroup.charginggadgets": "Charging Gadgets",
   "itemGroup.exoterraitems": "ExoTerra Items",
   "itemGroup.exoterramachines": "ExoTerra Machines",
+  "itemHover.exoterra.intelligence": "%s%% Intelligence",
   "screen.exoterra.accumulator_filterdurability": "Filter Durability: %s%%",
   "screen.exoterra.accumulator_filterin": "Filter installed",
   "screen.exoterra.accumulator_filterout": "Filter not installed",

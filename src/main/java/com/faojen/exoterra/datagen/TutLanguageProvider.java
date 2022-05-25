@@ -68,7 +68,9 @@ public class TutLanguageProvider extends LanguageProvider {
 		addItem(Registration.FRACTURIZER, "Fracturizer");
 		addItem(Registration.INF_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Inferior)");
 		addItem(Registration.PURE_STELLAR_CORE, "\u00A73Stellar Core\u00A7r (Pure)");
+
 		addItem(Registration.SENTIENT_CORE, "\u00A7l\u00A7oSentient Core\u00A7r");
+
 		addItem(Registration.INF_STELLAR_PART, "\u00A73Stellar Component\u00A7r (Inferior)");
 		addItem(Registration.INTERFACE_PANEL, "Interface Panel");
 
@@ -84,6 +86,8 @@ public class TutLanguageProvider extends LanguageProvider {
  * 		SCREEN LANG
  */
 		add("itemGroup.charginggadgets", "Charging Gadgets");
+		add("itemHover.exoterra.intelligence", "%s%% Intelligence");
+
 		add("screen.exoterra.energy", "\u00A74Energy:\u00a7r %s/%s FE");
 		add("screen.exoterra.stellar", "\u00A73Stellar:\u00a7r %s MB");
 		add("screen.exoterra.no_fuel", "\u00A77Fuel source empty");
