@@ -10,6 +10,8 @@
     "exoterra:pure_stellar_core",
     "exoterra:inf_stellar_part",
     "exoterra:sentient_core",
+    "exoterra:soul_capacitor_full",
+    "exoterra:soul_capacitor_empty",
     "exoterra:interface_panel"
   ]
 }

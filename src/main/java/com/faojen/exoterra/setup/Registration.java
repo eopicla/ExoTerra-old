@@ -270,6 +270,9 @@ public class Registration {
     public static final RegistryObject<Item> INF_STELLAR_PART = ITEMS.register("inf_stellar_part", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> INTERFACE_PANEL = ITEMS.register("interface_panel", () -> new Item(ITEM_PROPERTIES));
 
+    public static final RegistryObject<Item> SOUL_CAPACITOR_FULL = ITEMS.register("soul_capacitor_full", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SOUL_CAPACITOR_EMPTY = ITEMS.register("soul_capacitor_empty", () -> new Item(ITEM_PROPERTIES));
+
     /**
      * 		BLOCK TAGS
      */
