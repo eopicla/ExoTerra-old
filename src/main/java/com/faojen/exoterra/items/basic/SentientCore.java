@@ -41,17 +41,17 @@ public class SentientCore extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
 
         if(pStack.hasTag()) {
-            if (pStack.getTag().getInt("level") == 69) {
+            if (getIntelligence(pStack) == 69) {
                 pTooltipComponents
                         .add(new TextComponent("nice."));
             }
 
-            if (pStack.getTag().getInt("level") < 100) {
+            if (getIntelligence(pStack) < 100) {
                 pTooltipComponents
-                        .add(new TranslatableComponent("itemHover.exoterra.intelligence", MagicHelpers.withSuffix(pStack.getTag().getInt("level"))));
+                        .add(new TranslatableComponent("itemHover.exoterra.intelligence", MagicHelpers.withSuffix(getIntelligence(pStack))));
             }
 
-            if (pStack.getTag().getInt("level") == 100) {
+            if (getIntelligence(pStack) == 100) {
                 pTooltipComponents
                         .add(new TextComponent("\u00A72Intelligent.\u00A7r"));
             }
@@ -63,10 +63,11 @@ public class SentientCore extends Item {
     public InteractionResult interactLivingEntity(ItemStack pStack, Player pPlayer, LivingEntity pInteractionTarget, InteractionHand pUsedHand) {
 //        return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
 
-        if(pInteractionTarget.isBaby() && pStack.getTag().getInt("level") < 100 && !pPlayer.getLevel().isClientSide()){
-            iterate = pStack.getTag().getInt("level") + 1;
+        if(pInteractionTarget.isBaby() && getIntelligence(pStack) < 100 && !pPlayer.getLevel().isClientSide()){
+            iterate = getIntelligence(pStack) + 1;
+
             pInteractionTarget.kill();
-            pStack.getTag().putInt("level", iterate);
+            setIntelligence(iterate, pStack);
 
             return InteractionResult.PASS;
         } else
