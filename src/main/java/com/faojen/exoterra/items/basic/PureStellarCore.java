@@ -17,7 +17,12 @@ public class PureStellarCore extends Item {
 
     }
 
-//    public Item getCraftingRemainingItem() {
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        return true;
+    }
+
+    //    public Item getCraftingRemainingItem() {
 //        return this.craftingRemainingItem;
 //    }
 
