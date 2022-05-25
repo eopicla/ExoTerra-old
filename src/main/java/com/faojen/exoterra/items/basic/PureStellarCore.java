@@ -29,7 +29,7 @@ public class PureStellarCore extends Item {
 
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return super.isFoil(pStack);
+        return true;
     }
 
 }
