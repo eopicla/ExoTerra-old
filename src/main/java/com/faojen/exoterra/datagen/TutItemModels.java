@@ -62,6 +62,12 @@ public class TutItemModels extends ItemModelProvider {
 		singleTexture(Registration.SOUL_CAPACITOR_FULL.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/soul_capacitor_filled"));
 		singleTexture(Registration.SOUL_CAPACITOR_EMPTY.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/soul_capacitor_empty"));
 
+		singleTexture(Registration.LUNAR_WANE_CAST.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/lunar_wane_cast"));
+		singleTexture(Registration.TREMI_PIPE.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/tremi_pipe"));
+		singleTexture(Registration.DIFFERENTIAL_GURDEL.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/differential_gurdel_empty"));
+		singleTexture(Registration.ATTRACTION_MATRIX.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/attraction_matrix"));
+		singleTexture(Registration.DEPTH_CONDITIONER.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/depth_conditioner"));
+
 /*
  * 	MACHINES
  */

@@ -271,6 +271,7 @@ public class Registration {
     public static final RegistryObject<Item> INTERFACE_PANEL = ITEMS.register("interface_panel", () -> new Item(ITEM_PROPERTIES));
 
     public static final RegistryObject<Item> SOUL_CAPACITOR_FULL = ITEMS.register("soul_capacitor_full", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> SOUL_CAPACITOR_EMPTY = ITEMS.register("soul_capacitor_empty", () -> new Item(ITEM_PROPERTIES));
     // TODO: DATAGENNNNNNN
     public static final RegistryObject<Item> LUNAR_WANE_CAST = ITEMS.register("lunar_wane_cast", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> TREMI_PIPE = ITEMS.register("tremi_pipe", () -> new Item(ITEM_PROPERTIES));

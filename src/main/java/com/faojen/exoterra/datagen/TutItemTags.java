@@ -74,8 +74,15 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.PURE_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())
 			.add(Registration.SENTIENT_CORE.get())
-				.add(Registration.SOUL_CAPACITOR_FULL.get())
-				.add(Registration.SOUL_CAPACITOR_EMPTY.get())
+
+				.add(Registration.LUNAR_WANE_CAST.get())
+				.add(Registration.TREMI_PIPE.get())
+				.add(Registration.DIFFERENTIAL_GURDEL.get())
+				.add(Registration.ATTRACTION_MATRIX.get())
+				.add(Registration.DEPTH_CONDITIONER.get())
+
+			.add(Registration.SOUL_CAPACITOR_FULL.get())
+			.add(Registration.SOUL_CAPACITOR_EMPTY.get())
 			.add(Registration.INTERFACE_PANEL.get());
 
 	}

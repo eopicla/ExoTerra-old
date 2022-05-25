@@ -74,6 +74,12 @@ public class TutLanguageProvider extends LanguageProvider {
 
 		addItem(Registration.SOUL_CAPACITOR_FULL, "\u00A73Soul Capacitor\u00A7r");
 		addItem(Registration.SOUL_CAPACITOR_EMPTY, "Soul Capacitor");
+
+		addItem(Registration.LUNAR_WANE_CAST, "Ambifacient Lunar Wane Cast");
+		addItem(Registration.TREMI_PIPE, "Non-Reversible Tremi Pipe");
+		addItem(Registration.DIFFERENTIAL_GURDEL, "Differential Gurdel");
+		addItem(Registration.ATTRACTION_MATRIX, "Subatomic Attraction Matrix");
+		addItem(Registration.DEPTH_CONDITIONER, "Axionic Depth Conditioner");
 /*
  * 		SCREEN LANG
  */

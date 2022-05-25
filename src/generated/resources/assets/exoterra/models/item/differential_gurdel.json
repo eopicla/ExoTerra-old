@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "exoterra:items/differential_gurdel_empty"
+  }
+}

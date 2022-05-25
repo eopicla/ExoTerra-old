@@ -2,10 +2,13 @@ package com.faojen.exoterra.items.basic;
 
 import com.faojen.exoterra.setup.ModSetup;
 import com.faojen.exoterra.setup.Registration;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-    public class SentientCore extends Item {
+import net.minecraft.world.level.Level;
+
+public class SentientCore extends Item {
 
         public SentientCore() {
             super(new Item.Properties()
@@ -20,5 +23,5 @@ import net.minecraft.world.item.Rarity;
             return true;
         }
 
-    }
+}
 

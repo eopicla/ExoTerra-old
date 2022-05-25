@@ -17,6 +17,8 @@ public class PureStellarCore extends Item {
 
     }
 
+    
+
     //    public Item getCraftingRemainingItem() {
 //        return this.craftingRemainingItem;
 //    }
