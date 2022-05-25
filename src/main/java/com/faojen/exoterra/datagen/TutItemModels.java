@@ -58,6 +58,7 @@ public class TutItemModels extends ItemModelProvider {
 		singleTexture(Registration.INF_STELLAR_PART.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/inf_stellar_part"));
 		singleTexture(Registration.INTERFACE_PANEL.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/interface_panel"));
 		singleTexture(Registration.PURE_STELLAR_CORE.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/pure_stellar_core"));
+		singleTexture(Registration.SENTIENT_CORE.get().getRegistryName().getPath(),mcLoc("item/generated"),"layer0", modLoc("items/sentient_core"));
 
 /*
  * 	MACHINES

@@ -73,6 +73,7 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.INF_STELLAR_CORE.get())
 			.add(Registration.PURE_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())
+			.add(Registration.SENTIENT_CORE.get())
 			.add(Registration.INTERFACE_PANEL.get());
 
 	}

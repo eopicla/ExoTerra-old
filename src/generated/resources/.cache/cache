@@ -52,6 +52,7 @@ f32215e43e9bfb148eb9e1656d452abf11d6d136 assets/exoterra/models/item/machine_bod
 c902471d70419f6da7b89a31407e8f7ba0cd801b assets/exoterra/models/item/pure_stellar.json
 b5e7fefea3a09f7f48f22e3d100462926cc3977a assets/exoterra/models/item/pure_stellar_core.json
 82797520a220df4c433c43e38d907f6f094c85bb assets/exoterra/models/item/purification_bestower.json
+4b794551aef0fc8e93a92a4c6e63b0eff18ba059 assets/exoterra/models/item/sentient_core.json
 b29e4ccb379d2f3c5dcf800d33bfd2d3b3be8853 assets/exoterra/models/item/stellar_accumulator.json
 e59827d9033b6d72654978e719c160a084f5171c assets/exoterra/models/item/stellar_ore_deepslate.json
 cfef3b4ce7a2051aa72152e2521ac1e34f626c93 assets/exoterra/models/item/stellar_ore_end.json
@@ -108,7 +109,7 @@ f33f862a63dc46fce408dbaa86a7c67b426d7adc data/exoterra/tags/blocks/exoterra_bloc
 3cae1dc362a8af606645b511e6a3405ccd3f56a0 data/exoterra/tags/blocks/space_safe_block.json
 5e1a710b37987e0abacbe86eba33ab4b857f15a3 data/exoterra/tags/blocks/stellar_ore.json
 ba8002271bd8d5f06f489b17e03de5f11e6b591d data/exoterra/tags/fluids/stellar_aqueous.json
-871a1494c4642b168eac518d7582106273839233 data/exoterra/tags/items/components.json
+477711c54ca4c7a4c3d4f1f69145ed912145b947 data/exoterra/tags/items/components.json
 7a7c3624962bfaa49be7504efb8af53db5d7265c data/exoterra/tags/items/exoterra_items.json
 e83ae047560fd7be6473d333374ca8c2bfadc443 data/exoterra/tags/items/exoterra_minerals.json
 9fa5b7ae6fe54dff8a800d639b9e08be79501913 data/exoterra/tags/items/exoterra_ores.json
