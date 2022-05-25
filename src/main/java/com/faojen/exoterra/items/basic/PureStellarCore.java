@@ -14,8 +14,16 @@ public class PureStellarCore extends Item {
                 .stacksTo(1)
                 .craftRemainder(Registration.INF_STELLAR_CORE.get()));
 
-        //static String STELLAR_BURN_TIME = "1600";
     }
+
+//    public Item getCraftingRemainingItem() {
+//        return this.craftingRemainingItem;
+//    }
+
+//    @Override
+//    public boolean hasCraftingRemainingItem() {
+//        return super.hasCraftingRemainingItem();
+//    }
 
     public boolean isFoil(){
         return true;

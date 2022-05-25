@@ -94,6 +94,7 @@ public class Registration {
 
     // Item
     public static final RegistryObject<InfRefinedStellar> INF_REFINED_STELLAR = ITEMS.register("inf_refined_stellar", InfRefinedStellar::new);
+    public static final RegistryObject<Item> INF_STELLAR_CORE = ITEMS.register("inf_stellar_core", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<PureStellarCore> PURE_STELLAR_CORE = ITEMS.register("pure_stellar_core", PureStellarCore::new);
 
     // Fluid
@@ -262,7 +263,7 @@ public class Registration {
     public static final RegistryObject<Item> FACETED_ALLUMINUM_PART = ITEMS.register("faceted_alluminum_part", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> FLUID_OUTLET = ITEMS.register("fluid_outlet", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> FRACTURIZER = ITEMS.register("fracturizer", () -> new Item(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> INF_STELLAR_CORE = ITEMS.register("inf_stellar_core", () -> new Item(ITEM_PROPERTIES));
+    // THINGTHINGTHING709
     public static final RegistryObject<Item> INF_STELLAR_PART = ITEMS.register("inf_stellar_part", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> INTERFACE_PANEL = ITEMS.register("interface_panel", () -> new Item(ITEM_PROPERTIES));
 

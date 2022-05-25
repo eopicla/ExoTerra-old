@@ -202,8 +202,20 @@ public class TutRecipes extends RecipeProvider {
 					.define('a', Registration.ALLUMINUM_INGOT.get())
 					.define('c', Items.COAL)
 					.group("exoterra_components")
-					.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+					.unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.ALLUMINUM_INGOT.get()))
 					.save(consumer);
+// PURE STELLAR CORE
+		ShapedRecipeBuilder.shaped(Registration.FACETED_ALLUMINUM_PART.get())
+				.pattern("pup")
+				.pattern("ucu")
+				.pattern("pup")
+
+				.define('c', Registration.INF_STELLAR_CORE.get())
+				.define('p', Registration.INF_STELLAR_PART.get())
+				.define('u', Registration.PURE_STELLAR.get())
+				.group("exoterra_components")
+				.unlockedBy("infcore", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_STELLAR_CORE.get()))
+				.save(consumer);
 
 					
 					// smelting silktouched aluminum to chunk
