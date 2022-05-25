@@ -205,7 +205,7 @@ public class TutRecipes extends RecipeProvider {
 					.unlockedBy("aluminum", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.ALLUMINUM_INGOT.get()))
 					.save(consumer);
 // PURE STELLAR CORE
-		ShapedRecipeBuilder.shaped(Registration.FACETED_ALLUMINUM_PART.get())
+		ShapedRecipeBuilder.shaped(Registration.PURE_STELLAR_CORE.get())
 				.pattern("pup")
 				.pattern("ucu")
 				.pattern("pup")

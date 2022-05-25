@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "stellar": {
+    "aluminum": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "exoterra:alluminum_ingot"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "stellar",
+      "aluminum",
       "has_the_recipe"
     ]
   ]

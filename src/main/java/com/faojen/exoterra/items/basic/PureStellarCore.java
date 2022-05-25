@@ -3,6 +3,7 @@ package com.faojen.exoterra.items.basic;
 import com.faojen.exoterra.setup.ModSetup;
 import com.faojen.exoterra.setup.Registration;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 
 public class PureStellarCore extends Item {
@@ -25,8 +26,10 @@ public class PureStellarCore extends Item {
 //        return super.hasCraftingRemainingItem();
 //    }
 
-    public boolean isFoil(){
-        return true;
+
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        return super.isFoil(pStack);
     }
 
 }
