@@ -2,16 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "group": "exoterra_components",
   "pattern": [
-    "aca",
-    "cac",
-    "aca"
+    "pup",
+    "ucu",
+    "pup"
   ],
   "key": {
-    "a": {
-      "item": "exoterra:alluminum_ingot"
-    },
     "c": {
-      "item": "minecraft:coal"
+      "item": "exoterra:inf_stellar_core"
+    },
+    "p": {
+      "item": "exoterra:inf_stellar_part"
+    },
+    "u": {
+      "item": "exoterra:pure_stellar"
     }
   },
   "result": {

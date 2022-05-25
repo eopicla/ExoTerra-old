@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "stellar": {
+    "infcore": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "exoterra:inf_stellar_core"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "stellar",
+      "infcore",
       "has_the_recipe"
     ]
   ]
