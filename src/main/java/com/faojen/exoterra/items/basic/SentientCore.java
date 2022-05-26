@@ -30,7 +30,8 @@ import java.util.List;
 
 public class SentientCore extends Item {
     private int iterate;
-    public int maxStability = 10000;
+    public static int maxStability = 10000;
+    private int internalMaxStability;
 
     /**
      * Gets the current Intelligence value in a given Sentient Core.
