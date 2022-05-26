@@ -18,4 +18,8 @@ public class MagicHelpers {
         value = value.divide(TWENTY, 1, RoundingMode.HALF_UP);
         return value.toString(); 
     }
+
+    public static int toPercent(int num, int maxNum){
+        return num*100/maxNum;
+    }
 }
