@@ -10,6 +10,10 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -156,10 +160,15 @@ public class SentientCore extends Item {
     public InteractionResult interactLivingEntity(ItemStack pStack, Player pPlayer, LivingEntity pInteractionTarget, InteractionHand pUsedHand) {
 //        return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
 
-        if(pInteractionTarget.isBaby() && getIntelligence(pStack) < 100 && !pPlayer.getLevel().isClientSide()){
+        if(pInteractionTarget.isBaby() && pInteractionTarget.getHealth() >= 1 && getIntelligence(pStack) < 100 && !pPlayer.getLevel().isClientSide()){
             iterate = getIntelligence(pStack) + 1;
+            MobEffect wither = MobEffects.WITHER;
+            MobEffect poison = MobEffects.POISON;
 
-            pInteractionTarget.kill();
+            // pInteractionTarget.kill();
+            pInteractionTarget.setHealth(pInteractionTarget.getHealth() / 10);
+            pInteractionTarget.addEffect(new MobEffectInstance(wither, 120, 10));
+
             setIntelligence(iterate, pStack);
 
             return InteractionResult.PASS;
