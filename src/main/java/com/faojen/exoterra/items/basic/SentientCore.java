@@ -24,12 +24,63 @@ import java.util.List;
 
 public class SentientCore extends Item {
     private int iterate;
+
+    /**
+     * Gets the current Intelligence value in a given Sentient Core.
+     * @param pStack The target core
+     * @return The current intelligence level
+     */
     public int getIntelligence(ItemStack pStack) {
         return pStack.getTag().getInt("level");
     }
 
+    /**
+     * Gets the current Stability value in a given Sentient Core.
+     * @param pStack The target core
+     * @return The current stability level
+     */
+    public int getStability(ItemStack pStack) {
+        return pStack.getTag().getInt("stability");
+    }
+
+    /**
+     * Set the Intelligence of a given Sentient Core
+     * @param intelligence The new intelligence value
+     * @param pStack The target core
+     */
     public void setIntelligence(int intelligence, ItemStack pStack) {
         pStack.getTag().putInt("level", intelligence);
+    }
+
+    /**
+     * Set a new intelligence value and return the value from the NBT tag
+     * @param intelligence The new intelligence value
+     * @param pStack The target core
+     * @return The new intelligence level, taken from the NBT tag
+     */
+    public int setAndGetIntelligence(int intelligence, ItemStack pStack) {
+        pStack.getTag().putInt("level", intelligence);
+        return pStack.getTag().getInt("level");
+    }
+
+    /**
+     * Set the stability of a given Sentient Core
+     * @param stability The new stability value
+     * @param pStack The target core
+     */
+    public void setStability(int stability, ItemStack pStack) {
+        pStack.getTag().putInt("stability", stability);
+    }
+
+    /**
+     * Set a new stability value and return the value from the NBT tag
+     * @param stability The new stability value
+     * @param pStack The target core
+     * @return The new stability level, taken from the NBT tag
+     */
+    public int setAndGetStability(int stability, ItemStack pStack) {
+        pStack.getTag().putInt("stability", stability);
+        return pStack.getTag().getInt("stability");
     }
 
     @Override
