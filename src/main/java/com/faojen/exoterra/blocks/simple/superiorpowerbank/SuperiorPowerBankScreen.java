@@ -2,6 +2,7 @@ package com.faojen.exoterra.blocks.simple.superiorpowerbank;
 
 import com.faojen.exoterra.ExoTerra;
 import com.faojen.exoterra.api.generic.ScreenUtils;
+import com.faojen.exoterra.blocks.machine.purificationbestower.PurificationBestowerBE;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -46,7 +47,7 @@ public class SuperiorPowerBankScreen extends AbstractContainerScreen<SuperiorPow
 
 		// Power Display
 		if (this.container.getEnergy() > 0) {
-			ScreenUtils.drawHorizontalMeter(this.container.getMaxPower(), this.container.getEnergy(), this, stack, 158, 9, 26, 0, 166, 53, leftPos, topPos);
+			ScreenUtils.drawHorizontalMeter(PurificationBestowerBE.ENERGY_CAPACITY_PUB, this.container.getEnergy(), this, stack, 158, 9, 26, 0, 166, 53, leftPos, topPos);
 		}
 
 		// Draw power meter corners
