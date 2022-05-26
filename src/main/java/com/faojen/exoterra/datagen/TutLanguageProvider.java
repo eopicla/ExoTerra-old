@@ -85,10 +85,10 @@ public class TutLanguageProvider extends LanguageProvider {
 /*
  * 		SCREEN LANG
  */
-		add("itemHover.exoterra.intelligence", "\u00A75%s%% Intelligence\u00A7r");
-		add("itemHover.exoterra.stability_high", "\u00A72%s%% Core Stability\u00A7r");
-		add("itemHover.exoterra.stability_mid", "\u00A76%s%% Core Stability\u00A7r");
-		add("itemHover.exoterra.stability_low", "\u00A7c%s%% Core Stability\u00A7r");
+		add("itemHover.exoterra.intelligence", "%s%% \u00A75Intelligence\u00A7r");
+		add("itemHover.exoterra.stability_high", "%s%% \u00A72Core Stability\u00A7r");
+		add("itemHover.exoterra.stability_mid", "%s%% \u00A76Core Stability\u00A7r");
+		add("itemHover.exoterra.stability_low", "%s%% \u00A7cCore Stability\u00A7r");
 
 		add("itemHover.exoterra.line_break", "\u00A78-----------------\u00A7r");
 
