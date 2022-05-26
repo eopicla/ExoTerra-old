@@ -43,6 +43,12 @@ public class SentientCore extends Item {
         return maxStability;
     }
 
+    public boolean isStable(ItemStack pStack) {
+        if(pStack.hasTag()) {
+            return getIntelligence(pStack) == 100;
+        } else return false;
+    }
+
     /**
      * Gets the current Intelligence value in a given Sentient Core.
      * @param pStack The target core
@@ -169,6 +175,8 @@ public class SentientCore extends Item {
         level.explode(pEntity, pX, pY, pZ, 6.0f, false, Explosion.BlockInteraction.NONE);
         return false;
     }
+
+
 
     public void stabilizeCore(ItemStack pStack){
         System.out.println("core stable!!!!!!");
@@ -312,7 +320,6 @@ public class SentientCore extends Item {
 
     public SentientCore() {
             super(new Item.Properties()
-                    .tab(ModSetup.ITEM_GROUP)
                     .rarity(Rarity.EPIC)
                     .stacksTo(1));
 
