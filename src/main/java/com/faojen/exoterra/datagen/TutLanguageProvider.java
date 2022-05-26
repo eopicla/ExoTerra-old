@@ -90,7 +90,7 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("itemHover.exoterra.stability_mid", "\u00A76%s%% Core Stability\u00A7r");
 		add("itemHover.exoterra.stability_low", "\u00A7c%s%% Core Stability\u00A7r");
 
-		add("itemHover.exoterra.line_break", "\u00A78--------------------------\u00A7r");
+		add("itemHover.exoterra.line_break", "\u00A78-----------------\u00A7r");
 
 		add("screen.exoterra.energy", "\u00A74Energy:\u00a7r %s/%s FE");
 		add("screen.exoterra.stellar", "\u00A73Stellar:\u00a7r %s MB");
