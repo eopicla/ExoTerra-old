@@ -1,6 +1,9 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/orientable_with_bottom",
   "textures": {
-    "all": "exoterra:block/machine_body"
+    "side": "exoterra:block/machine_body_side",
+    "front": "exoterra:block/machine_body_fronton",
+    "bottom": "exoterra:block/machine_body_bottom",
+    "top": "exoterra:block/machine_body_top"
   }
 }

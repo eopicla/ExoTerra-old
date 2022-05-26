@@ -53,10 +53,10 @@ public class TutLanguageProvider extends LanguageProvider {
 		addBlock(Registration.COMMON_POWER_BANK, "Power Bank (Common)");
 		addBlock(Registration.SUPERIOR_POWER_BANK, "Power Bank (Superior)");
 		addBlock(Registration.STELLAR_ACCUMULATOR, "Stellar Accumulator");
+		addBlock(Registration.MACHINE_BODY, "Machine Body");
 /*
  * 		BASIC BLOCKS
  */
-		addBlock(Registration.MACHINE_BODY, "Machine Body");	
 		addBlock(Registration.EXO_GLASS_BLOCK, "Exo Glass");	
 		addBlock(Registration.FACETED_ALUMINUM_BLOCK, "Faceted Aluminum Block");	
 /*
@@ -111,6 +111,7 @@ public class TutLanguageProvider extends LanguageProvider {
 		add("screen.exoterra.accumulator_filterdurability", "Filter Durability: %s%%");
 
 		add("screen.exoterra.stellar_accumulator_guititle", "Stellar Accumulator");
+		add("screen.exoterra.machine_body_guititle", "Machine Body");
 		add("screen.exoterra.stellar_converter_guititle", "Purification Bestower");
 		add("screen.exoterra.crystal_catalyst_guititle", "Crystallization Catalyst");
 		add("screen.exoterra.inferior_power_bank_guititle", "Power Bank (Inferior)");

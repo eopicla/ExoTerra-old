@@ -35,8 +35,6 @@ public class TutItemModels extends ItemModelProvider {
 /*
  * 	BLOCKS
  */
-		String macbod = Registration.MACHINE_BODY.get().getRegistryName().getPath();
-        getBuilder(macbod).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + macbod)));
         String exglass = Registration.EXO_GLASS_BLOCK.get().getRegistryName().getPath();
         getBuilder(exglass).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + exglass)));
         String facblock = Registration.FACETED_ALUMINUM_BLOCK.get().getRegistryName().getPath();
@@ -88,5 +86,8 @@ public class TutItemModels extends ItemModelProvider {
 
 		String stellac = Registration.STELLAR_ACCUMULATOR.get().getRegistryName().getPath();
 		getBuilder(stellac).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + stellac)));
+
+		String macbod = Registration.MACHINE_BODY.get().getRegistryName().getPath();
+		getBuilder(macbod).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + macbod)));
 	}
 }

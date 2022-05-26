@@ -57,6 +57,7 @@
   "screen.exoterra.fluid": "\u00A73Stellar:\u00A7r %s/%s MB",
   "screen.exoterra.inferior_power_bank_guititle": "Power Bank (Inferior)",
   "screen.exoterra.inventorytip": "%s/%s",
+  "screen.exoterra.machine_body_guititle": "Machine Body",
   "screen.exoterra.no_energy": "\u00A77Not enough FE to purify",
   "screen.exoterra.no_fuel": "\u00A77Fuel source empty",
   "screen.exoterra.percentage": "%s%%",

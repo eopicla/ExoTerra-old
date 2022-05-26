@@ -18,11 +18,11 @@ public class TutItemTags extends ItemTagsProvider {
 	@Override
 	protected void addTags() {
 		tag(Registration.SPACE_SAFE_ITEM)
-			.add(Registration.MACHINE_BODY_ITEM.get())
 			.add(Registration.PURIFICATION_BESTOWER_BI.get())
 			.add(Registration.INFERIOR_POWER_BANK_BI.get())
 			.add(Registration.COMMON_POWER_BANK_BI.get())
 			.add(Registration.SUPERIOR_POWER_BANK_BI.get())
+			.add(Registration.MACHINE_BODY_BI.get())
 			.add(Registration.EXO_GLASS_BLOCK_ITEM.get())
 			.add(Registration.FACETED_ALUMINUM_BLOCK_ITEM.get());
 		
@@ -60,7 +60,6 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.PURE_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())
 			.add(Registration.INTERFACE_PANEL.get())
-			.add(Registration.MACHINE_BODY_ITEM.get())
 			.add(Registration.BAUXITE_CHUNK.get())
 			.add(Registration.ALLUMINUM_INGOT.get());
 
@@ -69,7 +68,6 @@ public class TutItemTags extends ItemTagsProvider {
 			.add(Registration.FACETED_ALLUMINUM_PANEL.get())
 			.add(Registration.FLUID_OUTLET.get())
 			.add(Registration.FRACTURIZER.get())
-			.add(Registration.MACHINE_BODY_ITEM.get())
 			.add(Registration.INF_STELLAR_CORE.get())
 			.add(Registration.PURE_STELLAR_CORE.get())
 			.add(Registration.INF_STELLAR_PART.get())

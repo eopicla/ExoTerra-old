@@ -30,7 +30,7 @@ public class TutRecipes extends RecipeProvider {
 						
 				.define('c', Registration.INFERIOR_POWER_BANK_BI.get())
 				.define('n', Items.NETHER_STAR)
-				.define('b', Registration.MACHINE_BODY_ITEM.get())
+				.define('b', Registration.FACETED_ALUMINUM_BLOCK_ITEM.get())
 				.define('s', Registration.INF_REFINED_STELLAR.get())
 				.group("exoterra_machines")
 				.unlockedBy("combank", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.COMMON_POWER_BANK_BI.get()))
@@ -44,7 +44,7 @@ public class TutRecipes extends RecipeProvider {
 				
 		.define('c', Registration.INFERIOR_POWER_BANK_BI.get())
 		.define('g', Registration.EXO_GLASS_BLOCK_ITEM.get())
-		.define('b', Registration.MACHINE_BODY_ITEM.get())
+		.define('b', Registration.FACETED_ALUMINUM_BLOCK_ITEM.get())
 		.define('s', Registration.INF_REFINED_STELLAR.get())
 		.group("exoterra_machines")
 		.unlockedBy("infbank", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INFERIOR_POWER_BANK_BI.get()))
@@ -58,7 +58,7 @@ public class TutRecipes extends RecipeProvider {
 						
 				.define('c', Registration.INF_STELLAR_CORE.get())
 				.define('g', Registration.EXO_GLASS_BLOCK_ITEM.get())
-				.define('b', Registration.MACHINE_BODY_ITEM.get())
+				.define('b', Registration.FACETED_ALUMINUM_BLOCK_ITEM.get())
 				.define('a', Registration.INTERFACE_PANEL.get())
 				.group("exoterra_machines")
 				.unlockedBy("stelcore", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_STELLAR_CORE.get()))
@@ -97,7 +97,7 @@ public class TutRecipes extends RecipeProvider {
 		.define('p', Registration.INTERFACE_PANEL.get())
 		.define('f', Registration.FRACTURIZER.get())
 		.define('o', Registration.FLUID_OUTLET.get())
-		.define('m', Registration.MACHINE_BODY_ITEM.get())
+		.define('m', Registration.FACETED_ALUMINUM_BLOCK_ITEM.get())
 		.define('c', Registration.INF_STELLAR_CORE.get())
 		.group("exoterra_machines")
 		.unlockedBy("stellar", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.INF_STELLAR_CORE.get()))

@@ -27,7 +27,6 @@ public class TutBlockStates extends BlockStateProvider {
 /*
  * 	BLOCKS	
  */
-		simpleBlock(Registration.MACHINE_BODY.get());
 		simpleBlock(Registration.EXO_GLASS_BLOCK.get());
 		simpleBlock(Registration.FACETED_ALUMINUM_BLOCK.get());
 /*
@@ -39,6 +38,16 @@ public class TutBlockStates extends BlockStateProvider {
 		superiorPowerBankModel();
 		crystalCatalystModel();
 		stellarAccumulatorModel();
+		machineBodyModel();
+
+	}
+
+	private void machineBodyModel() {
+
+		horizontalBlock(Registration.MACHINE_BODY.get(),
+				models().orientableWithBottom(Registration.MACHINE_BODY.get().getRegistryName().getPath(),
+						modLoc("block/machine_body_side"), modLoc("block/machine_body_fronton"),
+						modLoc("block/machine_body_bottom"), modLoc("block/machine_body_top")));
 
 	}
 

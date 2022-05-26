@@ -28,7 +28,7 @@ public class ClientSetup {
             MenuScreens.register(Registration.INFERIOR_POWER_BANK_CONTAINER.get(), InferiorPowerBankScreen::new);
             MenuScreens.register(Registration.COMMON_POWER_BANK_CONTAINER.get(), CommonPowerBankScreen::new);
             MenuScreens.register(Registration.SUPERIOR_POWER_BANK_CONTAINER.get(), SuperiorPowerBankScreen::new);
-            
+
             MenuScreens.register(Registration.MACHINE_BODY_CONTAINER.get(), MachineBodyScreen::new);
 
             // Render Types

@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "exoterra:block/machine_body"
+    },
+    "facing=south": {
+      "model": "exoterra:block/machine_body",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "exoterra:block/machine_body",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "exoterra:block/machine_body",
+      "y": 90
     }
   }
 }
