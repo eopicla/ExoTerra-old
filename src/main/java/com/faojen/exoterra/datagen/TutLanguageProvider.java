@@ -87,6 +87,7 @@ public class TutLanguageProvider extends LanguageProvider {
  */
 		add("itemGroup.charginggadgets", "Charging Gadgets");
 		add("itemHover.exoterra.intelligence", "%s%% Intelligence");
+		add("itemHover.exoterra.stability", "%s%% Core Stability");
 
 		add("screen.exoterra.energy", "\u00A74Energy:\u00a7r %s/%s FE");
 		add("screen.exoterra.stellar", "\u00A73Stellar:\u00a7r %s MB");
