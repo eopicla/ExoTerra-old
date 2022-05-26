@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.faojen.exoterra.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "exoterra.refmap.json",
+  "mixins": [
+            "SentCoreContainerMix"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}
