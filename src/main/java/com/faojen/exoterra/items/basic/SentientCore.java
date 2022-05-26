@@ -105,8 +105,13 @@ public class SentientCore extends Item {
         }
         if(canCoreCollapse(pStack)){
             System.out.println("core can collapse!!!");
-            coreCollapse(pStack, pSlotId, pEntity, pLevel);
+            coreCollapse(pStack, pEntity, pLevel);
         }
+    }
+
+    @Override
+    public boolean onDroppedByPlayer(ItemStack item, Player player) {
+        return false;
     }
 
     public void stabilizeCore(ItemStack pStack){
@@ -145,7 +150,7 @@ public class SentientCore extends Item {
         return pStack.getTag().getInt("stability") <= 0;
     }
 
-    public void coreCollapse(ItemStack pStack, int pSlotId, Entity pEntity, Level pLevel){
+    public void coreCollapse(ItemStack pStack, Entity pEntity, Level pLevel){
         System.out.println("core is collapsing !!!! :)");
         ItemStack infcore = new ItemStack(Registration.INF_STELLAR_CORE.get());
         int playerX = pEntity.getBlockX();
