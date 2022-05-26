@@ -75,7 +75,6 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
             return switch (index) {
                 case 0 -> MachineBodyBE.this.energyStorage.getEnergyStored() / 32;
                 case 1 -> MachineBodyBE.this.energyStorage.getMaxEnergyStored() / 32;
-
                 case 2 -> MachineBodyBE.this.fluidStorage.getFluidAmount();
                 case 3 -> MachineBodyBE.this.fluidStorage.getCapacity();
 
@@ -90,7 +89,7 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
         @Override
         public int getCount() {
-            return 2;
+            return 4;
         }
     };
 

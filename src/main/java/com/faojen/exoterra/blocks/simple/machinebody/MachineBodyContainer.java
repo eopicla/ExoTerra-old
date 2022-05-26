@@ -47,7 +47,7 @@ public class MachineBodyContainer extends AbstractContainerMenu {
 
     public void setup(Inventory inventory) {
         // Core slot
-        addSlot(new RestrictedSlot(handler, 0, 80, 44));
+        addSlot(new RestrictedSlot(handler, 0, 79, 44));
 
         // Slots for the hotbar
         for (int row = 0; row < 9; ++row) {
@@ -113,7 +113,6 @@ public class MachineBodyContainer extends AbstractContainerMenu {
     public int getFluidCapacity() {
         return this.data.get(3);
     }
-
 
     static class RestrictedSlot extends SlotItemHandler {
         public RestrictedSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
