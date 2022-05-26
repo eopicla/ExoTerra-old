@@ -30,6 +30,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -161,6 +162,7 @@ public class SentientCore extends Item {
                 System.out.println("core can collapse!!!");
                 coreCollapse(pStack, pEntity, pLevel);
             }
+
         }
     }
 
@@ -179,11 +181,14 @@ public class SentientCore extends Item {
 
         item.setCount(0);
         level.explode(pEntity, pX, pY, pZ, 6.0f, false, Explosion.BlockInteraction.BREAK);
-        
+
         return false;
     }
 
-
+    @Override
+    public boolean canFitInsideContainerItems() {
+        return false;
+    }
 
     public void stabilizeCore(ItemStack pStack){
         System.out.println("core stable!!!!!!");
