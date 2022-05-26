@@ -16,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod("exoterra")
 public class ExoTerra {
 
+	// TODO: create item getbarwidth and getbarcolor utils
 	// TODO: Fix up lang
 	// TODO: Do status blit animation for accumulator
 	// TODO: make blockmodel for accumulator.
