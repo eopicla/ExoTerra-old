@@ -98,6 +98,33 @@ public class SentientCore extends Item {
             System.out.println("core can collapse!!!");
             coreCollapse(pStack, pSlotId, pEntity, pLevel);
         }
+        if(canStabilize(pStack, false, false)){
+            System.out.println("core can stabilize!!!");
+            stabilizeCore(pStack);
+        }
+    }
+
+    public void stabilizeCore(ItemStack pStack){
+        System.out.println("core stable!!!!!!");
+        setStability(SentientCore.maxStability,pStack);
+    }
+
+    public boolean canStabilize(ItemStack pStack, boolean isBypassingBehavior, boolean bypassAnswer){
+        int currentstability = pStack.getTag().getInt("stability");
+        int currentintel = pStack.getTag().getInt("level");
+        System.out.println("can core stabilize?????");
+
+        if(currentstability > SentientCore.maxStability * 0.1 && currentintel == 100){
+            return true;
+        } else if(currentstability < SentientCore.maxStability * 0.1 || currentintel < 100){
+            return false;
+        }
+
+        if(isBypassingBehavior){
+            return bypassAnswer;
+        }
+
+        return false;
     }
 
     public void erodeCore(ItemStack pStack){
