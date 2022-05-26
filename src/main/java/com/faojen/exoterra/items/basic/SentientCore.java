@@ -158,13 +158,13 @@ public class SentientCore extends Item {
             }
 
             // High Stability
-            if(getStability(pStack) >= 75) {
+            if(getStability(pStack) >= SentientCore.maxStability * 0.75) {
                 pTooltipComponents
                         .add(new TranslatableComponent("itemHover.exoterra.stability_high", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
             }
 
             // Mid Stability
-            if(getStability(pStack) <= 74 && getStability(pStack) >= 25) {
+            if(getStability(pStack) < SentientCore.maxStability * 0.75 && getStability(pStack) >= SentientCore.maxStability * 0.25) {
                 pTooltipComponents
                         .add(new TranslatableComponent("itemHover.exoterra.stability_mid", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
                 pTooltipComponents
@@ -172,14 +172,14 @@ public class SentientCore extends Item {
             }
 
             // Low Stability
-            if(getStability(pStack) <= 24 && getStability(pStack) >= 1) {
+            if(getStability(pStack) < SentientCore.maxStability * 0.25 && getStability(pStack) >= SentientCore.maxStability * 0.10) {
                 pTooltipComponents
                         .add(new TranslatableComponent("itemHover.exoterra.stability_low", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
                 pTooltipComponents
                         .add(new TextComponent("(Kept comfortable in a \u00A73Machine Body\u00A7r)"));
             }
 
-            if(getStability(pStack) == 0) {
+            if(getStability(pStack) < SentientCore.maxStability * 0.1) {
                 pTooltipComponents
                         .add(new TextComponent("\u00A74Core unstable!\u00A7r"));
                 pTooltipComponents
