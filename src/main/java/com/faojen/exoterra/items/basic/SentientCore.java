@@ -16,7 +16,10 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -95,22 +98,33 @@ public class SentientCore extends Item {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        erodeCore(pStack);
+        if(pStack.hasTag()) {
+            erodeCore(pStack);
 
-        if(forceStable){
-            stabilizeCore(pStack);
-        } else if(canStabilize(pStack, false, false)){
-            System.out.println("core can stabilize!!!");
-            stabilizeCore(pStack);
-        }
-        if(canCoreCollapse(pStack)){
-            System.out.println("core can collapse!!!");
-            coreCollapse(pStack, pEntity, pLevel);
+            if (forceStable) {
+                stabilizeCore(pStack);
+            } else if (canStabilize(pStack, false, false)) {
+                System.out.println("core can stabilize!!!");
+                stabilizeCore(pStack);
+            }
+            if (canCoreCollapse(pStack)) {
+                System.out.println("core can collapse!!!");
+                coreCollapse(pStack, pEntity, pLevel);
+            }
         }
     }
 
     @Override
     public boolean onDroppedByPlayer(ItemStack item, Player player) {
+        Level level = player.getLevel();
+        int pId = player.getId();
+        int pX = player.getBlockX();
+        int pY = player.getBlockY();
+        int pZ = player.getBlockZ();
+
+        Entity pEntity = level.getEntity(pId);
+
+        level.explode(pEntity, pX, pY, pZ, 6.0f, false, Explosion.BlockInteraction.NONE);
         return false;
     }
 
@@ -235,8 +249,8 @@ public class SentientCore extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack pStack, Player pPlayer, LivingEntity pInteractionTarget, InteractionHand pUsedHand) {
 //        return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
-
-        if(pInteractionTarget.isBaby() && pInteractionTarget.getHealth() >= 1 && getIntelligence(pStack) < 100 && !pPlayer.getLevel().isClientSide()){
+    if(pStack.hasTag()) {
+        if (pInteractionTarget.isBaby() && pInteractionTarget.getHealth() >= 1 && getIntelligence(pStack) < 100 && !pPlayer.getLevel().isClientSide()) {
             iterate = getIntelligence(pStack) + 1;
             MobEffect wither = MobEffects.WITHER;
             MobEffect poison = MobEffects.POISON;
@@ -248,7 +262,8 @@ public class SentientCore extends Item {
             setIntelligence(iterate, pStack);
 
             return InteractionResult.PASS;
-        } else
+        }
+    }
 
             return InteractionResult.FAIL;
     }
@@ -263,7 +278,10 @@ public class SentientCore extends Item {
 
         @Override
         public boolean isFoil(ItemStack pStack) {
-            return getIntelligence(pStack) == 100;
+            if(pStack.hasTag()) {
+                return getIntelligence(pStack) == 100;
+            } else
+            return false;
         }
 
 }
