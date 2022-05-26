@@ -196,7 +196,7 @@ public class SentientCore extends Item {
                         .add(new TextComponent("\u00A7aCore is stable!\u00A7r"));
             }
             // High Stability
-            if(getStability(pStack) >= SentientCore.maxStability * 0.75) {
+            if(getStability(pStack) >= SentientCore.maxStability * 0.75 && getStability(pStack) < SentientCore.maxStability) {
                 pTooltipComponents
                         .add(new TranslatableComponent("itemHover.exoterra.stability_high", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
             }
@@ -258,7 +258,7 @@ public class SentientCore extends Item {
 
         @Override
         public boolean isFoil(ItemStack pStack) {
-            return true;
+            return getIntelligence(pStack) == 100;
         }
 
 }
