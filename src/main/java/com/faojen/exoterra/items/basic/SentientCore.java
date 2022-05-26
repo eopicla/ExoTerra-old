@@ -171,12 +171,15 @@ public class SentientCore extends Item {
         int pX = player.getBlockX();
         int pY = player.getBlockY();
         int pZ = player.getBlockZ();
-
         Entity pEntity = level.getEntity(pId);
 
-        item.setCount(0);
+        if(isStable(item)){
+            return true;
+        } else
 
+        item.setCount(0);
         level.explode(pEntity, pX, pY, pZ, 6.0f, false, Explosion.BlockInteraction.BREAK);
+        
         return false;
     }
 
