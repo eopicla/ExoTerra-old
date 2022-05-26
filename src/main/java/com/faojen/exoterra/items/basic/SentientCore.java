@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffect;
@@ -37,6 +38,10 @@ public class SentientCore extends Item {
     private int internalMaxStability;
 
     public boolean forceStable;
+
+    public static int getMaxStability() {
+        return maxStability;
+    }
 
     /**
      * Gets the current Intelligence value in a given Sentient Core.
@@ -94,6 +99,43 @@ public class SentientCore extends Item {
     public int setAndGetStability(int stability, ItemStack pStack) {
         pStack.getTag().putInt("stability", stability);
         return pStack.getTag().getInt("stability");
+    }
+
+    @Override
+    public int getBarWidth(ItemStack pStack) {
+
+            int stability = 0;
+            int maxstability = getMaxStability();
+            if(pStack.hasTag()) {
+                stability = getStability(pStack);
+                maxStability = getMaxStability();
+            }
+
+            var stored = maxStability - stability;
+
+            return Math.round(13.0F - stored * 13.0F / maxStability);
+    }
+
+    @Override
+    public int getBarColor(ItemStack pStack) {
+
+            int stability = 0;
+            int maxstability = getMaxStability();
+            if(pStack.hasTag()) {
+                stability = getStability(pStack);
+                maxStability = getMaxStability();
+            }
+            float f = Math.max(0.0F, (float) stability / (float) maxStability);
+
+            return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
+
+    }
+
+    @Override
+    public boolean isBarVisible(ItemStack stack) {
+        if(stack.hasTag()) {
+            return true;
+        } else return false;
     }
 
     @Override
