@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import org.checkerframework.checker.units.qual.C;
 
 public class PureStellarCore extends Item {
 
@@ -28,12 +29,19 @@ public class PureStellarCore extends Item {
         //return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
         ItemStack sentient = new ItemStack(Registration.SENTIENT_CORE.get(), 1);
         CompoundTag level = new CompoundTag();
+        CompoundTag stability = new CompoundTag();
         if(pInteractionTarget.isBaby()){
 
             pInteractionTarget.kill();
+
             level.putInt("level",1);
+            stability.putInt("stability", 100);
+
             pStack.setCount(0);
             sentient.setTag(level);
+            sentient.setTag(stability);
+
+            System.out.println("set level to: " + sentient.getTag().getInt("level") + ", and set stability to: " + sentient.getTag().getInt("stability"));
 
             pPlayer.getInventory().add(sentient);
 
