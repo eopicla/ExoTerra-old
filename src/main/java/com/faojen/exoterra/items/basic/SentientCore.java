@@ -33,6 +33,8 @@ public class SentientCore extends Item {
     public static int maxStability = 10000;
     private int internalMaxStability;
 
+    public boolean forceStable;
+
     /**
      * Gets the current Intelligence value in a given Sentient Core.
      * @param pStack The target core
@@ -94,13 +96,16 @@ public class SentientCore extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         erodeCore(pStack);
+
+        if(forceStable){
+            stabilizeCore(pStack);
+        } else if(canStabilize(pStack, false, false)){
+            System.out.println("core can stabilize!!!");
+            stabilizeCore(pStack);
+        }
         if(canCoreCollapse(pStack)){
             System.out.println("core can collapse!!!");
             coreCollapse(pStack, pSlotId, pEntity, pLevel);
-        }
-        if(canStabilize(pStack, false, false)){
-            System.out.println("core can stabilize!!!");
-            stabilizeCore(pStack);
         }
     }
 
@@ -185,6 +190,11 @@ public class SentientCore extends Item {
                         .add(new TranslatableComponent("itemHover.exoterra.line_break"));
             }
 
+            // Totally Stable
+            if(getStability(pStack) == SentientCore.maxStability) {
+                pTooltipComponents
+                        .add(new TextComponent("\u00A7aCore is stable!\u00A7r"));
+            }
             // High Stability
             if(getStability(pStack) >= SentientCore.maxStability * 0.75) {
                 pTooltipComponents
