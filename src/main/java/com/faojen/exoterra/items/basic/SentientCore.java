@@ -95,16 +95,58 @@ public class SentientCore extends Item {
             if (getIntelligence(pStack) == 69) {
                 pTooltipComponents
                         .add(new TextComponent("nice."));
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.line_break"));
             }
 
-            if (getIntelligence(pStack) < 100) {
+            if (getIntelligence(pStack) < 100 && getIntelligence(pStack) > 69) {
                 pTooltipComponents
                         .add(new TranslatableComponent("itemHover.exoterra.intelligence", MagicHelpers.withSuffix(getIntelligence(pStack))));
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.line_break"));
+            }
+
+            if (getIntelligence(pStack) < 69 && getIntelligence(pStack) >= 0) {
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.intelligence", MagicHelpers.withSuffix(getIntelligence(pStack))));
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.line_break"));
             }
 
             if (getIntelligence(pStack) == 100) {
                 pTooltipComponents
                         .add(new TextComponent("\u00A72Intelligent.\u00A7r"));
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.line_break"));
+            }
+
+            // High Stability
+            if(getStability(pStack) >= 75) {
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.stability_high", MagicHelpers.withSuffix(getStability(pStack))));
+            }
+
+            // Mid Stability
+            if(getStability(pStack) <= 74 && getStability(pStack) >= 25) {
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.stability_mid", MagicHelpers.withSuffix(getStability(pStack))));
+                pTooltipComponents
+                        .add(new TextComponent("(Kept comfortable in a \u00A73Machine Body\u00A7r)"));
+            }
+
+            // Low Stability
+            if(getStability(pStack) <= 24 && getStability(pStack) >= 1) {
+                pTooltipComponents
+                        .add(new TranslatableComponent("itemHover.exoterra.stability_low", MagicHelpers.withSuffix(getStability(pStack))));
+                pTooltipComponents
+                        .add(new TextComponent("(Kept comfortable in a \u00A73Machine Body\u00A7r)"));
+            }
+
+            if(getStability(pStack) == 0) {
+                pTooltipComponents
+                        .add(new TextComponent("\u00A74Core unstable!\u00A7r"));
+                pTooltipComponents
+                        .add(new TextComponent("(Kept comfortable in a \u00A73Machine Body\u00A7r)"));
             }
         }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
