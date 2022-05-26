@@ -240,9 +240,9 @@ public class ScreenUtils {
      * @param mouseX Mouse's X position. ( passing "mouseX" is fine)
      * @param mouseY Mouse's Y position. ( passing "mouseY" is fine)
      * @param minX Minimum X coordinate to trigger the tooltip.
-     * @param maxX Maximum X coordinate to trigger the tooltip under.
+     * @param maxX Width of the trigger field.
      * @param minY Minimum Y coordinate to trigger the tooltip.
-     * @param maxY Maximum Y coordinate to trigger the tooltip under.
+     * @param maxY Height of the trigger field.
      * @param key Key for the TranslatableComponent.
      * @param suffix1 Suffix 1 for the key provided.
      * @param suffix2 Suffix 2 for the key provided.
