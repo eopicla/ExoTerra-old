@@ -35,7 +35,7 @@ public class PureStellarCore extends Item {
             pInteractionTarget.kill();
 
             level.putInt("level",1);
-            stability.putInt("stability", 100);
+            stability.putInt("stability", SentientCore.maxStability);
 
             pStack.setCount(0);
             sentient.setTag(level);

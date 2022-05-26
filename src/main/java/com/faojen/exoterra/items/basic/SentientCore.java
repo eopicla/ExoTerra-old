@@ -4,6 +4,7 @@ import com.faojen.exoterra.api.generic.ScreenUtils;
 import com.faojen.exoterra.setup.ModSetup;
 import com.faojen.exoterra.setup.Registration;
 import com.faojen.exoterra.utils.MagicHelpers;
+import net.minecraft.commands.arguments.coordinates.Coordinates;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,6 +30,7 @@ import java.util.List;
 
 public class SentientCore extends Item {
     private int iterate;
+    public static int maxStability = 10000;
 
     /**
      * Gets the current Intelligence value in a given Sentient Core.
@@ -89,6 +92,36 @@ public class SentientCore extends Item {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        erodeCore(pStack);
+        if(canCoreCollapse(pStack)){
+            System.out.println("core can collapse!!!");
+            coreCollapse(pStack, pSlotId, pEntity, pLevel);
+        }
+    }
+
+    public void erodeCore(ItemStack pStack){
+        int currentstability = pStack.getTag().getInt("stability");
+        int currentintel = pStack.getTag().getInt("level");
+        int removeamount = currentintel / 10;
+
+        pStack.getTag().putInt("stability", currentstability - removeamount);
+    }
+
+    public boolean canCoreCollapse(ItemStack pStack){
+        System.out.println("can core collapse?");
+        return pStack.getTag().getInt("stability") <= 0;
+    }
+
+    public void coreCollapse(ItemStack pStack, int pSlotId, Entity pEntity, Level pLevel){
+        System.out.println("core is collapsing !!!! :)");
+        ItemStack infcore = new ItemStack(Registration.INF_STELLAR_CORE.get());
+        int playerX = pEntity.getBlockX();
+        int playerY = pEntity.getBlockY();
+        int playerZ = pEntity.getBlockZ();
+
+        pLevel.explode(pEntity, playerX, playerY, playerZ, 16.0f,true, Explosion.BlockInteraction.DESTROY);
+        System.out.println("core esploded????? :0");
+        pStack.setCount(0);
 
     }
 
@@ -127,13 +160,13 @@ public class SentientCore extends Item {
             // High Stability
             if(getStability(pStack) >= 75) {
                 pTooltipComponents
-                        .add(new TranslatableComponent("itemHover.exoterra.stability_high", MagicHelpers.withSuffix(getStability(pStack))));
+                        .add(new TranslatableComponent("itemHover.exoterra.stability_high", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
             }
 
             // Mid Stability
             if(getStability(pStack) <= 74 && getStability(pStack) >= 25) {
                 pTooltipComponents
-                        .add(new TranslatableComponent("itemHover.exoterra.stability_mid", MagicHelpers.withSuffix(getStability(pStack))));
+                        .add(new TranslatableComponent("itemHover.exoterra.stability_mid", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
                 pTooltipComponents
                         .add(new TextComponent("(Kept comfortable in a \u00A73Machine Body\u00A7r)"));
             }
@@ -141,7 +174,7 @@ public class SentientCore extends Item {
             // Low Stability
             if(getStability(pStack) <= 24 && getStability(pStack) >= 1) {
                 pTooltipComponents
-                        .add(new TranslatableComponent("itemHover.exoterra.stability_low", MagicHelpers.withSuffix(getStability(pStack))));
+                        .add(new TranslatableComponent("itemHover.exoterra.stability_low", MagicHelpers.withSuffix(MagicHelpers.toPercent(getStability(pStack), SentientCore.maxStability))));
                 pTooltipComponents
                         .add(new TextComponent("(Kept comfortable in a \u00A73Machine Body\u00A7r)"));
             }
