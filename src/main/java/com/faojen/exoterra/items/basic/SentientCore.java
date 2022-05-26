@@ -5,6 +5,8 @@ import com.faojen.exoterra.setup.ModSetup;
 import com.faojen.exoterra.setup.Registration;
 import com.faojen.exoterra.utils.MagicHelpers;
 import net.minecraft.commands.arguments.coordinates.Coordinates;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -172,7 +174,9 @@ public class SentientCore extends Item {
 
         Entity pEntity = level.getEntity(pId);
 
-        level.explode(pEntity, pX, pY, pZ, 6.0f, false, Explosion.BlockInteraction.NONE);
+        item.setCount(0);
+
+        level.explode(pEntity, pX, pY, pZ, 6.0f, false, Explosion.BlockInteraction.BREAK);
         return false;
     }
 
@@ -221,7 +225,7 @@ public class SentientCore extends Item {
         int playerY = pEntity.getBlockY();
         int playerZ = pEntity.getBlockZ();
 
-        pLevel.explode(pEntity, playerX, playerY, playerZ, 16.0f,true, Explosion.BlockInteraction.DESTROY);
+        pLevel.explode(pEntity, playerX, playerY, playerZ, 16.0f,true, Explosion.BlockInteraction.BREAK);
         System.out.println("core esploded????? :0");
         pStack.setCount(0);
 
