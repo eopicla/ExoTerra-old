@@ -2,6 +2,7 @@ package com.faojen.exoterra.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MagicHelpers {
     public static String withSuffix(int count) {
@@ -20,6 +21,13 @@ public class MagicHelpers {
     }
 
     public static int toPercent(int num, int maxNum){
+
         return num*100/maxNum;
+    }
+
+    public static int randomInt(int min, int max) {
+        return ThreadLocalRandom
+                .current()
+                .nextInt(min, max + 1);
     }
 }

@@ -11,7 +11,7 @@ public class MachineBodyItemHandler extends ItemStackHandler {
     private final MachineBodyBE machineBodyBE;
 
     public MachineBodyItemHandler(MachineBodyBE machineBodyBE) {
-        super(1);
+        super(2);
         this.machineBodyBE = machineBodyBE;
     }
 
@@ -26,6 +26,9 @@ public class MachineBodyItemHandler extends ItemStackHandler {
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
 
         if (slot == MachineBodyBE.Slots.CORE.getId() && (! stack.is(Registration.SENTIENT_CORE.get()) && stack.getCount() == 1))
+            return stack;
+
+        if (slot == MachineBodyBE.Slots.SOUL.getId() && (! stack.is(Registration.SOUL_CAPACITOR_EMPTY.get()) && stack.getCount() == 1))
             return stack;
 
         return super.insertItem(slot, stack, simulate);

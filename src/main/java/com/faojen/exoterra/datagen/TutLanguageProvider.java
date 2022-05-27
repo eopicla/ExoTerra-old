@@ -92,6 +92,10 @@ public class TutLanguageProvider extends LanguageProvider {
 
 		add("itemHover.exoterra.line_break", "\u00A78-----------------\u00A7r");
 
+		add("screen.exoterra.stability_low", "%s%%");
+		add("screen.exoterra.stability_mid", "%s%%");
+		add("screen.exoterra.stability_high", "%s%%");
+
 		add("screen.exoterra.energy", "\u00A74Energy:\u00a7r %s/%s FE");
 		add("screen.exoterra.stellar", "\u00A73Stellar:\u00a7r %s MB");
 		add("screen.exoterra.no_fuel", "\u00A77Fuel source empty");

@@ -132,6 +132,26 @@ public class ScreenUtils {
         matrixStack.popPose();
     }
 
+    /**
+     * Draw the given text with the given width and desired scale.
+     * @param matrixStack The matrix stack
+     * @param fontRenderer The font renderer
+     * @param string The string to draw
+     * @param x The center X
+     * @param y The center Y
+     * @param width The scaled width
+     * @param scale The desired scale
+     * @param color The color to draw
+     */
+    public static void drawScaledCenteredString(PoseStack matrixStack, Font fontRenderer, String string, int x, int y, int width, float scale, int color) {
+        matrixStack.pushPose();
+        matrixStack.scale(scale, scale, 1.0f);
+        int titleLength = fontRenderer.width(string);
+        int titleHeight = fontRenderer.lineHeight;
+        fontRenderer.draw(matrixStack, string, Math.round((x + width / 2) / scale - titleLength / 2), Math.round(y / scale - titleHeight / 2), color);
+        matrixStack.popPose();
+    }
+
     /** This method draws a simple blit on your screen.
      *
      * @param screen The target screen. ( "this" is fine )

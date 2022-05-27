@@ -19,9 +19,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class MachineBodyContainer extends AbstractContainerMenu {
-    private static final int SLOTS = 1;
+    private static final int SLOTS = 2;
 
     public final ContainerData data;
     public ItemStackHandler handler;
@@ -30,7 +31,7 @@ public class MachineBodyContainer extends AbstractContainerMenu {
     private MachineBodyBE tile;
 
     public MachineBodyContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((MachineBodyBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7), windowId, playerInventory, new ItemStackHandler(1));
+        this((MachineBodyBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8), windowId, playerInventory, new ItemStackHandler(2));
     }
 
     public MachineBodyContainer(@Nullable MachineBodyBE tile, ContainerData machineBodyData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
@@ -48,6 +49,9 @@ public class MachineBodyContainer extends AbstractContainerMenu {
     public void setup(Inventory inventory) {
         // Core slot
         addSlot(new RestrictedSlot(handler, 0, 79, 44));
+
+        // Soul slot
+        addSlot(new RestrictedSlot(handler, 1, 80, 26));
 
         // Slots for the hotbar
         for (int row = 0; row < 9; ++row) {
@@ -120,6 +124,8 @@ public class MachineBodyContainer extends AbstractContainerMenu {
 
     public boolean getIsStabilizing() { if (this.data.get(6) == 1) { return true; } else return false; }
 
+    public boolean getIsCoreInSlot() { if (this.data.get(7) == 1) { return true; } else return false; }
+
     static class RestrictedSlot extends SlotItemHandler {
         public RestrictedSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
             super(itemHandler, index, xPosition, yPosition);
@@ -130,6 +136,9 @@ public class MachineBodyContainer extends AbstractContainerMenu {
 
             if (getSlotIndex() == MachineBodyBE.Slots.CORE.getId() && stack.getCount() == 1)
                 return stack.getItem() == Registration.SENTIENT_CORE.get();
+
+            if (getSlotIndex() == MachineBodyBE.Slots.SOUL.getId() && stack.getCount() == 1)
+                return stack.getItem() == Registration.SOUL_CAPACITOR_FULL.get();
 
             return super.mayPlace(stack);
         }

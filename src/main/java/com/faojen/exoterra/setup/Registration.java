@@ -35,11 +35,8 @@ import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankCont
 import com.faojen.exoterra.blocks.simple.superiorpowerbank.SuperiorPowerBankItem;
 import com.faojen.exoterra.fluid.AqueousStellarFluid;
 import com.faojen.exoterra.fluid.InterestingSludgeFluid;
-import com.faojen.exoterra.items.basic.AluminumFilter;
-import com.faojen.exoterra.items.basic.PureStellarCore;
-import com.faojen.exoterra.items.basic.SentientCore;
+import com.faojen.exoterra.items.basic.*;
 import com.faojen.exoterra.items.fluid.AqueousStellarItem;
-import com.faojen.exoterra.items.basic.InfRefinedStellar;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -103,6 +100,8 @@ public class Registration {
     public static final RegistryObject<PureStellarCore> PURE_STELLAR_CORE = ITEMS.register("pure_stellar_core", PureStellarCore::new);
 
     public static final RegistryObject<SentientCore> SENTIENT_CORE = ITEMS.register("sentient_core", SentientCore::new);
+
+    public static final RegistryObject<SoulCapacitorEmpty> SOUL_CAPACITOR_EMPTY = ITEMS.register("soul_capacitor_empty", SoulCapacitorEmpty::new);
 
     // Fluid
 
@@ -280,9 +279,7 @@ public class Registration {
     public static final RegistryObject<Item> FRACTURIZER = ITEMS.register("fracturizer", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> INF_STELLAR_PART = ITEMS.register("inf_stellar_part", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> INTERFACE_PANEL = ITEMS.register("interface_panel", () -> new Item(ITEM_PROPERTIES));
-
     public static final RegistryObject<Item> SOUL_CAPACITOR_FULL = ITEMS.register("soul_capacitor_full", () -> new Item(ITEM_PROPERTIES));
-    public static final RegistryObject<Item> SOUL_CAPACITOR_EMPTY = ITEMS.register("soul_capacitor_empty", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> LUNAR_WANE_CAST = ITEMS.register("lunar_wane_cast", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> TREMI_PIPE = ITEMS.register("tremi_pipe", () -> new Item(ITEM_PROPERTIES));
     public static final RegistryObject<Item> DIFFERENTIAL_GURDEL = ITEMS.register("differential_gurdel", () -> new Item(ITEM_PROPERTIES));

@@ -17,12 +17,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -33,11 +36,12 @@ import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.lwjgl.system.CallbackI;
 
 // Todo: completely rewrite this class from the ground up
 public class MachineBodyBE extends BlockEntity implements MenuProvider {
     public enum Slots {
-        CORE(0);
+        CORE(0), SOUL(1);
 
         int id;
 
@@ -83,6 +87,8 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
     private int isStabilizing;
     private boolean justStabilized;
 
+    private int coreInSlot;
+
     public ExoTerraBasicEnergyStorage energyStorage;
     public ExoTerraBasicFluidStorage fluidStorage;
     private LazyOptional<ExoTerraBasicEnergyStorage> energy;
@@ -105,6 +111,8 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
                 case 5 -> MachineBodyBE.this.coreIntelligence;
                 case 6 -> MachineBodyBE.this.isStabilizing;
 
+                case 7 -> MachineBodyBE.this.coreInSlot;
+
                 default -> throw new IllegalArgumentException("Invalid index: " + index);
             };
         }
@@ -116,7 +124,7 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
         @Override
         public int getCount() {
-            return 7;
+            return 8;
         }
     };
 
@@ -134,7 +142,7 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory playerInventory, Player playerEntity) {
         assert level != null;
-        return new MachineBodyContainer(this, this.machineBodyData, i, playerInventory, this.inventory.orElse(new ItemStackHandler(1)));
+        return new MachineBodyContainer(this, this.machineBodyData, i, playerInventory, this.inventory.orElse(new ItemStackHandler(2)));
     }
 
     public static <T extends BlockEntity> void ticker(Level level, BlockPos blockPos, BlockState state, T t) {
@@ -142,37 +150,111 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
             entity.inventory.ifPresent(handler -> {
 
                     entity.tickStabilize(entity);
+                    entity.setSlotBool();
+                    entity.tickSoulJuice(entity);
+                    entity.tickDecay();
+                    entity.tickUnstable(entity);
+
 
             });
         }
     }
 
-    public boolean checkForCoreThenDoValues(MachineBodyBE entity){
+    public void tickDecay(){
         ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
-        boolean hasCore = handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get());
 
-        if(hasCore) {
-            entity.getValues();
-            entity.setValues();
+        if(handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get()) && handler.getStackInSlot(0).hasTag() && handler.getStackInSlot(0).getTag().getInt("level") < 100 && (isStabilizing == 0 || justStabilized == false)) {
+            decayCore();
         }
-
-        return hasCore;
     }
 
-    public void getValues(){
+    public void decayCore(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack core = handler.getStackInSlot(0);
+
+        int currentstability = core.getTag().getInt("stability");
+        int currentintel = core.getTag().getInt("level");
+        int removeamount = currentintel / 10;
+
+        core.getTag().putInt("stability", currentstability - removeamount);
+
+        getStability();
+    }
+
+    public void tickUnstable(MachineBodyBE entity){
+        boolean canFluid = fluidStorage.getCapacity() > 0;
+        boolean canEnergy = energyStorage.getMaxEnergyStored() > 0;
+
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+
+        if (canFluid && canEnergy && handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get()) && handler.getStackInSlot(0).hasTag()) {
+            deStabilizeCore(fluidStorage, energyStorage, entity);
+        }
+    }
+
+    public void deStabilizeCore(IFluidTank fluidStorage, IEnergyStorage energyStorage, MachineBodyBE entity) {
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack core = handler.getStackInSlot(0);
+
+        Block macBlock = entity.getBlockState().getBlock();
+        int mX = entity.getBlockPos().getX();
+        int mY = entity.getBlockPos().getY();
+        int mZ = entity.getBlockPos().getZ();
+
+        getStability();
+        getIntelligence();
+
+        if(fluidStorage.getFluidAmount() < stabilizeEfficiencyFluid && energyStorage.getEnergyStored() < stabilizeEfficiencyEnergy && coreStability == 0 && coreIntelligence < 100){
+            handler.extractItem(0, 1, false);
+            assert level != null;
+            level.explode(null, mX, mY, mZ,16, Explosion.BlockInteraction.BREAK);
+        }
+    }
+
+    public void setSlotBool(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        if(handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get())) {
+            coreInSlot = 1;
+        } else coreInSlot = 0;
+    }
+
+    public void getStability(){
         ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
         ItemStack core = handler.getStackInSlot(0);
 
         coreStability = core.getTag().getInt("stability");
+    }
+
+    public void getIntelligence(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack core = handler.getStackInSlot(0);
+
         coreIntelligence = core.getTag().getInt("level");
     }
 
-    public void setValues(){
+    public void setStability(){
         ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
         ItemStack core = handler.getStackInSlot(0);
 
         core.getTag().putInt("stability", this.coreStability);
+    }
+
+    public void setIntelligence(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack core = handler.getStackInSlot(0);
+
         core.getTag().putInt("level", this.coreIntelligence);
+    }
+
+    public void tickSoulJuice(MachineBodyBE entity) {
+        if (level == null) { return; }
+
+        boolean canFluid = fluidStorage.getCapacity() > 0;
+        boolean canEnergy = energyStorage.getMaxEnergyStored() > 0;
+
+        if (canFluid && canEnergy) {
+            soulJuice(entity);
+        }
     }
 
     public void tickStabilize(MachineBodyBE entity) {
@@ -195,12 +277,42 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
     }
 
-    public void stabilizeCore(IFluidTank fluidStorage, IEnergyStorage energyStorage, MachineBodyBE entity) {
+    public void soulJuice(MachineBodyBE entity) {
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack capacitor = handler.getStackInSlot(1);
+        ItemStack core = handler.getStackInSlot(0);
+        ItemStack emptyCapacitor = new ItemStack(Registration.SOUL_CAPACITOR_EMPTY.get(), 1);
 
+        int capacitorIntelligence;
+
+        if(checkForCapAndCorePlusTags()){
+            getIntelligence();
+            capacitorIntelligence = capacitor.getTag().getInt("level");
+            int newIntel = capacitorIntelligence + coreIntelligence;
+
+            core.getTag().putInt("level",newIntel);
+
+            handler.extractItem(1, 1, false);
+            handler.insertItem(1, emptyCapacitor, false);
+        }
+
+    }
+
+    public boolean checkForCapAndCorePlusTags(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack capacitor = handler.getStackInSlot(1);
+        ItemStack core = handler.getStackInSlot(0);
+
+        if(capacitor.is(Registration.SOUL_CAPACITOR_FULL.get()) && capacitor.hasTag() && core.is(Registration.SENTIENT_CORE.get()) && core.hasTag()) {
+            return true;
+        } else return false;
+    }
+
+    public void stabilizeCore(IFluidTank fluidStorage, IEnergyStorage energyStorage, MachineBodyBE entity) {
         ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
 
         if(handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get())) {
-            getValues();
+            getStability();
         }
         if (handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get()) && coreStability < SentientCore.getMaxStability() && fluidStorage.getFluidAmount() > stabilizeEfficiencyFluid && energyStorage.getEnergyStored() > stabilizeEfficiencyEnergy) {
             System.out.println("Stability BEFORE stabilize: " + coreStability);
@@ -209,7 +321,7 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
             justStabilized = true;
             coreStability++;
-            setValues();
+            setStability();
         } else {justStabilized = false;}
 
         System.out.println("Stability AFTER stabilize: " + coreStability);

@@ -308,7 +308,6 @@ public class SentientCore extends Item {
         if (pInteractionTarget.isBaby() && pInteractionTarget.getHealth() >= 1 && getIntelligence(pStack) < 100 && !pPlayer.getLevel().isClientSide()) {
             iterate = getIntelligence(pStack) + 1;
             MobEffect wither = MobEffects.WITHER;
-            MobEffect poison = MobEffects.POISON;
 
             // pInteractionTarget.kill();
             pInteractionTarget.setHealth(pInteractionTarget.getHealth() / 10);
