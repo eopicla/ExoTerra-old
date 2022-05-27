@@ -65,5 +65,13 @@ public class MachineBodyScreen extends AbstractContainerScreen<MachineBodyContai
         // Gui title
         ScreenUtils.drawTranslateWithShadow(stack, font, "screen.exoterra.machine_body_title", 62, 4, 1, Color.DARK_GRAY.getRGB());
 
+        if(this.container.getIsStabilizing()){
+            ScreenUtils.drawString(stack, font, "is stabilizing", 20, 20, 1, Color.GREEN.getRGB());
+        }
+
+        if(this.container.getIsStabilizing() == false){
+            ScreenUtils.drawString(stack, font, "is NOT stabilizing", 30, 30, 1, Color.RED.getRGB());
+        }
+
     }
 }

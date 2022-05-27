@@ -186,7 +186,6 @@ public class PurificationBestowerBE extends BlockEntity implements MenuProvider 
 			 
 			 setChanged();
 			 scounter = (int) Math.floor(purifyTime) / 50;
-			 System.out.print("| set purify time to: " + purifyTime + " because input was: " + iteminslot);
 			 maxSBurn = scounter;
 			 return true;
 		 }

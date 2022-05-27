@@ -155,11 +155,9 @@ public class SentientCore extends Item {
             if (forceStable) {
                 stabilizeCore(pStack);
             } else if (canStabilize(pStack, false, false)) {
-                System.out.println("core can stabilize!!!");
                 stabilizeCore(pStack);
             }
             if (canCoreCollapse(pStack)) {
-                System.out.println("core can collapse!!!");
                 coreCollapse(pStack, pEntity, pLevel);
             }
 
@@ -191,14 +189,12 @@ public class SentientCore extends Item {
     }
 
     public void stabilizeCore(ItemStack pStack){
-        System.out.println("core stable!!!!!!");
         setStability(SentientCore.maxStability,pStack);
     }
 
     public boolean canStabilize(ItemStack pStack, boolean isBypassingBehavior, boolean bypassAnswer){
         int currentstability = pStack.getTag().getInt("stability");
         int currentintel = pStack.getTag().getInt("level");
-        System.out.println("can core stabilize?????");
 
         if(currentstability > SentientCore.maxStability * 0.1 && currentintel == 100){
             return true;
@@ -222,19 +218,16 @@ public class SentientCore extends Item {
     }
 
     public boolean canCoreCollapse(ItemStack pStack){
-        System.out.println("can core collapse?");
         return pStack.getTag().getInt("stability") <= 0;
     }
 
     public void coreCollapse(ItemStack pStack, Entity pEntity, Level pLevel){
-        System.out.println("core is collapsing !!!! :)");
         ItemStack infcore = new ItemStack(Registration.INF_STELLAR_CORE.get());
         int playerX = pEntity.getBlockX();
         int playerY = pEntity.getBlockY();
         int playerZ = pEntity.getBlockZ();
 
         pLevel.explode(pEntity, playerX, playerY, playerZ, 16.0f,true, Explosion.BlockInteraction.BREAK);
-        System.out.println("core esploded????? :0");
         pStack.setCount(0);
 
     }

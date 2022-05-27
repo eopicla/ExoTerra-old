@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import com.faojen.exoterra.api.capabilities.energy.ExoTerraBasicEnergyStorage;
 import com.faojen.exoterra.api.capabilities.fluid.ExoTerraBasicFluidStorage;
 import com.faojen.exoterra.blocks.machine.crystalcatalyst.CrystalCatalystItemHandler;
+import com.faojen.exoterra.items.basic.SentientCore;
 import com.faojen.exoterra.setup.Registration;
 
 import net.minecraft.core.BlockPos;
@@ -20,13 +21,17 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 // Todo: completely rewrite this class from the ground up
@@ -60,6 +65,24 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
     public static final int MACHINE_BODY_MAXFLUID = fluidCapacity;
     public static final int MACHINE_BODY_FLUIDMAXINOUT = fluidMaxInOut;
 
+    private int coreStability;
+    private int coreIntelligence;
+
+    /**
+     * stabilizeEfficiencyFluid is how effecient the machine will be with stellar consumption while trying to stabilize a core.
+     * This number refers to the amount in MB of stellar the machine will consume to increase core stability by 1
+     */
+    private static int stabilizeEfficiencyFluid = 2;
+
+    /**
+     * stabilizeEfficiencyEnergy is how effecient the machine will be with energy consumption while trying to stabilize a core.
+     * This number refers to the amount in FE of energy the machine will consume to increase core stability by 1
+     */
+    private static int stabilizeEfficiencyEnergy = 10;
+
+    private int isStabilizing;
+    private boolean justStabilized;
+
     public ExoTerraBasicEnergyStorage energyStorage;
     public ExoTerraBasicFluidStorage fluidStorage;
     private LazyOptional<ExoTerraBasicEnergyStorage> energy;
@@ -78,6 +101,10 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
                 case 2 -> MachineBodyBE.this.fluidStorage.getFluidAmount();
                 case 3 -> MachineBodyBE.this.fluidStorage.getCapacity();
 
+                case 4 -> MachineBodyBE.this.coreStability;
+                case 5 -> MachineBodyBE.this.coreIntelligence;
+                case 6 -> MachineBodyBE.this.isStabilizing;
+
                 default -> throw new IllegalArgumentException("Invalid index: " + index);
             };
         }
@@ -89,7 +116,7 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
         @Override
         public int getCount() {
-            return 4;
+            return 7;
         }
     };
 
@@ -112,8 +139,80 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
     public static <T extends BlockEntity> void ticker(Level level, BlockPos blockPos, BlockState state, T t) {
         if (t instanceof MachineBodyBE entity) {
+            entity.inventory.ifPresent(handler -> {
 
+                    entity.tickStabilize(entity);
+
+            });
         }
+    }
+
+    public boolean checkForCoreThenDoValues(MachineBodyBE entity){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        boolean hasCore = handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get());
+
+        if(hasCore) {
+            entity.getValues();
+            entity.setValues();
+        }
+
+        return hasCore;
+    }
+
+    public void getValues(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack core = handler.getStackInSlot(0);
+
+        coreStability = core.getTag().getInt("stability");
+        coreIntelligence = core.getTag().getInt("level");
+    }
+
+    public void setValues(){
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+        ItemStack core = handler.getStackInSlot(0);
+
+        core.getTag().putInt("stability", this.coreStability);
+        core.getTag().putInt("level", this.coreIntelligence);
+    }
+
+    public void tickStabilize(MachineBodyBE entity) {
+        if (level == null) { return; }
+
+            boolean canFluid = fluidStorage.getCapacity() > 0;
+            boolean canEnergy = energyStorage.getMaxEnergyStored() > 0;
+
+            if (canFluid && canEnergy) {
+                stabilizeCore(fluidStorage, energyStorage, entity);
+            }
+
+            if (justStabilized){
+                isStabilizing = 1;
+            }
+
+            if (justStabilized == false) {
+                isStabilizing = 0;
+            }
+
+    }
+
+    public void stabilizeCore(IFluidTank fluidStorage, IEnergyStorage energyStorage, MachineBodyBE entity) {
+
+        ItemStackHandler handler = inventory.orElseThrow(RuntimeException::new);
+
+        if(handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get())) {
+            getValues();
+        }
+        if (handler.getStackInSlot(0).is(Registration.SENTIENT_CORE.get()) && coreStability < SentientCore.getMaxStability() && fluidStorage.getFluidAmount() > stabilizeEfficiencyFluid && energyStorage.getEnergyStored() > stabilizeEfficiencyEnergy) {
+            System.out.println("Stability BEFORE stabilize: " + coreStability);
+            fluidStorage.drain(stabilizeEfficiencyFluid, IFluidHandler.FluidAction.EXECUTE);
+            energyStorage.extractEnergy(stabilizeEfficiencyEnergy, false);
+
+            justStabilized = true;
+            coreStability++;
+            setValues();
+        } else {justStabilized = false;}
+
+        System.out.println("Stability AFTER stabilize: " + coreStability);
     }
 
     @Override

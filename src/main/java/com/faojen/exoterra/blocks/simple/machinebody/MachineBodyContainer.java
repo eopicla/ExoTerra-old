@@ -30,7 +30,7 @@ public class MachineBodyContainer extends AbstractContainerMenu {
     private MachineBodyBE tile;
 
     public MachineBodyContainer(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this((MachineBodyBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4), windowId, playerInventory, new ItemStackHandler(1));
+        this((MachineBodyBE) playerInventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7), windowId, playerInventory, new ItemStackHandler(1));
     }
 
     public MachineBodyContainer(@Nullable MachineBodyBE tile, ContainerData machineBodyData, int windowId, Inventory playerInventory, ItemStackHandler handler) {
@@ -113,6 +113,12 @@ public class MachineBodyContainer extends AbstractContainerMenu {
     public int getFluidCapacity() {
         return this.data.get(3);
     }
+
+    public int getCoreStability() { return this.data.get(4); }
+
+    public int getCoreIntelligence() { return this.data.get(5); }
+
+    public boolean getIsStabilizing() { if (this.data.get(6) == 1) { return true; } else return false; }
 
     static class RestrictedSlot extends SlotItemHandler {
         public RestrictedSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
