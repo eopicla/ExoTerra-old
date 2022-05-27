@@ -204,7 +204,7 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
         getStability();
         getIntelligence();
 
-        if(fluidStorage.getFluidAmount() < stabilizeEfficiencyFluid && energyStorage.getEnergyStored() < stabilizeEfficiencyEnergy && coreStability == 0 && coreIntelligence < 100){
+        if(fluidStorage.getFluidAmount() < stabilizeEfficiencyFluid && energyStorage.getEnergyStored() < stabilizeEfficiencyEnergy && coreStability < SentientCore.getMaxStability() * 0.05f && coreIntelligence < 100){
             handler.extractItem(0, 1, false);
             assert level != null;
             level.explode(null, mX, mY, mZ,16, Explosion.BlockInteraction.BREAK);
