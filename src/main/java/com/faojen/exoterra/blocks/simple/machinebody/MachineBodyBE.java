@@ -285,15 +285,17 @@ public class MachineBodyBE extends BlockEntity implements MenuProvider {
 
         int capacitorIntelligence;
 
-        if(checkForCapAndCorePlusTags()){
-            getIntelligence();
-            capacitorIntelligence = capacitor.getTag().getInt("level");
-            int newIntel = capacitorIntelligence + coreIntelligence;
+        if(checkForCapAndCorePlusTags() && core.hasTag()) {
+            if (core.getTag().getInt("level") + capacitor.getTag().getInt("level") <= 100) {
+                getIntelligence();
+                capacitorIntelligence = capacitor.getTag().getInt("level");
+                int newIntel = capacitorIntelligence + coreIntelligence;
 
-            core.getTag().putInt("level",newIntel);
+                core.getTag().putInt("level", newIntel);
 
-            handler.extractItem(1, 1, false);
-            handler.insertItem(1, emptyCapacitor, false);
+                handler.extractItem(1, 1, false);
+                handler.insertItem(1, emptyCapacitor, false);
+            }
         }
 
     }
